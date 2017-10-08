@@ -16,6 +16,8 @@ html {
 
 #bigTitle {
   padding-top: 50px;
+  padding-left:200px;
+  padding-right:200px;
 }
 
 #shyText {
@@ -42,16 +44,19 @@ body {
 }
 
 .botFace {
-  width: 400px;
+  width: 90%;
 }
 
 .bioMargin {
-  margin-top: 250px;
-  margin-bottom: 400px;
+  margin-top: 200px;
+  margin-bottom: 300px;
+  margin-left:350px;
+  margin-right:350px;
   font-size: 30px;
   background-color: #FFF8D9;
 }
 
 #whippo {
   padding-top: 70px;
+  width:90%;
 }

@@ -1,0 +1,31 @@
+#title{
+	padding-top:125px;
+	font-family:"Times New Roman";
+	font-size:200px;
+}
+#stuff{
+	position:relative;
+	bottom:10%;
+}
+#currTemp{
+	color:red;
+	font-size:30px;
+
+}
+#lomo {
+	position:relative;
+}
+
+#sunRot {
+	position:absolute;
+	left:46%;
+	padding-top:100px;
+	width:100px;
+	
+}
+#weatherOut {
+	font-size:25px;
+}
+#pic {
+	width:200px;
+}

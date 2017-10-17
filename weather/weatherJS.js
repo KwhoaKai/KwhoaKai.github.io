@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 
         navigator.geolocation.getCurrentPosition(function(position) {
-            apiURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&units=imperial&APPID=5c3f8291a845afe559a328193bea0bd8";
+            apiURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&units=imperial&APPID=5c3f8291a845afe559a328193bea0bd8";
             var lat = position.coords.latitude;
             var long = position.coords.longitude;
             console.log(apiURL);

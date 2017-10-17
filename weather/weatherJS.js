@@ -33,13 +33,17 @@ $(document).ready(function() {
 
                 console.log(data);
                 console.log(weatherConds[0].description);
-                console.log();
+                console.log(weatherDescrp.indexOf("few"));
 
-                htmlConds += "<p class='text-center'>There's " + weatherDescrp + ".</p>"
+                if (weatherDescrp.indexOf("few") > -1) {
+                    htmlConds += "<p class='text-center'>There's a " + weatherDescrp + ".</p>";
+                } else { 
+                    htmlConds += "<p class='text-center'>There's " + weatherDescrp + ".</p>";
+                }
 
-                htmlLoc += "<p>You're in <strong>" + city + "</strong>.</p>"
+                htmlLoc += "<p>You're in <strong>" + city + "</strong>.</p>";
 
-                html += "<p class = 'text-center'><strong id='currTemp'>" + currTemp + "&degF</strong></p>"
+                html += "<p class = 'text-center'><strong id='currTemp'>" + currTemp + "&degF</strong></p>";
 
 
                 //adds new html to elements
@@ -50,13 +54,13 @@ $(document).ready(function() {
                 //$("#sunRot").hide().attr("src","sunRot.png").fadeIn();
                 $("#bigTemp").append("Conditions");
 
-                if (htmlConds.indexOf("mist") > 0) {
+                if (htmlConds.indexOf("mist") > -1) {
                     $("#pic").hide().attr("src", "mist.png").fadeIn();
                 }
-                if (htmlConds.indexOf("rain") > 0) {
+                if (htmlConds.indexOf("rain") > -1) {
                     $("#pic").hide().attr("src", "rainDrop.jpeg").fadeIn();
                 }
-                if (htmlConds.indexOf("cloud") > 0) {
+                if (htmlConds.indexOf("cloud") > -1) {
                     $("#pic").hide().attr("src", "https://d30y9cdsu7xlg0.cloudfront.net/png/37296-200.png").fadeIn();
                 }
 

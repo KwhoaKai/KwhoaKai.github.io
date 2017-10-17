@@ -1,8 +1,7 @@
-
 $(document).ready(function() {
-	$("#title").hide().fadeIn(800);
-	$("#lomo").hide().fadeIn(1800);
-	$("#bigTemp").hide();
+    $("#title").hide().fadeIn(800);
+    $("#lomo").hide().fadeIn(1800);
+    $("#bigTemp").hide();
 
 
     if (navigator.geolocation) {
@@ -10,12 +9,12 @@ $(document).ready(function() {
         var long;
         var html = "";
         var htmlLoc = "";
-        var htmlConds="";
+        var htmlConds = "";
 
 
 
         navigator.geolocation.getCurrentPosition(function(position) {
-            apiURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&units=imperial&APPID=5c3f8291a845afe559a328193bea0bd8";
+            apiURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&units=imperial&APPID=5c3f8291a845afe559a328193bea0bd8";
             var lat = position.coords.latitude;
             var long = position.coords.longitude;
             console.log(apiURL);
@@ -36,7 +35,7 @@ $(document).ready(function() {
                 console.log(weatherConds[0].description);
                 console.log();
 
-                htmlConds+= "<p class='text-center'>There's "+ weatherDescrp +".</p>"
+                htmlConds += "<p class='text-center'>There's " + weatherDescrp + ".</p>"
 
                 htmlLoc += "<p>You're in <strong>" + city + "</strong>.</p>"
 
@@ -49,15 +48,18 @@ $(document).ready(function() {
                 $("#subTitle").hide().html(htmlLoc).fadeIn();
                 $("#weatherOut").hide().html(htmlConds).fadeIn();
                 //$("#sunRot").hide().attr("src","sunRot.png").fadeIn();
-                $("#bigTemp").append("Conditions");         
+                $("#bigTemp").append("Conditions");
 
-                if (htmlConds.indexOf("mist") > 0){
+                if (htmlConds.indexOf("mist") > 0) {
                     $("#pic").hide().attr("src", "mist.png").fadeIn();
-                }       
-                if (htmlConds.indexOf("rain") > 0){
+                }
+                if (htmlConds.indexOf("rain") > 0) {
                     $("#pic").hide().attr("src", "rainDrop.jpeg").fadeIn();
                 }
-                
+                if (htmlConds.indexOf("cloud") > 0) {
+                    $("#pic").hide().attr("src", "https://d30y9cdsu7xlg0.cloudfront.net/png/37296-200.png").fadeIn();
+                }
+
 
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" type="text/css" rel="stylesheet"></link>
+<!--<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" type="text/css" rel="stylesheet"></link>
 <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Open+Sans+Condensed:300" rel="stylesheet">
 </link>
 <link rel="stylesheet" href="css/animate.css"> </link>
@@ -9,11 +9,6 @@
 </link>
 <link rel="stylesheet" type="text/css" href="animate.css">
 </link>
-
-
-<script>
-    $(document).ready(function() {});
-</script>
 
 <head>
     <h1 class="title-text text-center" id="bigTitle"><strong>Yikai Kuo</strong></h1>
@@ -57,6 +52,179 @@
                     </div>
                 </div>
             </div>
+
+        -->
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+<link type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+
+<html>
+<!--
+animation: [animation-name] [animation-duration] [animation-timing-function]
+[animation-delay] [animation-iteration-count] [animation-direction];
+-->
+<style>
+    body {
+        padding-top: 450px;
+        overflow: hidden;
+    }
+
+    .center {
+        margin: auto;
+        width: 50%;
+    }
+
+    #animations div {
+        align-items: flex-end;
+        justify-content: space-between;
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        margin-right: 20px;
+        transform-origin: center bottom opacity:0;
+    }
+
+    #animations {
+        min-height: 150px;
+        display: flex;
+        background: white;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    #invAnim {
+        min-height: 150px;
+        display: flex;
+        background: white;
+        align-items: flex-end;
+        justify-content: center;
+
+    }
+
+    #invAnim div {
+        align-items: flex-end;
+        justify-content: space-between;
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        margin-right: 20px;
+        transform-origin: center bottom opacity:0;
+    }
+
+    #animations div {
+        animation: bounce 1s ease-in 0s infinite backwards;
+    }
+
+    #animations div:nth-child(1) {
+        background: #9bc3f6;
+    }
+
+    #animations div:nth-child(2) {
+        animation-delay: .2s;
+        background: #f6a19b;
+    }
+
+    #animations div:nth-child(3) {
+        animation-delay: .4s;
+        background: #ffc87c;
+    }
+
+    #animations div:nth-child(4) {
+        animation-delay: .6s;
+        background: #a9d15e;
+    }
+
+    #invAnim div {
+        animation: bounceInv 1s ease-in 0s infinite backwards;
+    }
+
+    #invAnim div:nth-child(1) {
+        background: #9bc3f6;
+    }
+
+    #invAnim div:nth-child(2) {
+        animation-delay: .2s;
+        background: #f6a19b;
+    }
+
+    #invAnim div:nth-child(3) {
+        animation-delay: .4s;
+        background: #ffc87c;
+    }
+
+    #invAnim div:nth-child(4) {
+        animation-delay: .6s;
+        background: #a9d15e;
+    }
+
+
+    @keyframes bounce {
+        0% {
+            transform: translateY(-600%);
+            opacity: 0;
+            animation-timing-function: linear;
+        }
+        40% {
+            transform: translateY(0%);
+            animation-timing-function: ease-out;
+        }
+        70% {
+            transform: translateY(-53%);
+            animation-timing-function: ease-in;
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(0%);
+            opacity: 0;
+        }
+
+    }
+
+    @keyframes bounceInv {
+        0% {
+            transform: translateY(600%);
+            opacity: 0;
+            animation-timing-function: linear;
+        }
+        40% {
+            transform: translateY(0%);
+            animation-timing-function: ease-out;
+        }
+        70% {
+            transform: translateY(53%);
+            animation-timing-function: ease-in;
+            opacity: .2;
+        }
+        100% {
+            transform: translateY(0%);
+            opacity: 0;
+        }
+
+    }
+</style>
+
+<body align="center">
+    <figure id="animations">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </figure>
+    <figure id="invAnim">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </figure>
+
+
+
+
+
+        
     </body>
 </head>
 

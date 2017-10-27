@@ -1,0 +1,113 @@
+html {
+    height: 100%;
+}
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    min-height: 100%;
+}
+
+h1 {
+    padding-top: 50px;
+}
+
+form {
+    padding-bottom: 15px;
+}
+
+.title {
+    padding-bottom:8%;
+}
+.backgroundDiv {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    height: 100px;
+    animation: boxDown 600ms;
+    background-color: white;
+}
+
+.userDiv {
+    font-size: 35px;
+    height: 80%;
+    width: 45%;
+    margin: 10px 0px 10px 15px;
+    text-align: left;
+    border-left: 2px solid black;
+    animation: contentsDown 600ms;
+}
+
+.twitchIconDiv {
+    height: 80%;
+    margin: 10px 10px 10px 0px;
+    justify-content: center;
+    animation: contentsDown 600ms;
+}
+
+.fade {
+    opacity: .4;
+}
+
+.noPic {
+    height: 50%;
+    width: 50%
+    background-color: grey;
+    border-radius: 50%;
+}
+
+#profPic {
+    border-radius:50%;
+    filter: grayscale(70%);
+    transform: translate(-14px,7px);
+}
+#twitchIcon {
+    transform: translate(-15%,12%);   
+}
+
+.indicator {
+    height:80%;
+    margin: 10px 0px 10px 0px;
+    animation: contentsDown 600ms;
+}
+
+#profPicDiv {
+    height:80%;
+    margin: 10px 0px 10px 10px;
+    animation: contentsDown 600ms;
+}
+
+#userText {
+    transform:translateY(11px);  
+}
+
+#status {
+    font-size: 20px;
+    transform:translateY(23px);
+}
+
+@keyframes boxDown {
+    0% {
+        transform: translateY(-50%);
+        opacity: 0;
+        
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+        
+    }
+}
+
+@keyframes contentsDown {
+    0% {
+        transform: translateY(-25%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+        
+    }
+}

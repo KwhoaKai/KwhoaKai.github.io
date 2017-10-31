@@ -10,19 +10,19 @@ $(document).ready(function() {
         console.log(liveOrNot);
         newBox =
                     '<div id="' + username +'Box" class="row">' +
-                      '<div class="col-md-4"></div>' +
-                      '<div class="col-md-4">' +
+                      '<div class="col-xs-4"></div>' +
+                      '<div class="col-xs-4">' +
                         '<div class="row backgroundDiv">' +
-                          '<div id="profPicDiv" class="col-md-1">' +
+                          '<div id="profPicDiv" class="col-xs-1">' +
                             streamPic +                    
                           '</div>' +
-                          '<div class="userDiv col-md-8">' +
+                          '<div class="userDiv col-xs-8">' +
                             '<p id="userText"><strong>' + username + "</strong></p>" +                                                        
                           '</div>' +
-                          '<div class="twitchIconDiv col-md-1">' +
+                          '<div class="twitchIconDiv col-xs-1">' +
                             '<img width="60px" id="twitchIcon" class ='+ fade + ' src="https://cdn1.iconfinder.com/data/icons/simple-icons/2048/twitch-2048-black.png"></img>' +
                           '</div>' +
-                          '<div class="indicator col-md-1">' +
+                          '<div class="indicator col-xs-1">' +
                             '<p id="status"><strong>' + liveOrNot + '<strong></p>' +                            
                           '</div>' +
                         '</div>' +

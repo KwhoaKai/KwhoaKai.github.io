@@ -1,0 +1,212 @@
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="tracking/tracking.js"></script>
+    <style>
+    video,
+    canvas {
+        position: absolute;
+        left: 20%;
+        top: 10%;
+    }
+    #source {
+        opacity: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <video id="video" width="200" height="150" preload playsinline autoplay muted></video>
+    <canvas id="canvas" width="200" height="150"></canvas>
+    <script>
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    screen.orientation.lock('landscape').catch(function() {});
+    var constraints = { video: { facingMode: { exact: "environment" } } };
+
+    var array = [new Rectangle(0, 0, 0, 0), new Rectangle(0, 0, 0, 0)];
+    
+    var front = 1;
+
+    tracking.ColorTracker.registerColor('blue', function(r, g, b) {
+        if ((r < 80 && g < 120 && (b > r + g || b > 180))) {
+            return true;
+        }
+        return false;
+    });
+    var blueTrack = new tracking.ColorTracker(['blue']);
+    var yellowTrack = new tracking.ColorTracker(['yellow']);
+
+    navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream) {
+        video.srcObject = mediastream;
+        video.onloadedmetadata = function(e) {
+            video.play();
+            console.log(e);
+        }
+    }).catch(function() {
+        var constraints = { video: { facingMode: "user" } };
+        console.log("no rear camera, using other one");
+        front = -1;
+        navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream) {
+            video.srcObject = mediastream;
+            video.onloadedmetadata = function(e) {
+                video.play();
+            }
+        })
+    });
+
+    tracking.track('video', yellowTrack);
+    yellowTrack.on('track', function(event) {
+        count = 0;
+        event.data.forEach(function(rect) {
+            array[0].x = (array[0].x + rect.x) / 2;
+            array[0].y = (array[0].y + rect.y) / 2;
+            array[0].width = rect.width;
+            array[0].height = rect.height;
+            count++;
+        })
+        if (count == 1) {
+            onMouseUpdate(array);
+        }
+    });
+
+    tracking.track('video', blueTrack);
+     blueTrack.on('track', function(event) {
+         count2 = 0;
+         event.data.forEach(function(rect) {
+             array[1].x = (array[1].x + rect.x)/2;
+             array[1].y = (array[1].y + rect.y)/2;
+
+             array[1].width = rect.width;
+             array[1].height = rect.height;
+             count2++
+         });
+         if (count2==1) {
+
+         }
+     });
+    
+
+    function Rectangle(x, y, width, height) {
+        this.height = height;
+        this.width = width;
+        this.x = x;
+        this.y = y;
+    }
+    </script>
+    <a-scene>
+        <a-assets>
+            <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg">
+            <img id="wall2" src="assets/wall2.png">
+            <img id="wall1" src="assets/wall1.jpg">
+            <img id="front" src="assets/front.jpg">
+            <img id="ceiling" src="assets/ceiling.png">
+            <img id="floor" src="assets/floor.jpg">
+            <img id="tableTexture" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Red_wooden_furniture.jpg">
+        </a-assets>
+        <a-entity>
+            <a-entity camera look-controls position="0 1.75 0">
+                <a-entity id="cursorLeft" position="0.5 -0.55 -0.5">
+                    <a-entity id="handLeft" position="0 0 -0.5" geometry="primitive: sphere; radius: 0.1;" material="color: black; shader: flat"></a-entity>
+                </a-entity>
+                <a-entity id="cursorRight" position="0.9 -0.55 -0.5">
+                    <a-entity id="handRight" position="0 0 -0.5" geometry="primitive: sphere; radius: 0.1;" material="color: blue; shader: flat"></a-entity>
+                </a-entity>
+            </a-entity>
+            <a-entity position="0 0 0" id="table">
+                <a-box src="#tableTexture" position="0 1 -1" rotation="0 0 0" scale="2 0.1 1"></a-box>
+                <a-box src="#tableTexture" position="0.95 0.5 -0.55" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-box src="#tableTexture" position="-0.95 0.5 -0.55" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-box src="#tableTexture" position="0.95 0.5 -1.45" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-box src="#tableTexture" position="-0.95 0.5 -1.45" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-box cursor-listener id="box" color="#FFFFFF" scale="0.2 0.2 0.2" position="0 1.2 -1"></a-box>
+            </a-entity>
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: point; color: #FFF; intensity: 0.2" position="0 6.5 1"></a-entity>
+            <a-plane src="#front" height="6" width="8" rotation="0 0 0" position="0 3 -5"></a-plane>
+            <a-sky color="#333"></a-sky>
+            <a-plane src="#floor" height="8" width="8" rotation="-90 0 0" position="0 0 -1"></a-plane>
+            <a-plane src="#wall2" height="6" width="8" rotation="0 90 0" position="-4 3 -1"></a-plane>
+            <a-plane src="#wall1" height="6" width="8" rotation="0 -90 0" position="4 3 -1"></a-plane>
+            <a-plane src="#ceiling" height="8" width="8" rotation="90 0 0" position="0 6 -1"></a-plane>
+        </a-entity>
+    </a-scene>
+    <script>
+    var x = null;
+    var y = null;
+    var setposyet = false;
+    var grabbedFirst = false;
+    var curLeft = document.getElementById("cursorLeft");
+    var handLeft = document.getElementById("handLeft");
+    var curRight = document.getElementById("cursorRight");
+    var handRight = document.getElementById("handRight");
+    var box = document.getElementById("box");
+
+
+    function onMouseUpdateLeft(e) {
+        var curposLeft = curLeft.getAttribute('position');
+
+        if (!setposyet) {
+            var width = 200;
+            xL = array[0].x;
+            yL = curLeft.getAttribute('position').y;
+            var truex = ((xL - width / 2) / width) * 3;
+            curLeft.setAttribute('position', { x: truex, y: curposLeft.y, z: curposLeft.z });
+            setposyet = true;
+        }
+
+        if (x != null) {
+            curLeft.setAttribute('position', { x: curposLeft.x + front* (e[0].x - x) / 70, y: curposLeft.y, z: curposLeft.z });
+        }
+        xL = e[0].x;
+        yL = e[0].y;
+
+        if(!grabbedFirst)
+        stageOne();
+    }
+    function onMouseUpdateRight(e) {
+        var curposLeft = curLeft.getAttribute('position');
+
+        if (!setposyet) {
+            var width = 200;
+            xR = array[1].x;
+            yR = curRight.getAttribute('position').y;
+            var truex = ((xR - width / 2) / width) * 3;
+            curRight.setAttribute('position', { x: truex, y: curposRight.y, z: curposRight.z });
+            setposyet = true;
+        }
+
+        if (x != null) {
+            curRight.setAttribute('position', { x: curposRight.x + front* (e[1].x - x) / 70, y: curposRight.y, z: curposRight.z });
+        }
+        xR = e[1].x;
+        yR = e[1].y;
+
+        if(!grabbedFirst)
+        stageOne();
+    }
+
+    function stageOne(){
+        var leftHandPos = new THREE.Vector3();
+        leftHandPos.setFromMatrixPosition(handLeft.object3D.matrixWorld);
+
+        var leftHandPos = new THREE.Vector3();
+        rightHandPos.setFromMatrixPosition(handRight.object3D.matrixWorld);
+
+        var boxPos = new THREE.Vector3();
+        boxPos.setFromMatrixPosition(box.object3D.matrixWorld);
+
+        if (Math.abs(handPos.x - boxPos.x) < 0.3) {
+            box.setAttribute('position', { x: 0, y: 0, z: -0.75 });
+            curLeft.appendChild(box);
+        }
+        //grabbedFirst = true;
+    }
+
+
+    </script>
+</body>
+</html

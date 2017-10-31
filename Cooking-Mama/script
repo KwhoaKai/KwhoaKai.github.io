@@ -1,0 +1,22 @@
+
+To make vr more accesible to players
+who do not own specific vr gear, we will use color tracking to track the hands of users, using tracking.js.
+Users can interact with this web-based game simply by printing out squares to cover their hands in a 
+specified color. In our demo, we will be using the color yellow.
+
+Looking around the room, you can see the environment we have constructed for our game. 
+The basic idea of this game, is to simulate a kitchen where players can interact with the environment to cook
+various foods from recipes' as instructed. 
+Throughout this demo, we will be showing how a user can interact with the environment to drop food items 
+into a bowl as part of simulated steps towards a finished product. Our environments include multiple 
+food objects, and we envision the use of two cursors in an omnidirectional plane
+as well as depth implementation in the future. In this case, tracking .js has limitations in terms
+of optimisation for calculations of relative depth and we have thus omitted the aspect in favor of
+smoother gameplay.
+
+//
+Users will first receive a prompt in text rendered as text-geometry. This prompt will deliver the steps
+required to complete the stage. As can be seen, our player has to drop ingredients into the bowl.
+Upon dropping ingredients in the bowl, the stage would then be completed. We further envision
+the use of multiple static pots as colliders and multiple ingredients such that recipes can grow 
+in more complex ways.

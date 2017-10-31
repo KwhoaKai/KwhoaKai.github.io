@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>tracking.js - face with camera</title>    
+    <script src="tracking/tracking.js"></script>
+    
+    <style>
+        video,
+        canvas {
+            position: absolute;
+            left: 20%;
+            top: 10%;
+        }
+        #source {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <video id="video" width="640" height="480" preload playsinline autoplay muted></video>
+    <canvas id="canvas" width="640" height="480"></canvas>
+    <script>
+        var prevRect=[];
+        var currRect=[];
+        var count = 0;
+        var video = document.getElementById('video');
+        var front = false;
+        var constraints = {
+            video: {
+                facingMode: (front ? "user" : "environment")
+            }
+        };
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        tracking.ColorTracker.registerColor('green', function(r, g, b) {
+            if ((r < 0 && g > 128 && b < 0)) {
+                return true;
+            }
+            return false;
+        });
+        var yellow = new tracking.ColorTracker(['yellow']);
+        var green = new tracking.ColorTracker(['green']);
+        
+        navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream) {
+            video.srcObject = mediastream;
+            video.onloadedmetadata = function(e) {
+                video.play();
+            };
+            tracking.track('video', yellow);
+            tracking.track('video', green);
+            green.on('track',function(event){
+              event.data.forEach(function(rect){
+                 context.beginPath();
+                  console.log(rect.x, rect.y, rect.width, rect.height, rect.color);
+                  console.log(prevRect)
+                  context.rect(rect.x, rect.y, rect.width, rect.height);
+                  context.stroke();
+                  context.closePath();
+              });
+            });
+            
+            yellow.on('track', function(event) {
+                event.data.forEach(function(rect) {                           
+                    context.beginPath();
+                    console.log(rect.x, rect.y, rect.width, rect.height, rect.color);
+                    console.log(prevRect)
+                    context.rect(rect.x, rect.y, rect.width, rect.height);
+                    context.stroke();
+                    context.closePath();  
+                });
+            });
+        })
+    </script>
+
+
+</body>

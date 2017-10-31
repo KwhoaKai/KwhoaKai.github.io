@@ -1,0 +1,224 @@
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="tracking/tracking.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script> 
+    <style>
+    video,
+    canvas {
+        position: absolute;
+        left: 20%;
+        top: 10%;
+    }
+
+    #source {
+        opacity: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <video id="video" width="200" height="150" preload playsinline autoplay muted></video>
+    <canvas id="canvas" width="200" height="150"></canvas>
+     <script>
+
+    </script>
+    <a-scene>
+        <a-assets>
+            <img id="wall2" src="assets/wallrightleft.jpg">
+            <img id="wall1" src="assets/wallrightleft.jpg">
+            <img id="wall3" src="assets/wallrightleft.jpg">
+            <img id="front" src="assets/front.jpg">
+            <img id="ceiling" src="assets/ceiling.png">
+            <img id="floor" src="assets/floor.jpg">
+            <img id="tableTexture" src="assets/wood.png">
+            <a-asset-item id="bowl" src="assets/bowl.obj"></a-asset-item>
+            <a-asset-item id="apple-obj" src="assets/Iphonex.obj"></a-asset-item>
+            <!-- <a-asset-item id="apple-mtl" src="assets/Iphonex.mtl"></a-asset-item> -->
+            <a-asset-item id="lefthand" src="assets/lefthand.obj"></a-asset-item>
+            <a-asset-item id="lefthandclose" src="assets/lefthandClose.obj"></a-asset-item>
+   <!--          <a-asset-item id="righthandclose" src="assets/righthandClose.obj"></a-asset-item>
+            <a-asset-item id="righthand" src="assets/righthand.obj"></a-asset-item>
+            <a-asset-item id="righthandmtl" src="assets/righthand.mtl"></a-asset-item>
+            <a-asset-item id="righthandclosemtl" src="assets/righthandClose.mtl"></a-asset-item> -->
+            <a-asset-item id="lefthandmtl" src="assets/lefthand.mtl"></a-asset-item>
+            <a-asset-item id="lefthandclosemtl" src="assets/lefthandClose.mtl"></a-asset-item>
+            <!--       <a-asset-item id="breadmtl" src="assets/Bread.mtl"></a-asset-item>
+            <a-asset-item id="bread" src="assets/Bread.obj"></a-asset-item> -->
+        </a-assets>
+        <a-entity>
+            <a-entity camera look-controls position="0 1.75 0">
+                <a-entity id="leftCursor" position="-0.5 -0.55 -0.5">
+                    <a-entity id="leftHand" position="0 0 -0.5" obj-model="obj: #lefthand; mtl: #lefthandmtl" position="-0.25 1.2 -0.25" scale="0.05 0.05 0.05" rotation="-80 -20 0"></a-entity>
+                </a-entity>
+            </a-entity>
+            <a-entity position="0 0 0" id="table">
+                <a-box src="#tableTexture" position="0 1 -1" rotation="0 0 0" scale="2 0.1 1"></a-box>
+                <a-box src="#tableTexture" position="0.95 0.5 -0.55" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-box src="#tableTexture" position="-0.95 0.5 -0.55" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-box src="#tableTexture" position="0.95 0.5 -1.45" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-box src="#tableTexture" position="-0.95 0.5 -1.45" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-entity id="bowl-area" position = "-0.7 1.035 -0.75" >
+                <a-entity obj-model="obj: #bowl; mtl: #lefthandmtl" id="bowl-goal" rotation="-90 0 0" scale="0.005 0.005 0.005"></a-entity></a-entity>
+                <a-entity id="apple" position="0.5 1.3 -0.75" scale="0.07 0.07 0.07">
+                    <a-sphere position="0 0 0" scale="1 1 1" color="#FF4444"></a-sphere>
+                    <a-tetrahedron color="#D2691E" radius="0.5" position="0 1.1 0" scale="0.8 1.2 0.8"></a-tetrahedron>
+                    <a-tetrahedron color="#AAFFAA" radius="0.5" position="0.45 1.25 0" rotation="60 45 45" scale="0.4 1.2 0.4"></a-tetrahedron>
+                </a-entity>
+             <a-entity text-geometry="value: Welcome to VR cooking" position = "-1.90 1.5 -2.25" material = "color: #888888" scale = "0.5 0.5 0.5"></a-entity>
+             <a-entity text-geometry="value: Place the apple in the bowl to test." position = "-1.8 1.28 -2.25" material = "color: #AAAAAA" scale = "0.35 0.35 0.35"></a-entity>
+                <!--          <a-box cursor-listener id="box" color="#FFFFFF" scale="0.2 0.2 0.2" position="0 1.2 -1"></a-box> -->
+            </a-entity>
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: point; color: #FFF; intensity: 0.2" position="0 5.5 1"></a-entity>
+            <a-plane src="#front" height="5" width="7" rotation="0 0 0" position="0 2.5 -4.5"></a-plane>
+            <a-sky color="#333"></a-sky>
+            <a-plane src="#floor" height="7" width="7" rotation="-90 0 0" position="0 0 -1"></a-plane>
+            <a-plane src="#wall2" height="5" width="7" rotation="0 90 0" position="-3.5 2.5 -1"></a-plane>
+            <a-plane src="#wall1" height="5" width="7" rotation="0 -90 0" position="3.5 2.5 -1"></a-plane>
+            <a-plane src="#ceiling" height="7" width="7" rotation="90 0 0" position="0 5 -1"></a-plane>
+            <a-plane src="#wall3" height="5" width="7" rotation="0 180 0" position="0 2.5 2.5">
+        </a-entity>
+    </a-scene>
+       <script>
+    var leftx = null;
+    var lefty = null;
+    // var rightx = null;
+    // var righty = null;
+    var setposyet = false;
+    var grabbedFirst = false;
+    var grabbedSecond = false;
+    var inRightHand = false;
+    var leftCur = document.getElementById("leftCursor");
+    // var rightCur = document.getElementById("rightCursor");
+    var leftHand = document.getElementById("leftHand");
+    // var rightHand = document.getElementById("rightHand");
+    var apple = document.getElementById("apple");
+    var bowl = document.getElementById("bowl-goal");
+    var bowlarea = document.getElementById("bowl-area");
+
+    function onMouseUpdate(e) {
+        var leftcurpos = leftCur.getAttribute('position');
+
+        if (leftx != null) {
+        	//changes x based on diff between prev and curr x value
+            var tempx = leftcurpos.x + invert* (e[0].x - leftx) / 50;
+            //keeps x positions within 2 meter frame
+            if(tempx < -1) tempx = -1;
+            if(tempx > 1) tempx = 1;
+            leftCur.setAttribute('position', { x: tempx, y: leftcurpos.y, z: leftcurpos.z });
+            // rightCur.setAttribute('position', { x: rightcurpos.x + invert*(e[1].x - rightx) / 50, y: rightcurpos.y, z: rightcurpos.z });
+        }
+        leftx = e[0].x;
+        lefty = e[0].y;
+        // rightx = e[1].x;
+        // righty = e[1].y;
+
+        if (!grabbedFirst)
+            stageOne();
+        else if (!grabbedSecond)
+            stageTwo();
+    }
+
+    function isIntersect(obj) {
+        // var rightPos = new THREE.Vector3();
+        var leftPos = new THREE.Vector3();
+        leftPos.setFromMatrixPosition(leftHand.object3D.matrixWorld);
+        // rightPos.setFromMatrixPosition(rightHand.object3D.matrixWorld);
+
+        var boxPos = new THREE.Vector3();
+        boxPos.setFromMatrixPosition(obj.object3D.matrixWorld);
+        if (Math.abs(leftPos.x - boxPos.x) < 0.2) {
+            return leftCur;
+        } else {
+            return false;
+        }
+    }
+
+    function stageOne() {
+
+        var res = isIntersect(apple);
+        if (res != false) {
+            console.log("!!");
+            apple.setAttribute('position', { x: 0, y: -0.1, z: -0.65});
+            leftHand.setAttribute('obj-model', "obj: #lefthandclose; mtl: #lefthandclosemtl");
+            apple.setAttribute('rotation', {x:0, y:90, z:0});
+            res.appendChild(apple);
+            grabbedFirst = true;
+        }
+    }
+
+    function stageTwo(){
+        var res= isIntersect(bowl);
+
+        if (res != false){
+
+            apple.setAttribute('position', {x:0.4, y:0.2, z:-0.2});
+            apple.setAttribute('rotation', {x:45, y:0, z:45});
+            bowlarea.appendChild(apple);
+            leftHand.setAttribute('obj-model', "obj: #lefthand; mtl: #lefthandmtl");
+            console.log("adfads ");
+            grabbedSecond = true;
+        }
+    }
+
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    screen.orientation.lock('landscape').catch(function() {});
+    var constraints = { video: { facingMode: "environment" } };
+
+    var array = [new Rectangle(0, 0, 0, 0), new Rectangle(0, 0, 0, 0)];
+    var invert = -1;
+
+    tracking.ColorTracker.registerColor('hotpink', function(r, g, b) {
+        if ((r < 255 && g < 20 && (b > r + g || b > 147))) {
+            return true;
+        }
+        return false;
+    });
+    var blueTrack = new tracking.ColorTracker(['hotpink']);
+    var yellowTrack = new tracking.ColorTracker(['yellow']);
+
+    navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream) {
+        video.srcObject = mediastream;
+        video.onloadedmetadata = function(e) {
+            video.play();
+            console.log(e);
+        }
+    }).catch(function() {
+        var constraints = { video: { facingMode: "user" } };
+        console.log("no rear camera, using other one");
+        //front = -1;
+        navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream) {
+            video.srcObject = mediastream;
+            video.onloadedmetadata = function(e) {
+                video.play();
+            }
+        })
+    });
+    tracking.track('video', yellowTrack);
+    yellowTrack.on('track', function(event) {
+        count = 0;
+        event.data.forEach(function(rect) {
+            array[0].x = (array[0].x + rect.x) / 2;
+            array[0].y = (array[0].y + rect.y) / 2;
+            array[0].width = rect.width;
+            array[0].height = rect.height;
+            count++;
+        })
+        if (count == 1) {
+            onMouseUpdate(array);
+        }
+    });
+    function Rectangle(x, y, width, height) {
+        this.height = height;
+        this.width = width;
+        this.x = x;
+        this.y = y;
+    }
+    </script>
+</body>
+</html

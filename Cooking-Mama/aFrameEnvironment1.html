@@ -1,0 +1,92 @@
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script> 
+</head>
+
+<body>
+<a-scene>
+    <a-assets>
+        <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg">
+        <img id="wall2" src="assets/wall2.png">
+        <img id="wall1" src="assets/wall1.jpg">
+        <img id="front" src="assets/front.jpg">
+        <img id="ceiling" src="assets/ceiling.png">
+        <img id="floor" src="assets/floor.jpg">
+        <img id="tableTexture" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Red_wooden_furniture.jpg">
+        <a-asset-item id="bowl" src="assets/Bowl.obj"></a-asset-item>
+        <a-asset-item id="bowlmtl" src="assets/Bowl.mtl"></a-asset-item>
+        <a-asset-item id="apple-obj" src="assets/Iphonex.obj"></a-asset-item>
+        <a-asset-item id="apple-mtl" src="assets/Iphonex.mtl"></a-asset-item>
+        <a-asset-item id="lefthand" src="assets/lefthand.obj"></a-asset-item>
+        <a-asset-item id="lefthandclose" src="assets/lefthandClose.obj"></a-asset-item>
+        <a-asset-item id="righthandclose" src="assets/righthandClose.obj"></a-asset-item>
+        <a-asset-item id="righthand" src="assets/righthand.obj"></a-asset-item>
+        <a-asset-item id="righthandmtl" src="assets/righthand.mtl"></a-asset-item>
+        <a-asset-item id="righthandclosemtl" src="assets/righthandClose.mtl"></a-asset-item>
+        <a-asset-item id="lefthandmtl" src="assets/lefthand.mtl"></a-asset-item>
+        <a-asset-item id="lefthandclosemtl" src="assets/lefthandClose.mtl"></a-asset-item>
+        <a-asset-item id="breadmtl" src="assets/Bread.mtl"></a-asset-item>
+        <a-asset-item id="bread" src="assets/Bread.obj"></a-asset-item>
+        <a-asset-item id="thermos" src="assets/termos.obj"></a-asset-item>
+        <a-asset-item id="thermosmtl" src="assets/termos.mtl"></a-asset-item>
+    </a-assets>
+
+    <!--   <a-entity light="type: ambient; color: #BBB"></a-entity>
+<a-entity light="type: point; color: #FFF; intensity: 0.2" position="0 6.5 1"></a-entity> -->
+    <!--   <a-plane src="#front" height="6" width="8" rotation="0 0 0" position="0 4.5 -5"></a-plane>
+<a-sky color="#333"></a-sky>
+<a-plane src="#floor" height="8" width="8" rotation="-90 0 0" position="0 1.5 -1"></a-plane>
+<a-plane src="#wall2" height="6" width="8" rotation="0 90 0" position="-4 4.5 -1"></a-plane>
+<a-plane src="#wall1" height="6" width="8" rotation="0 -90 0" position="4 4.5 -1"></a-plane>
+<a-plane src="#ceiling" height="8" width="8" rotation="90 0 0" position="0 7.5 -1"></a-plane> -->
+
+    <a-entity>
+        <a-entity camera look-controls position="0 1.5 0">
+            <a-entity cursor position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat">
+            </a-entity>
+        </a-entity>
+        <a-entity position="0 0 0">
+            <a-box src="#tableTexture" position="0 1 -1" rotation="0 0 0" scale="2 0.1 1"></a-box>
+            <a-box src="#tableTexture" position="0.95 0.5 -0.55" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+            <a-box src="#tableTexture" position="-0.95 0.5 -0.55" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+            <a-box src="#tableTexture" position="0.95 0.5 -1.45" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+            <a-box src="#tableTexture" position="-0.95 0.5 -1.45" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+        </a-entity>
+        <a-entity obj-model="obj: #bowl ; mtl: #bowlmtl" rotation="-90 0 0" position="-0.4 1.2 -0.55" scale="0.003 0.003 0.003"></a-entity>
+        <a-entity obj-model="obj: #lefthand; mtl: #lefthandmtl" position="-0.25 1.2 -0.25" scale="0.04 0.04 0.04"></a-entity>
+        <a-entity obj-model="obj: #righthand; mtl: #righthandmtl" position="0.25 1.2 -0.25" scale="0.04 0.04 0.04"></a-entity>
+        <a-entity obj-model="obj: #bread; mtl: #breadmtl" position="-0.35 1.25 -0.5" scale="0.15 0.15 0.15"></a-entity>
+        <a-entity obj-model="obj: #thermos; mtl: #thermosmtl" position="0.30 1.25 -0.7" scale="0.0025 0.0025 0.0025"></a-entity>
+        <a-entity text-geometry="value: Place the bread in the bowl" position = "-1.90 2.5 -2.25" material = "color: brown" scale = "0.5 0.5 0.5"></a-entity>
+        <a-entity text-geometry="value: Find milk to soften the bread" position = "-2 2.0 -2.25" material = "color: brown" scale = "0.5 0.5 0.5"></a-entity>
+
+
+        <a-box color = #ffffff scale = "0.05 0.05 0.05" material ="opacity: 0">
+            <!--trigger by event listener https://stackoverflow.com/questions/38851261/a-frame-animation-->
+            <a-animation attribute = "position" dur = "10000"  begin = "one" from = "-0.1 1.6 -0.5" to = "-0.15 1.3 -0.7"></a-animation>
+        </a-box>
+
+
+
+        <a-entity light="type: ambient; color: #BBB"></a-entity>
+        <a-entity light="type: point; color: #FFF; intensity: 0.2" position="0 6.5 1"></a-entity>
+        <a-plane src="#front" height="6" width="8" rotation="0 0 0" position="0 3 -5"></a-plane>
+        <a-sky color="#333"></a-sky>        <!--<a-asset-item id="bowl" src="assets/Toilet.obj"></a-asset-item> -->
+
+        <a-plane src="#floor" height="8" width="8" rotation="-90 0 0" position="0 0 -1"></a-plane>
+        <a-plane src="#wall2" height="6" width="8" rotation="0 90 0" position="-4 3 -1"></a-plane>
+        <a-plane src="#wall1" height="6" width="8" rotation="0 -90 0" position="4 3 -1"></a-plane>
+        <a-plane src="#ceiling" height="8" width="8" rotation="90 0 0" position="0 6 -1"></a-plane>
+        <a-plane color="blue" height="6" width="8" rotation="0 180 0" position="0 3 2.5"></a-plane>
+
+    </a-entity>
+</a-scene>
+<script>
+    
+</script>
+</body>
+</html>

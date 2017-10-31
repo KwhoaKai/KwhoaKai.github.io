@@ -1,0 +1,336 @@
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="tracking/tracking.js"></script>
+    <style>
+    video,
+    canvas {
+        position: absolute;
+        left: 20%;
+        top: 10%;
+    }
+
+    #source {
+        opacity: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <video id="video" width="200" height="150" preload playsinline autoplay muted></video>
+    <canvas id="canvas" width="200" height="150"></canvas>
+     <script>
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    screen.orientation.lock('landscape').catch(function() {});
+    var constraints = { video: { facingMode: "environment" } };
+        function Rectangle(x, y, width, height) {
+        this.height = height;
+        this.width = width;
+        this.x = x;
+        this.y = y;
+    }
+
+    var array = [new Rectangle(0, 0, 0, 0), new Rectangle(0, 0, 0, 0)];
+    var invert = -1;
+
+    tracking.ColorTracker.registerColor('hotpink', function(r, g, b) {
+        if ((r < 255 && g < 20 && b > 147)) {
+            return true;
+        }
+        return false;
+    });
+    var blueTrack = new tracking.ColorTracker(['hotpink']);
+    var yellowTrack = new tracking.ColorTracker(['yellow']);
+
+    // navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream) {
+    //     video.srcObject = mediastream;
+    //     video.onloadedmetadata = function(e) {
+    //         video.play();
+    //         console.log(e);
+    //     }
+    // }).catch(function() {
+    //     var constraints = { video: { facingMode: "user" } };
+    //     console.log("no rear camera, using other one");
+    //     //front = -1;
+    //     navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream) {
+    //         video.srcObject = mediastream;
+    //         video.onloadedmetadata = function(e) {
+    //             video.play();
+    //         }
+    //     })
+    // });
+    //
+navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream) {
+        video.srcObject = mediastream;
+        video.onloadedmetadata = function(e) {
+            video.play();
+            console.log(e);
+        }
+    }).catch(function() {
+        var constraints = { video: { facingMode: "user" } };
+        console.log("no rear camera, using other one");
+        //front = -1;
+        navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream) {
+            video.srcObject = mediastream;
+            video.onloadedmetadata = function(e) {
+                video.play();
+            }
+        })
+    });
+    // navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream) {
+    //     video.srcObject = mediastream;
+    //     video.onloadedmetadata = function(e) {
+    //         video.play();
+    //         console.log(e);
+    //     }
+    // });
+
+    // if ((navigator.userAgent).indexOf("Mobile"))
+    // {
+    //     alert("you're on mobile!");
+    //     front = -1;
+    // }
+
+    </script>
+    <a-scene>
+        <a-assets>
+            <img id="wall2" src="assets/wall2.jpg">
+            <img id="wall1" src="assets/wall2.jpg">
+            <img id="wall3" src="assets/wall2.jpg">
+            <img id="front" src="assets/front.jpg">
+            <img id="ceiling" src="assets/ceiling.png">
+            <img id="floor" src="assets/floor.jpg">
+            <img id="tableTexture" src="assets/wood.png">
+            <a-asset-item id="bowl" src="assets/bowl.obj"></a-asset-item>
+            <a-asset-item id="apple-obj" src="assets/Iphonex.obj"></a-asset-item>
+            <a-asset-item id="apple-mtl" src="assets/Iphonex.mtl"></a-asset-item>
+            <a-asset-item id="lefthand" src="assets/lefthand.obj"></a-asset-item>
+            <a-asset-item id="lefthandclose" src="assets/lefthandClose.obj"></a-asset-item>
+            <a-asset-item id="righthandclose" src="assets/righthandClose.obj"></a-asset-item>
+            <a-asset-item id="righthand" src="assets/righthand.obj"></a-asset-item>
+            <a-asset-item id="righthandmtl" src="assets/righthand.mtl"></a-asset-item>
+            <a-asset-item id="righthandclosemtl" src="assets/righthandClose.mtl"></a-asset-item>
+            <a-asset-item id="lefthandmtl" src="assets/lefthand.mtl"></a-asset-item>
+            <a-asset-item id="lefthandclosemtl" src="assets/lefthandClose.mtl"></a-asset-item>
+            <!--       <a-asset-item id="breadmtl" src="assets/Bread.mtl"></a-asset-item>
+            <a-asset-item id="bread" src="assets/Bread.obj"></a-asset-item> -->
+        </a-assets>
+        <a-entity>
+            <a-entity camera look-controls position="0 1.75 0">
+                <a-entity id="leftCursor" position="-0.5 -0.55 -0.5">
+                    <a-entity id="leftHand" position="0 0 -0.5" obj-model="obj: #lefthand; mtl: #lefthandmtl" position="-0.25 1.2 -0.25" scale="0.05 0.05 0.05" rotation="-80 -20 0"></a-entity>
+                </a-entity>
+                <a-entity id="rightCursor" position="0.5 -0.55 -0.5">
+                    <a-entity id="rightHand" position="0 0 -0.5" obj-model="obj: #righthand; mtl: #righthandmtl" position="-0.25 1.2 -0.25" scale="0.05 0.05 0.05" rotation="-80 20 0"></a-entity>
+                </a-entity>
+            </a-entity>
+            <a-entity position="0 0 0" id="table">
+                <a-box src="#tableTexture" position="0 1 -1" rotation="0 0 0" scale="2 0.1 1"></a-box>
+                <a-box src="#tableTexture" position="0.95 0.5 -0.55" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-box src="#tableTexture" position="-0.95 0.5 -0.55" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-box src="#tableTexture" position="0.95 0.5 -1.45" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-box src="#tableTexture" position="-0.95 0.5 -1.45" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-entity id="bowl-area" position = "-0.7 1.035 -0.75" >
+                <a-entity obj-model="obj: #bowl;" id="bowl-goal" rotation="-90 0 0" scale="0.005 0.005 0.005"></a-entity></a-entity>
+                <a-entity obj-model="obj: #apple-obj; mtl: #apple-mtl;" id="apple" rotation="-90 0 0" position="0.7 1.3 -0.75" scale="0.0005 0.0005 0.0005"></a-entity>
+                
+                <!--          <a-box cursor-listener id="box" color="#FFFFFF" scale="0.2 0.2 0.2" position="0 1.2 -1"></a-box> -->
+            </a-entity>
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: point; color: #FFF; intensity: 0.2" position="0 5.5 1"></a-entity>
+            <a-plane src="#front" height="5" width="7" rotation="0 0 0" position="0 2.5 -4.5"></a-plane>
+            <a-sky color="#333"></a-sky>
+            <a-plane src="#floor" height="7" width="7" rotation="-90 0 0" position="0 0 -1"></a-plane>
+            <a-plane src="#wall2" height="5" width="7" rotation="0 90 0" position="-3.5 2.5 -1"></a-plane>
+            <a-plane src="#wall1" height="5" width="7" rotation="0 -90 0" position="3.5 2.5 -1"></a-plane>
+            <a-plane src="#ceiling" height="7" width="7" rotation="90 0 0" position="0 5 -1"></a-plane>
+            <a-plane src="#wall3" height="5" width="7" rotation="0 180 0" position="0 2.5 2.5">
+        </a-entity>
+    </a-scene>
+       <script>
+    var leftx = null;
+    var lefty = null;
+    var rightx = null;
+    var righty = null;
+    var setposyet = false;
+    var grabbedFirst = false;
+    var grabbedSecond = false;
+    var inRightHand = false;
+    var leftCur = document.getElementById("leftCursor");
+    var rightCur = document.getElementById("rightCursor");
+    var leftHand = document.getElementById("leftHand");
+    var rightHand = document.getElementById("rightHand");
+    var apple = document.getElementById("apple");
+    var bowl = document.getElementById("bowl-goal");
+    var bowlarea = document.getElementById("bowl-area");
+
+    function onMouseUpdate(e) {
+        var leftcurpos = leftCur.getAttribute('position');
+        var rightcurpos = rightCur.getAttribute('position');
+
+        // if (!setposyet) {
+        //     var width = 200;
+        //     leftx = array[0].x;
+        //     lefty = leftCur.getAttribute('position').y;
+        //     var truexleft = ((leftx - width / 2) / width) * 3;
+
+        //     leftCur.setAttribute('position', { x: truexleft, y: leftcurpos.y, z: leftcurpos.z });
+
+        //     rightx = array[1].x;
+        //     righty = rightCur.getAttribute('position').y;
+        //     var truexright = ((rightx - width / 2) / width) * 3;
+
+        //     rightCur.setAttribute('position', { x: truexright, y: rightcurpos.y, z: rightcurpos.z });
+
+        //     setposyet = true;
+        // }
+
+        if (leftx != null && rightx != null) {
+            leftCur.setAttribute('position', { x: leftcurpos.x + invert* (e[0].x - leftx) / 50, y: leftcurpos.y, z: leftcurpos.z });
+            rightCur.setAttribute('position', { x: rightcurpos.x + invert*(e[1].x - rightx) / 50, y: rightcurpos.y, z: rightcurpos.z });
+        }
+        leftx = e[0].x;
+        lefty = e[0].y;
+        rightx = e[1].x;
+        righty = e[1].y;
+
+        if (!grabbedFirst)
+            stageOne();
+        else if (!grabbedSecond)
+            stageTwo();
+    }
+
+    function isIntersect(obj) {
+        var rightPos = new THREE.Vector3();
+        var leftPos = new THREE.Vector3();
+        leftPos.setFromMatrixPosition(leftHand.object3D.matrixWorld);
+        rightPos.setFromMatrixPosition(rightHand.object3D.matrixWorld);
+
+        var boxPos = new THREE.Vector3();
+        boxPos.setFromMatrixPosition(obj.object3D.matrixWorld);
+        if ((Math.abs(rightPos.x - boxPos.x) < 0.2)) {
+            inRightHand = true;
+            return rightCur;
+        } else if (Math.abs(leftPos.x - boxPos.x) < 0.2) {
+            return leftCur;
+        } else {
+            return false;
+        }
+    }
+
+    function stageOne() {
+
+        var res = isIntersect(apple);
+        if (res != false) {
+            console.log("!!");
+            apple.setAttribute('position', { x: 0, y: 0, z: -0.75 });
+            res.appendChild(apple);
+            grabbedFirst = true;
+        }
+    }
+
+    function stageTwo(){
+        var res= isIntersect(bowl);
+
+        if (res != false){
+            if(res == rightCur && !inRightHand){return};
+            if(res == leftCur && inRightHand){return};
+
+            apple.setAttribute('position', {x:0.45, y:0.1, z:-0.04 });
+            apple.setAttribute('rotation', {x:0, y:0, z:0});
+            bowlarea.appendChild(apple);
+            console.log("adfads ");
+            grabbedSecond = true;
+        }
+    }
+
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    screen.orientation.lock('landscape').catch(function() {});
+    var constraints = { video: { facingMode: "environment" } };
+
+    var array = [new Rectangle(0, 0, 0, 0), new Rectangle(0, 0, 0, 0)];
+    var invert = -1;
+
+    tracking.ColorTracker.registerColor('blue', function(r, g, b) {
+        if ((r < 80 && g < 120 && (b > r + g || b > 180))) {
+            return true;
+        }
+        return false;
+    });
+    var blueTrack = new tracking.ColorTracker(['cyan']);
+    var yellowTrack = new tracking.ColorTracker(['yellow']);
+
+    navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream) {
+        video.srcObject = mediastream;
+        video.onloadedmetadata = function(e) {
+            video.play();
+            console.log(e);
+        }
+    }).catch(function() {
+        var constraints = { video: { facingMode: "user" } };
+        console.log("no rear camera, using other one");
+        //front = -1;
+        navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream) {
+            video.srcObject = mediastream;
+            video.onloadedmetadata = function(e) {
+                video.play();
+            }
+        })
+    });
+    // navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream) {
+    //     video.srcObject = mediastream;
+    //     video.onloadedmetadata = function(e) {
+    //         video.play();
+    //         console.log(e);
+    //     }
+    // });
+
+    // if ((navigator.userAgent).indexOf("Mobile"))
+    // {
+    //     alert("you're on mobile!");
+    //     front = -1;
+    // }
+
+    tracking.track('video', yellowTrack);
+    yellowTrack.on('track', function(event) {
+        count = 0;
+        event.data.forEach(function(rect) {
+            array[0].x = (array[0].x + rect.x) / 2;
+            array[0].y = (array[0].y + rect.y) / 2;
+            array[0].width = rect.width;
+            array[0].height = rect.height;
+            count++;
+        })
+        if (count == 1) {
+            onMouseUpdate(array);
+        }
+    });
+
+    //not tracking blue yet! test it please
+    tracking.track('video', blueTrack);
+    blueTrack.on('track', function(event) {
+        count2 = 0;
+        event.data.forEach(function(rect) {
+            array[1].x = (array[1].x + rect.x) / 2;
+            array[1].y = (array[1].y + rect.y) / 2;
+
+            array[1].width = rect.width;
+            array[1].height = rect.height;
+            count2++
+
+        });
+        if (count == 1) {
+            onMouseUpdate(array);
+        }
+    });
+
+
+    </script>
+</body>
+</html

@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>tracking.js - face with camera</title>
+    <!--   <link rel="stylesheet" href="assets/demo.css"> -->
+    <script src="tracking-mobile.js"></script>
+    <script src="tracking/data/face-min.js"></script>
+    <!--    <script src="../node_modules/dat.gui/build/dat.gui.min.js"></script> -->
+    <!--   <script src="assets/stats.min.js"></script> -->
+    <style>
+    video,
+    canvas {
+        position: absolute;
+        left: 20%;
+        top: 10%;
+    }
+
+    #source {
+        opacity: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="demo-frame">
+        <div class="demo-container">
+            <video id="video" width="640" height="480" preload playsinline autoplay muted></video>
+            <canvas id="canvas" width="640" height="480"></canvas>
+        </div>
+    </div>
+    <img id="source" src="http://moziru.com/images/emotions-clipart-smiley-face-clip-art-9.gif" width="300" height="227">
+    <script>
+
+var constraints = { audio: true, video: { width: 1280, height: 720 } };
+var video = document.querySelector('video');
+    navigator.mediaDevices.getUserMedia(constraints)
+        .then(function(mediaStream) {    
+            video.srcObject = mediaStream;
+            video.onloadedmetadata = function(e) {
+                video.play();
+            };
+        })
+        .catch(function(err) { console.log(err.name + ": " + err.message); });
+
+var front = false;
+//document.getElementById('flip-button').onclick = function() { front = !front; };
+
+var constraints = { video: { facingMode: (front? "user" : "environment") } };
+
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var image = document.getElementById('source');
+
+    var tracker = new tracking.ObjectTracker('face');
+    tracker.setInitialScale(4);
+    tracker.setStepSize(1);
+    tracker.setEdgesDensity(0.1);
+
+    tracking.track('#video', tracker, { camera: true });
+
+    tracker.on('track', function(event) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        event.data.forEach(function(rect) {
+
+            context.drawImage(image, rect.x, rect.y, rect.width, rect.height);
+        });
+    });
+
+    </script>
+</body>
+
+</html>

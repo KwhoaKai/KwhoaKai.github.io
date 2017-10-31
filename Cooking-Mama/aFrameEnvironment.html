@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+</head>
+</head>
+
+<body>
+<a-scene>
+    <a-assets>
+        <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg">
+        <img id="wall2" src="assets/wall2.png">
+        <img id="wall1" src="assets/wall1.jpg">
+        <img id="front" src="assets/front.jpg">
+        <img id="ceiling" src="assets/ceiling.png">
+        <img id="floor" src="assets/floor.jpg">
+        <img id="tableTexture" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Red_wooden_furniture.jpg">
+    </a-assets>
+    <!--   <a-entity light="type: ambient; color: #BBB"></a-entity>
+<a-entity light="type: point; color: #FFF; intensity: 0.2" position="0 6.5 1"></a-entity> -->
+    <!--   <a-plane src="#front" height="6" width="8" rotation="0 0 0" position="0 4.5 -5"></a-plane>
+<a-sky color="#333"></a-sky>
+<a-plane src="#floor" height="8" width="8" rotation="-90 0 0" position="0 1.5 -1"></a-plane>
+<a-plane src="#wall2" height="6" width="8" rotation="0 90 0" position="-4 4.5 -1"></a-plane>
+<a-plane src="#wall1" height="6" width="8" rotation="0 -90 0" position="4 4.5 -1"></a-plane>
+<a-plane src="#ceiling" height="8" width="8" rotation="90 0 0" position="0 7.5 -1"></a-plane> -->
+    <a-entity>
+        <a-entity camera look-controls position="0 1.5 0">
+            <a-entity cursor position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat">
+            </a-entity>
+        </a-entity>
+        <a-entity position="0 0 0">
+            <a-box src="#tableTexture" position="0 1 -1" rotation="0 0 0" scale="2 0.1 1"></a-box>
+            <a-box src="#tableTexture" position="0.95 0.5 -0.55" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+            <a-box src="#tableTexture" position="-0.95 0.5 -0.55" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+            <a-box src="#tableTexture" position="0.95 0.5 -1.45" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+            <a-box src="#tableTexture" position="-0.95 0.5 -1.45" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+        </a-entity>
+        <a-entity light="type: ambient; color: #BBB"></a-entity>
+        <a-entity light="type: point; color: #FFF; intensity: 0.2" position="0 6.5 1"></a-entity>
+        <a-plane src="#front" height="6" width="8" rotation="0 0 0" position="0 3 -5"></a-plane>
+        <a-sky color="#333"></a-sky>
+        <a-plane src="#floor" height="8" width="8" rotation="-90 0 0" position="0 0 -1"></a-plane>
+        <a-plane src="#wall2" height="6" width="8" rotation="0 90 0" position="-4 3 -1"></a-plane>
+        <a-plane src="#wall1" height="6" width="8" rotation="0 -90 0" position="4 3 -1"></a-plane>
+        <a-plane src="#ceiling" height="8" width="8" rotation="90 0 0" position="0 6 -1"></a-plane>
+        <a-plane color="blue" height="6" width="8" rotation="0 180 0" position="0 3 2.5"></a-plane>
+    </a-entity>
+</a-scene>
+</body>
+</html>

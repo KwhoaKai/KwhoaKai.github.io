@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>tracking.js - face with camera</title>
+    <!--   <link rel="stylesheet" href="assets/demo.css"> -->
+    <script src="tracking/tracking.js"></script>
+    <!--    <script src="../node_modules/dat.gui/build/dat.gui.min.js"></script> -->
+    <!--   <script src="assets/stats.min.js"></script> -->
+    <style>
+    video,
+    canvas {
+        position: absolute;
+        left: 10%;
+        top: 10%;
+    }
+
+    #source {
+        opacity: 0;
+    }
+
+}
+
+    </style>
+</head>
+<body>
+<video id="video" width="720" height="540" preload playsinline autoplay muted></video>
+            <canvas id="canvas" width="720" height="540"></canvas>
+    <script>
+        var array = [new Rectangle(0,0,0,0), new Rectangle(0,0,0,0)];
+        var count = 0;
+        var temprectx = new Rectangle(0,0,0,0);
+        var video = document.getElementById('video');
+        var front = false;
+        var constraints = { video: { facingMode: (front? "user" : "environment") } };
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var prevArea;
+        var prevArea2;
+        var temp;
+        var temp2;
+        var depth = 5;
+        var depth2 = 5;
+        var start = true;
+        var start2 = true;
+        tracking.ColorTracker.registerColor('blue', function(r,g,b){
+            if (( r<80 && g<120 && (b>r+g || b>180))){
+            return true;
+        }
+        return false;
+        });
+        var blueTrack = new tracking.ColorTracker(['blue']);
+        var yellowTrack = new tracking.ColorTracker(['yellow']);
+        navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream){
+                    video.srcObject = mediastream;
+            video.onloadedmetadata = function(e) {
+                video.play();
+            };
+                  tracking.track('video', yellowTrack);
+                   yellowTrack.on('track',function(event){
+                                    count = 0;
+                                    //context.clearRect(0, 0, canvas.width, canvas.height);
+                                    event.data.forEach(function(rect){
+                                        /*if (arethere2rectangles(array[0], array[1]))
+                                            console.log("there are 2 rects!");
+                                        else
+                                            console.log("only one rect");
+                                            count = 0;*/
+                                            array[0].x=rect.x;
+                                            array[0].y=rect.y;
+                                            array[0].width = rect.width;
+                                            array[0].height=rect.height;
+                                        if(!start){
+                                                temp = (rect.width*rect.height)/prevArea;
+                                            if( temp > 0.5 && temp < 4){                                             
+                                            }
+                                        //% change has to correspond to alrdy located depth, for example close: larger percentage change corresponds to smaller change
+                                        //Where there are outlers- what outliers?
+                                        }
+                                        count ++;
+                                    })
+                                    if ((start || (temp > 0.5 && temp < 4))&& count==1){
+                                            prevArea = array[0].width * array[0].height;
+                                            context.beginPath();
+                                            //console.log(rect.x, rect.y, rect.width, rect.height);
+                                            context.rect(array[0].x, array[0].y, array[0].width, array[0].height);
+                                            context.stroke();
+                                            context.closePath();
+                                            if(!start){
+                                                depth *= 1/temp;  
+                                                console.log(temp, depth); 
+                                            }
+                                            start = false;
+                                    } else if (count >1){
+                                        console.log("detecting too many yellow things");
+                                    }
+                                });
+                    tracking.track('video', blueTrack);
+                    blueTrack.on('track',function(event){
+                                    count2 = 0;
+                                    event.data.forEach(function(rect){
+                                           array[1].x=rect.x;
+                                           array[1].y=rect.y;
+
+                                            array[1].width = rect.width;
+                                            array[1].height=rect.height;
+                                        if(!start2){
+                                                temp2 = (rect.width*rect.height)/prevArea2;
+                                            if( temp2 > 0.5 && temp2 < 4){
+                                                if (temp2>1.01){
+                                                    //console.log("closer", temp);
+                                                }
+                                                else if (temp2<0.99){
+                                                    //console.log("farther", temp);
+                                                }
+                                                else if( temp2 ==1){
+                                                    //console.log("statiopnary");
+                                                }                                             
+                                            }
+                                        }
+                                        //% change has to correspond to alrdy located depth, for example close: larger percentage change corresponds to smaller change
+                                        //Where there are outlers- what outliers?
+                                        count2++
+                                        
+                                        });
+                                        if((start2 || (temp2 > 0.5 && temp2 < 4))&& count2==1){
+                                            prevArea2 = array[1].width * array[1].height;
+                                         
+                                            context.beginPath();
+                                            //console.log(rect.x, rect.y, rect.width, rect.height);
+                                            context.rect(array[1].x, array[1].y, array[1].width, array[1].height);
+                                            context.stroke();
+                                            context.closePath();
+                                              if(!start)
+                                                depth2 *= 1/temp2;     
+                                            start2 = false;
+                                            setTimeout(function(){}, 100);
+                                        } else if (count2 >1){
+                                        console.log("detecting too many blue things");
+                                    }
+                    });
+                                    
+
+                            
+
+        });
+
+    function Rectangle(x,y,width, height){
+        this.height = height;
+        this.width = width;
+        this.x = x;
+        this.y = y;
+    }
+
+    function arethere2rectangles(rect1, rect2){
+            if (((rect2.x<=rect1.x && rect2.x+rect2.width > rect1.x) || (rect1.x<=rect2.x && rect1.x+rect1.width > rect2.x)) && 
+                ((rect2.y<=rect1.y && rect2.y+rect2.height >rect1.y)|| (rect1.y<=rect2.y && rect1.y+rect1.height > rect2.y))) {
+                return false;
+            }
+            return true;
+        }
+//Not sure what this is for but i wrote it so
+    function withinrect(rect1, rect2){
+        if ((rect1.x >= rect2.x) && (rect1.x + rect1.width <= rect2.x +rect2.width)){
+            if ((rect1.y >= rect2.y) && (rect1.y + rect1.height <= rect2.y + rect2.height))
+                return true;
+        } 
+        if ((rect2.x >= rect1.x) && (rect2.x + rect2.width <= rect1.x +rect1.width)){
+            if ((rect2.y >= rect1.y) && (rect2.y + rect2.height <= rect1.y + rect1.height))
+                return true;
+        } 
+        return false;
+    }
+    </script>
+</body>

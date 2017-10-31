@@ -1,0 +1,161 @@
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="tracking/tracking.js"></script>
+    <style>
+    video,
+    canvas {
+        position: absolute;
+        left: 20%;
+        top: 10%;
+    }
+
+    #source {
+        opacity: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <video id="video" width="800" height="600" preload playsinline autoplay muted></video>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <a-scene>
+        <a-assets>
+<!--             <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg"> -->
+            <img id="wall2" src="assets/wall2.png">
+            <img id="wall1" src="assets/wall1.jpg">
+            <img id="front" src="assets/front.jpg">
+            <img id="ceiling" src="assets/ceiling.png">
+            <img id="floor" src="assets/floor.jpg">
+<!--             <img id="tableTexture" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Red_wooden_furniture.jpg"> -->
+        </a-assets>
+        <!--   <a-entity light="type: ambient; color: #BBB"></a-entity>
+<a-entity light="type: point; color: #FFF; intensity: 0.2" position="0 6.5 1"></a-entity> -->
+        <!--   <a-plane src="#front" height="6" width="8" rotation="0 0 0" position="0 4.5 -5"></a-plane>
+  <a-sky color="#333"></a-sky>
+  <a-plane src="#floor" height="8" width="8" rotation="-90 0 0" position="0 1.5 -1"></a-plane>
+  <a-plane src="#wall2" height="6" width="8" rotation="0 90 0" position="-4 4.5 -1"></a-plane>
+   <a-plane src="#wall1" height="6" width="8" rotation="0 -90 0" position="4 4.5 -1"></a-plane>
+  <a-plane src="#ceiling" height="8" width="8" rotation="90 0 0" position="0 7.5 -1"></a-plane> -->
+        <a-entity>
+            <a-entity camera look-controls position="0 1.75 0">
+                <a-entity id="cursor" cursor="fuse: true; fuseTimeout: 500" position="0 -0.55 -1" geometry="primitive: sphere; radius: 0.1;" material="color: black; shader: flat" raycaster="interval: 50; showLine:true">
+                    <a-entity cursor raycaster="far: 20; interval: 1000;" position="0 0 -1"></a-entity>
+
+                </a-entity>
+            </a-entity>
+            <a-entity position="0 0 0">
+                <a-box src="#tableTexture" position="0 1 -1" rotation="0 0 0" scale="2 0.1 1"></a-box>
+                <a-box src="#tableTexture" position="0.95 0.5 -0.55" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-box src="#tableTexture" position="-0.95 0.5 -0.55" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-box src="#tableTexture" position="0.95 0.5 -1.45" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-box src="#tableTexture" position="-0.95 0.5 -1.45" rotation="0 0 0" scale="0.1 1 0.1"></a-box>
+                <a-box cursor-listener color="#FFFFFF" position="0 1.2 -1" scale="0.2 0.2 0.2"></a-box>
+            </a-entity>
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: point; color: #FFF; intensity: 0.2" position="0 6.5 1"></a-entity>
+            <a-plane src="#front" height="6" width="8" rotation="0 0 0" position="0 3 -5"></a-plane>
+            <a-sky color="#333"></a-sky>
+            <a-plane src="#floor" height="8" width="8" rotation="-90 0 0" position="0 0 -1"></a-plane>
+            <a-plane src="#wall2" height="6" width="8" rotation="0 90 0" position="-4 3 -1"></a-plane>
+            <a-plane src="#wall1" height="6" width="8" rotation="0 -90 0" position="4 3 -1"></a-plane>
+            <a-plane src="#ceiling" height="8" width="8" rotation="90 0 0" position="0 6 -1"></a-plane>
+        </a-entity>
+    </a-scene>
+    <script>
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    screen.orientation.lock('landscape').catch(function() {});
+    var front = false;
+    var constraints = { video: { facingMode: (front ? "user" : "environment") } };
+
+    var array = [new Rectangle(0, 0, 0, 0), new Rectangle(0, 0, 0, 0)];
+
+    //var count = 0;
+    // var prevArea;
+    // var prevArea2;
+    // var temp;
+    // var temp2;
+    // var depth = 5;
+    // var depth2 = 5;
+
+    // var start = true;
+    // var start2 = true;
+
+    tracking.ColorTracker.registerColor('blue', function(r, g, b) {
+        if ((r < 80 && g < 120 && (b > r + g || b > 180))) {
+            return true;
+        }
+        return false;
+    });
+    var blueTrack = new tracking.ColorTracker(['blue']);
+    var yellowTrack = new tracking.ColorTracker(['yellow']);
+    navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream) {
+                video.srcObject = mediastream;
+                video.onloadedmetadata = function(e) {
+                    video.play();
+                }
+            });
+
+            tracking.track('video', yellowTrack); yellowTrack.on('track', function(event) {
+                count = 0;
+                event.data.forEach(function(rect) {
+                    array[0].x = rect.x;
+                    array[0].y = rect.y;
+                    array[0].width = rect.width;
+                    array[0].height = rect.height;
+                    count++;
+                })
+                // if ((start || (temp > 0.5 && temp < 4)) && count == 1) {
+                    onMouseUpdate(array);
+                // }
+            }); 
+
+            tracking.track('video', blueTrack); blueTrack.on('track', function(event) {
+                count2 = 0;
+                event.data.forEach(function(rect) {
+                    array[1].x = rect.x;
+                    array[1].y = rect.y;
+
+                    array[1].width = rect.width;
+                    array[1].height = rect.height;
+                    count2++
+                });
+                onMouseUpdate(array);
+            });
+            // });
+
+            function Rectangle(x, y, width, height) {
+                this.height = height;
+                this.width = width;
+                this.x = x;
+                this.y = y;
+            }
+            var x = null;
+            var y = null;
+            var mousedown = false;
+            var setposyet = false;
+            var cur = document.getElementById("cursor");
+
+            function onMouseUpdate(e) {
+                var curpos = cur.getAttribute('position');
+                if (x != null && !mousedown) {
+                    cur.setAttribute('position', { x: curpos.x + -1 * (e[0].x - x) / 300, y: curpos.y, z: curpos.z });
+                }
+                x = e[0].x;
+            }
+
+            AFRAME.registerComponent('cursor-listener', {
+                init: function() {
+                    this.el.addEventListener('mouseenter', function(evt) {
+                        console.log('I was clicked at: ', evt.detail.intersection.point);
+                    });
+                }
+            });
+    </script>
+</body>
+</html

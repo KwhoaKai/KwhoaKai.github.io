@@ -1,5 +1,6 @@
 html {
     height: 100%;
+   
 }
 body {
     overflow-y: scroll;
@@ -19,6 +20,7 @@ form {
     padding-bottom:8%;
 }
 .backgroundDiv {
+    font-size: 16px;
     margin-top: 5px;
     margin-bottom: 5px;
     border-style: solid;
@@ -30,7 +32,8 @@ form {
 }
 
 .userDiv {
-    font-size: 35px;
+    background-color: grey;
+    font-size: 3.5rem;
     height: 80%;
     width: 45%;
     margin: 10px 0px 10px 15px;
@@ -40,6 +43,7 @@ form {
 }
 
 .twitchIconDiv {
+    background-color: yellow;
     height: 80%;
     margin: 10px 10px 10px 0px;
     justify-content: center;
@@ -70,10 +74,13 @@ form {
     height:80%;
     margin: 10px 0px 10px 0px;
     animation: contentsDown 600ms;
+    background-color: grey;
 }
 
 #profPicDiv {
     height:80%;
+    min-width: 100%
+    background:grey;
     margin: 10px 0px 10px 10px;
     animation: contentsDown 600ms;
 }

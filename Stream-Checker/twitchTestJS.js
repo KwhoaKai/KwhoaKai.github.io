@@ -8,26 +8,27 @@ $(document).ready(function() {
 
     function buildBox() {
         console.log(liveOrNot);
-        newBox =
+        newBox =   '<div class=container-fluid>' +
                     '<div id="' + username +'Box" class="row">' +
-                      '<div class="col-xs-4"></div>' +
-                      '<div class="col-xs-4">' +
+                      '<div class="col-md-4 xs-hidden col-sm-2"></div>' +
+                      '<div class="col-md-4 col-xs-12 col-sm-8">' +
                         '<div class="row backgroundDiv">' +
-                          '<div id="profPicDiv" class="col-xs-1">' +
+                          '<div id="profPicDiv" class="col-md-1 col-xs-1">' +
                             streamPic +                    
                           '</div>' +
-                          '<div class="userDiv col-xs-8">' +
+                          '<div class="userDiv col-xs-7 col-md-8">' +
                             '<p id="userText"><strong>' + username + "</strong></p>" +                                                        
                           '</div>' +
-                          '<div class="twitchIconDiv col-xs-1">' +
+                          '<div class="twitchIconDiv col-md-1 col-xs-1">' +
                             '<img width="60px" id="twitchIcon" class ='+ fade + ' src="https://cdn1.iconfinder.com/data/icons/simple-icons/2048/twitch-2048-black.png"></img>' +
                           '</div>' +
-                          '<div class="indicator col-xs-1">' +
+                          '<div class="indicator col-md-1 col-xs-1">' +
                             '<p id="status"><strong>' + liveOrNot + '<strong></p>' +                            
                           '</div>' +
                         '</div>' +
                       '</div>' +
-                    '</div>';
+                    '</div>'+
+                  '</div>';  
                 $("body").append(newBox);
     }
 
@@ -87,7 +88,7 @@ $(document).ready(function() {
 
             },
             error: function() {
-                console.log("fuck");      
+                console.log("userGet failed");      
             }
         });
     }

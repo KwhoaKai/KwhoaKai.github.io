@@ -63,7 +63,7 @@ form {
 
 #profPic {
     border-radius:50%;
-    filter: grayscale(70%);
+    
     transform: translate(-14px,7px);
 }
 #twitchIcon {

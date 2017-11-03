@@ -32,7 +32,6 @@ form {
 }
 
 .userDiv {
-    background-color: grey;
     font-size: 3.5rem;
     height: 80%;
     width: 45%;
@@ -43,7 +42,6 @@ form {
 }
 
 .twitchIconDiv {
-    background-color: yellow;
     height: 80%;
     margin: 10px 10px 10px 0px;
     justify-content: center;
@@ -57,7 +55,6 @@ form {
 .noPic {
     height: 50%;
     width: 50%
-    background-color: grey;
     border-radius: 50%;
 }
 
@@ -74,7 +71,6 @@ form {
     height:80%;
     margin: 10px 0px 10px 0px;
     animation: contentsDown 600ms;
-    background-color: grey;
 }
 
 #profPicDiv {

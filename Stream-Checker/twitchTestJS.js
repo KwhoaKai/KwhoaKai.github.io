@@ -9,35 +9,36 @@ $(document).ready(function() {
     function buildBox() {
         console.log(liveOrNot);
         newBox =
-            "<div class=container-fluid>" +
+            '<div class=container-fluid>' +
             '<div id="' +
             username +
             'Box" class="row">' +
-            '<div class="col-md-4 col-xs-1 col-sm-3"></div>' +
-            '<div class="col-md-4 col-xs-10 col-sm-6">' +
+            '<div class="col-md-3 col-lg-4  col-xs-1 col-sm-3"></div>' +
+            '<div class="col-md-6 col-xs-10 col-lg-4 col-sm-6">' +
             '<div class="row backgroundDiv">' +
             '<div id="profPicDiv" class="col-md-1 col-xs-1">' +
             streamPic +
-            "</div>" +
-            '<div class="userDiv col-xs-7 col-md-8">' +
+            '</div>' +
+            '<div class="userDiv col-md-8 col-xs-6">' +
             '<p id="userText"><strong>' +
             username +
-            "</strong></p>" +
-            "</div>" +
+            '</strong></p>' +
+            '</div>' +
             '<div class="twitchIconDiv col-md-1 col-xs-1">' +
-            '<img width="60px" id="twitchIcon" class =' +
+            '<img id="twitchIcon" class =' +
             fade +
             ' src="https://cdn1.iconfinder.com/data/icons/simple-icons/2048/twitch-2048-black.png"></img>' +
-            "</div>" +
+            '</div>' +
             '<div class="indicator col-md-1 col-xs-1">' +
             '<p id="status"><strong>' +
             liveOrNot +
-            "<strong></p>" +
-            "</div>" +
-            "</div>" +
-            "</div>" +
-            "</div>" +
-            "</div>";
+            '<strong></p>' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
         $("body").append(newBox);
     }
 

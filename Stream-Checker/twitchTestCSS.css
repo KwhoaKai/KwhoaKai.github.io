@@ -58,7 +58,7 @@ form {
     -moz-box-shadow: -25px 0px 10px white;
     box-shadow: -25px 0px 10px white;
     height: 80%;
-    margin: 10px 0px 10px 0px;
+    margin: 10px 7px 10px 0px;
     justify-content: center;
     animation: contentsDown 600ms;
 }

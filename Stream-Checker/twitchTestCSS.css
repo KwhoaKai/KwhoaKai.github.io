@@ -36,6 +36,8 @@ form {
     border-color: black;
     height: 7em;
     animation: boxDown 600ms;
+    
+    box-shadow: 0 10px 6px -8px #777;
 }
 
 .userDiv {
@@ -54,7 +56,7 @@ form {
 
 .twitchIconDiv {
     z-index: 110;
-    box-shadow: -25px 0px 5px white;
+    box-shadow: -25px 0px 10px white;
     height: 80%;
     margin: 10px 0px 10px 10px;
     justify-content: center;

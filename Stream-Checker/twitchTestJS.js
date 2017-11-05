@@ -73,6 +73,9 @@ $(document).ready(function() {
     }
 
     function userGet() {
+        if (document.getElementById("lom").value == "") {
+            return $("#liveCheck").html("Enter a streamer!");
+        }
         $("#liveCheck").html("checking...");
         username = document.getElementById("lom").value;
         $.ajax({
@@ -83,8 +86,7 @@ $(document).ready(function() {
             url: "https://api.twitch.tv/helix/users?login=" + username,
             success: function(data) {
                 if (data.data.length == 0) {
-                    alert("No such user found");
-                    $("#liveCheck").html("");
+                    return $("#liveCheck").html("Couldn't find that streamer!");
                 }
                 if (data.data[0].profile_image_url == "") {
                     streamPic = '<div class="noPic"></div>';
@@ -134,7 +136,6 @@ $(document).ready(function() {
             }
         });
         $(".btn").click(function() {
-            console.log(document.getElementById("lom").value);
             userGet();
             /*$.when(userGet()).done(function() {
                 

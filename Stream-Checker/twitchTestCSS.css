@@ -71,7 +71,7 @@ form {
 }
 
 #twitchIcon:hover {
-    animation: hover 300ms;
+    transform: translate(-30%,2%);
 }
 
 .fade {
@@ -93,12 +93,13 @@ form {
 }
 #twitchIcon {
     height: 70%;
-    transform: translate(-30%,20%);   
+    transform: translate(-30%,20%);
+    transition: all .2s ease-in-out; 
+
 }
 
 .indicator {
     height:80%;
-
     margin: 10px 0px 10px 0px;
     animation: contentsDown 600ms;
 }
@@ -111,7 +112,7 @@ form {
 }
 
 #userText {
-    transform:translateY(32%);  
+    transform:translateY(30%);  
 }
 
 #status {

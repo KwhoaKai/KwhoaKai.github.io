@@ -1,3 +1,6 @@
+input:focus {
+    outline:none !important;
+}
 
 html {
     height: 100%;
@@ -36,7 +39,8 @@ form {
     border-color: black;
     height: 7em;
     animation: boxDown 600ms;
-    
+    -webkit-box-shadow: 0 10px 6px -8px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
     box-shadow: 0 10px 6px -8px #777;
 }
 
@@ -56,9 +60,11 @@ form {
 
 .twitchIconDiv {
     z-index: 110;
+    -webkit-box-shadow: -25px 0px 10px white;
+    -moz-box-shadow: -25px 0px 10px white;
     box-shadow: -25px 0px 10px white;
     height: 80%;
-    margin: 10px 0px 10px 10px;
+    margin: 10px 0px 10px 0px;
     justify-content: center;
     animation: contentsDown 600ms;
 }
@@ -131,8 +137,4 @@ form {
         opacity: 1;
         
     }
-}
-
-@keyframes shadowSpawn {
-
 }

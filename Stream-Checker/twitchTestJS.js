@@ -24,10 +24,11 @@ $(document).ready(function() {
             username +
             '</strong></p>' +
             '</div>' +
-            '<div class="twitchIconDiv col-md-1 col-xs-1">' +
-            '<img id="twitchIcon" class =' +
-            fade +
-            ' src="https://cdn1.iconfinder.com/data/icons/simple-icons/2048/twitch-2048-black.png"></img>' +
+            '<div id="' + username + '" class="twitchIconDiv col-md-1 col-xs-1">' +
+            '<input type="image" src="https://cdn1.iconfinder.com/data/icons/simple-icons/2048/twitch-2048-black.png"'+ 
+            'name="saveForm" class="btTxt submit ' + fade + '" id="twitchIcon"'+
+            'onclick="window.open(' + "'http:" + '//' + "go.twitch.tv/" + username + "', '_blank')" + '"' +
+            ' />' +
             '</div>' +
             '<div class="indicator col-md-1 col-xs-1">' +
             '<p id="status"><strong>' +
@@ -141,5 +142,10 @@ $(document).ready(function() {
                 
             }); */
         });
+        $(".link").click(function twitchLink() {
+            console.log("fuck");
+        });
     });
+
+
 });

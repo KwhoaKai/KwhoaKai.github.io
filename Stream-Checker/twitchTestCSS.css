@@ -76,11 +76,11 @@ form {
 }
 
 .noPic {
-    -webkit-transform: translate(-23%, 32%);
-    -moz-transform: translate(-23%, 32%);
-    -ms-transform: translate(-23%, 32%);
-    -o-transform: translate(-23%, 32%);
-    transform: translate(-23%, 32%);
+    -webkit-transform: translate(-20%, 32%);
+    -moz-transform: translate(-20%, 32%);
+    -ms-transform: translate(-20%, 32%);
+    -o-transform: translate(-20%, 32%);
+    transform: translate(-20%, 32%);
     background-color: black;
     border-radius: 50%;
     min-width: 60px;

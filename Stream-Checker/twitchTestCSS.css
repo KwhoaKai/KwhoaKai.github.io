@@ -16,13 +16,6 @@ h1 {
     padding-top: 50px;
 }
 
-.noPic {
-    min-width: 60px;
-    min-height: 60px;
-    border-radius: 50%;
-    transform: translate(-30%,30%);
-}
-
 form {
     padding-bottom: 15px;
 }
@@ -71,6 +64,10 @@ form {
 }
 
 #twitchIcon:hover {
+    -webkit-transform: translate(-30%,2%);
+    -moz-transform: translate(-30%,2%);
+    -ms-transform: translate(-30%,2%);
+    -o-transform: translate(-30%,2%);
     transform: translate(-30%,2%);
 }
 
@@ -79,11 +76,15 @@ form {
 }
 
 .noPic {
-    transform: translate(-25%, 32%);
-    height: 50%;
-    width: 50%;
+    -webkit-transform: translate(-23%, 32%);
+    -moz-transform: translate(-23%, 32%);
+    -ms-transform: translate(-23%, 32%);
+    -o-transform: translate(-23%, 32%);
+    transform: translate(-23%, 32%);
     background-color: black;
     border-radius: 50%;
+    min-width: 60px;
+    min-height: 60px;
 }
 
 #profPic {

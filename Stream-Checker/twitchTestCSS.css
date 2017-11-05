@@ -15,6 +15,7 @@ body {
 h1 {
     padding-top: 50px;
 }
+
 .noPic {
     min-width: 60px;
     min-height: 60px;
@@ -67,6 +68,10 @@ form {
     margin: 10px 0px 10px 0px;
     justify-content: center;
     animation: contentsDown 600ms;
+}
+
+#twitchIcon:hover {
+    animation: hover 300ms;
 }
 
 .fade {
@@ -136,5 +141,15 @@ form {
         transform: translateY(0%);
         opacity: 1;
         
+    }
+}
+
+@keyframes hover {
+    0% {
+        transform: translate(-30%,20%);
+        animation-timing-function: ease-out;
+    }
+    100% {
+        transform: translate(-30%,0%);
     }
 }

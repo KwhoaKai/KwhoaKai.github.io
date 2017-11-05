@@ -6,6 +6,7 @@ $(document).ready(function() {
     var fade;
     var streamUrl = "";
 
+    $(".title").hide().fadeIn("slow");
     function buildBox() {
         console.log(liveOrNot);
         newBox =

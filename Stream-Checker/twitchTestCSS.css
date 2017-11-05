@@ -53,8 +53,8 @@ form {
 }
 
 .twitchIconDiv {
-    z-index: 110;   
-    box-shadow: -14px 0px 20px white;
+    z-index: 110;
+    box-shadow: -25px 0px 5px white;
     height: 80%;
     margin: 10px 0px 10px 10px;
     justify-content: center;

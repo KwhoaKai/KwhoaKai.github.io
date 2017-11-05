@@ -1,3 +1,4 @@
+
 html {
     height: 100%;
    
@@ -10,6 +11,13 @@ body {
 
 h1 {
     padding-top: 50px;
+}
+.noPic {
+    min-width: 60px;
+    min-height: 60px;
+    border-radius: 50%;
+    background-color: grey; 
+    transform: translate(-30%,30%);
 }
 
 form {
@@ -32,7 +40,11 @@ form {
 }
 
 .userDiv {
-    font-size: 3.5rem;
+    background-color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 100;
+    font-size: 2.3em;
     height: 80%;
     width: 45%;
     margin: 10px 0px 10px 15px;
@@ -42,8 +54,11 @@ form {
 }
 
 .twitchIconDiv {
+    z-index: 110;   
+    box-shadow: -14px 0px 20px white;
+    background-color: white;
     height: 80%;
-    margin: 10px 10px 10px 0px;
+    margin: 10px 0px 10px 0px;
     justify-content: center;
     animation: contentsDown 600ms;
 }
@@ -53,18 +68,20 @@ form {
 }
 
 .noPic {
+    transform: translate(-19%, 30%);
     height: 50%;
-    width: 50%
+    width: 50%;
     border-radius: 50%;
+    background-color: black;
 }
 
 #profPic {
-    border-radius:50%;
+    border-radius: 50%;
+    transform: translate(-19%, 30%);
     
-    transform: translate(-14px,7px);
 }
 #twitchIcon {
-    transform: translate(-15%,12%);   
+    transform: translate(-30%,12%);   
 }
 
 .indicator {
@@ -76,7 +93,6 @@ form {
 #profPicDiv {
     height:80%;
     min-width: 100%
-    background:grey;
     margin: 10px 0px 10px 10px;
     animation: contentsDown 600ms;
 }
@@ -87,7 +103,7 @@ form {
 
 #status {
     font-size: 20px;
-    transform:translateY(23px);
+    transform: translate(-19%,90%);
 }
 
 @keyframes boxDown {
@@ -113,4 +129,8 @@ form {
         opacity: 1;
         
     }
+}
+
+@keyframes shadowSpawn {
+
 }

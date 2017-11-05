@@ -4,32 +4,41 @@ $(document).ready(function() {
     var newBox = "";
     var streamPic = "";
     var fade;
-    var streamUrl="";
+    var streamUrl = "";
 
     function buildBox() {
         console.log(liveOrNot);
-        newBox =   '<div class=container-fluid>' +
-                    '<div id="' + username +'Box" class="row">' +
-                      '<div class="col-md-4 xs-hidden col-sm-2"></div>' +
-                      '<div class="col-md-4 col-xs-12 col-sm-8">' +
-                        '<div class="row backgroundDiv">' +
-                          '<div id="profPicDiv" class="col-md-1 col-xs-1">' +
-                            streamPic +                    
-                          '</div>' +
-                          '<div class="userDiv col-xs-7 col-md-8">' +
-                            '<p id="userText"><strong>' + username + "</strong></p>" +                                                        
-                          '</div>' +
-                          '<div class="twitchIconDiv col-md-1 col-xs-1">' +
-                            '<img width="60px" id="twitchIcon" class ='+ fade + ' src="https://cdn1.iconfinder.com/data/icons/simple-icons/2048/twitch-2048-black.png"></img>' +
-                          '</div>' +
-                          '<div class="indicator col-md-1 col-xs-1">' +
-                            '<p id="status"><strong>' + liveOrNot + '<strong></p>' +                            
-                          '</div>' +
-                        '</div>' +
-                      '</div>' +
-                    '</div>'+
-                  '</div>';  
-                $("body").append(newBox);
+        newBox =
+            "<div class=container-fluid>" +
+            '<div id="' +
+            username +
+            'Box" class="row">' +
+            '<div class="col-md-4 col-xs-1 col-sm-3"></div>' +
+            '<div class="col-md-4 col-xs-10 col-sm-6">' +
+            '<div class="row backgroundDiv">' +
+            '<div id="profPicDiv" class="col-md-1 col-xs-1">' +
+            streamPic +
+            "</div>" +
+            '<div class="userDiv col-xs-7 col-md-8">' +
+            '<p id="userText"><strong>' +
+            username +
+            "</strong></p>" +
+            "</div>" +
+            '<div class="twitchIconDiv col-md-1 col-xs-1">' +
+            '<img width="60px" id="twitchIcon" class =' +
+            fade +
+            ' src="https://cdn1.iconfinder.com/data/icons/simple-icons/2048/twitch-2048-black.png"></img>' +
+            "</div>" +
+            '<div class="indicator col-md-1 col-xs-1">' +
+            '<p id="status"><strong>' +
+            liveOrNot +
+            "<strong></p>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>";
+        $("body").append(newBox);
     }
 
     function streamGet() {
@@ -54,7 +63,7 @@ $(document).ready(function() {
                     console.log(data.data[0].type);
                 }
                 console.log(liveOrNot);
-                buildBox();              
+                buildBox();
             },
             error: function() {
                 console.log("Fuck you");
@@ -71,24 +80,26 @@ $(document).ready(function() {
                 Accept: "application/vnd.twitchtv.v5+json"
             },
             url: "https://api.twitch.tv/helix/users?login=" + username,
-            success: function(data) {        
-                if (data.data.length == 0){
+            success: function(data) {
+                if (data.data.length == 0) {
                     alert("No such user found");
                     $("#liveCheck").html("");
                 }
-                if (data.data[0].profile_image_url == ""){
-                    streamPic = '<div class="noPic"></div>'
+                if (data.data[0].profile_image_url == "") {
+                    streamPic = '<div class="noPic"></div>';
                     console.log("no pic");
                 } else {
-                streamPic = '<img id="profPic" src="' + data.data[0].profile_image_url + '" width="60px" />';
-                console.log(streamPic);    
-                console.log(data);
+                    streamPic =
+                        '<img id="profPic" src="' +
+                        data.data[0].profile_image_url +
+                        '" width="60px" />';
+                    console.log(streamPic);
+                    console.log(data);
                 }
                 streamGet();
-
             },
             error: function() {
-                console.log("userGet failed");      
+                console.log("userGet failed");
             }
         });
     }
@@ -116,6 +127,11 @@ $(document).ready(function() {
     */
 
     $(function() {
+        $("#lom").keyup(function(event) {
+            if (event.keyCode === 13) {
+                $("#button").click();
+            }
+        });
         $(".btn").click(function() {
             console.log(document.getElementById("lom").value);
             userGet();

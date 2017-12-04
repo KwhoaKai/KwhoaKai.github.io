@@ -13,9 +13,15 @@ var reticleD;
 
 function setup() {
 	createCanvas(800,500);
-	reticle = new sizey();
+	resetSketch();
+	var button = createButton("reset");
+	button.mousePressed(resetSketch);
 }
 
+function resetSketch() {
+	reticle = new sizey();
+	bots.splice(0, bots.length);
+}
 function draw() {
 	background(250);
 	for (i=0; i<bots.length; i++) {

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.js"></script>
+
+<script>
+var bots= [];
+var reticleY;
+var reticleX;
+var reticleD;
+
+function setup() {
+	createCanvas(800,500);
+	reticle = new sizey();
+}
+
+function draw() {
+	background(250);
+	for (i=0; i<bots.length; i++) {
+		bots[i].display();
+		bots[i].jiggle();
+	}
+	if (mouseIsPressed) {
+		if (mouseButton == RIGHT) {
+			bots.push(new circley(mouseX, mouseY));
+		}
+	}
+	reticle.display();
+}
+
+function mousePressed() {
+	if (mouseButton == LEFT) {
+		reticleX = mouseX;
+		reticleY = mouseY;
+	}
+}
+
+function mouseReleased() {
+	if (mouseButton == LEFT) {
+ 	bots.push(new circley(reticleX, reticleY));
+    }
+}
+
+function sizey() {
+	this.display = function() {
+		if (mouseIsPressed) {
+			if (mouseButton == LEFT){
+				this.d = 0.25* dist(reticleX, reticleY, mouseX, mouseY);
+				stroke(0);
+				fill(255);
+				ellipse(reticleX, reticleY, this.d, this.d);
+				reticleD = this.d;
+			}
+		}
+	}
+}
+
+/*function mousePressed() {
+	if (mouseButton == LEFT)
+	bots.push(new circley(mouseX,mouseY));
+
+} */
+
+function circley(x,y) {
+	this.xpos = x;
+	this.ypos = y;
+	this.red = random(0,255);
+	this.green = random(0,255);
+	this.blue = random(0,255);
+	this.diameter = reticleD;
+	
+	this.display = function() {
+		colorMode(RGB);
+		noStroke();
+		fill(this.red, this.green, this.blue);
+		tint(255,127);
+		ellipse(this.xpos, this.ypos, this.diameter, this.diameter);
+	}
+	this.jiggle = function() {
+		this.diameter += random(-1,1);
+		this.ypos += random(0, 2);
+	}
+}
+</script>
+</head>
+<body oncontextmenu="return false;">
+</html>

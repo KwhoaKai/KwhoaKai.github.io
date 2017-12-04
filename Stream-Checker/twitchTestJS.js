@@ -41,7 +41,7 @@ $(document).ready(function() {
             '</div>' +
             '</div>' +
             '</div>';
-        $("body").append(newBox);
+        $("#boxes").append(newBox);
     }
 
     function streamGet() {

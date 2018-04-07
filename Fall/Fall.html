@@ -28,10 +28,8 @@ function draw() {
 		bots[i].display();
 		bots[i].jiggle();
 	}
-	if (mouseIsPressed) {
-		if (mouseButton == RIGHT) {
-			bots.push(new circley(mouseX, mouseY));
-		}
+	if (mouseIsPressed && (mouseButton == RIGHT)) {
+		bots.push(new circley(mouseX, mouseY));
 	}
 	reticle.display();
 }

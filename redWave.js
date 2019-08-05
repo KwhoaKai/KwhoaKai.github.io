@@ -16,9 +16,9 @@ var red = function(p) {
 
     p.setup = function() {
         p.createCanvas($('#waveCanvas').width(), $('#waveCanvas').width()/1.7777);
-        h = Math.floor(p.height * 0.8);
+        h = p.height * 0.8;
         dy = (p.TWO_PI / period) * xspacing;
-        xvalues = new Array(h / xspacing);
+        xvalues = new Array(Math.floor(h / xspacing));
         console.log(xvalues.length);
     };
 

@@ -2,7 +2,7 @@
 
 // red wave
 var red = function(p) {
-    var xspacing = 1; // How far apart should each ellipse be
+    var xspacing = 2; // How far apart should each ellipse be
     var h; // Width of entire wave
     var theta = 0.0; // Start angle at 0
     var amplitude = 70.0; // Height of wave
@@ -49,7 +49,7 @@ var red = function(p) {
         // A simple way to draw the wave with an ellipse at each location
         // Start at white, move to pink: fill(255, 85, 85)
         for (x = 0; x < xvalues.length; x++) {
-            p.fill(255, x*0.2+20, x*0.2+20);
+            p.fill(255, x*0.4+20, x*0.4+20);
             p.ellipse(p.width / 2 + xvalues[x], x * xspacing, $('#waveCanvas').width()/5, $('#waveCanvas').width()/5);
         }
     }

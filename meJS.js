@@ -58,16 +58,18 @@ $(document).ready(function() {
           const width = canvas.clientWidth;
           const height = canvas.clientHeight;
           const w = window.innerWidth;
+          const h = window.innerHeight;
+          const size = w > h ? w/3.5 : h/2.5;
           // const size = w / 3;     
 
-          const size = window.innerWidth / 3.5;
+          //const size = use / 3.5;
           // Are desired canvas dimensions same as client dimensions?
           const needsResize = (canvas.width !== size && size <= 500) || firstUpdate;
           if(needsResize) {
-            console.log(window.innerWidth / window.innerHeight);
             if(firstUpdate) {
-              console.log(window.height);
-              renderer.setSize(size,size, false);
+              size > 500 
+                ? renderer.setSize(500, 500, false)
+                : renderer.setSize(size,size, false);
               firstUpdate = false;
             }
             else {

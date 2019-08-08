@@ -112,14 +112,14 @@ transform: translate(3%, 30%);
 }	
 
 #c {
-	height: 30%;
+	height: auto;
+
 	/*transform: translate(0%, 5%); */
 }
 
 #canvasDiv {
-	align: center;
 	height: auto;
-	width: auto;
+	height: auto;
 
 }
 

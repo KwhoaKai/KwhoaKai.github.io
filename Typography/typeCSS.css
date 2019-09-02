@@ -1,0 +1,42 @@
+html,body {
+    height: 100%;
+    width: 100%;
+    padding-top: 2%;
+}
+
+#inputBox {
+  margin: 0 auto;
+  max-width: 40%;
+  height: 30%;
+  background-color: #ddd;
+  border-radius: 3px;
+}
+
+#letter {
+    height: 100%;
+    width: 100%;
+}
+
+
+#sketch {
+  padding-left: 0;
+}
+
+
+
+/*
+#letter {
+  position: relative;
+  top: 50%;
+  width: 100%;
+  transform: perspective(1px) translateY(-50%);
+  outline: 1px solid blue;
+  height: 10%;
+  transition: height 220ms;
+} 
+
+#letter.inputClicked {
+    height: 100%;
+
+}
+*/

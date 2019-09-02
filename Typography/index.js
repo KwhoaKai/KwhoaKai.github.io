@@ -181,10 +181,6 @@ const letters = function(p) {
         p.mousePressed();
     }
 
-    p.touchMoved = function(event) {
-        p.mouseDragged();
-    }
-
     p.mouseDragged = function(event) {
         if (event.path[1].id == "sketch" && p.barGrew) {
             if (!p.barGrew) {

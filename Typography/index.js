@@ -1,8 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import anime from 'animejs/lib/anime.es.js';
-const title = "Typography test";
-
 const letters = function(p) {
     const parent = document.getElementById("sketch");
     let popBox;

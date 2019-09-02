@@ -17,6 +17,8 @@ const letters = function(p) {
     let infoMap;
     let quoteMap;
     let tip;
+    let randIdx;
+    let needBlink;
 
     p.preload = function() {
         p.basker = p.loadFont("./OpenBaskerville.otf");
@@ -26,9 +28,12 @@ const letters = function(p) {
         p.noHover = false;
         p.barGrew = false;
         p.infoUp = false;
+        p.needBlink = true;
     }
 
     p.setup = function() {
+        p.randIdx = Math.floor(Math.random() * 6);
+        console.log(p.randIdx);
         p.angleMode(p.DEGREES);
         p.createCanvas(parent.offsetWidth, parent.offsetWidth / 2);
         p.textFont(p.basker);
@@ -133,7 +138,7 @@ const letters = function(p) {
             y: '"y don' + "'" + 't you stay the night? ;)"'
         }
 
-        p.tip = new Tips(p.width * .015, p.height * .525, "Ready to learn?");
+        p.tip = new Tips(p.width * .015, p.height * .525, "Click to get started...");
         p.bar = new Bar();
         p.cursor = new Cursor(5, p.height / 2, p.height / 11);
         p.smalls.forEach((key) => p.floaters.push(new Letter(key)));
@@ -144,7 +149,10 @@ const letters = function(p) {
         p.background(255, 255, 255);
         p.cursor.display();
         p.floaters.forEach((letter) => letter.display(p.mouseX, p.mouseY));
-        if (p.infoUp) {
+        p.floaters.forEach(function(letter, i) {
+            if(i == p.randIdx && p.needBlink) letter.startBlink();
+        });
+        if(p.infoUp) {
             p.popBox.display();
             p.bigLetter.display();
         }
@@ -163,15 +171,20 @@ const letters = function(p) {
                 p.infoUp = false;
             } else {
                 p.tip.fadeTo(0);
+                p.needBlink = false;
+                p.floaters[p.randIdx].stopBlink();
             }
         }
+    }
+
+    p.touchStarted = function(event) {
+        p.mousePressed();
     }
 
     p.mouseDragged = function(event) {
         if (event.path[1].id == "sketch" && p.barGrew) {
             p.floaters.forEach((letter) => letter.dragged());
-        } 
-        p.tip.fadeTo(0);
+        }
     }
 
     p.mouseReleased = function(event) {
@@ -183,7 +196,7 @@ const letters = function(p) {
         constructor() {
             this.init = -1;
             this.h = p.height / 10;
-            this.finalH = parent.offsetHeight * 0.98;
+            this.finalH = parent.offsetHeight * 0.975;
         }
 
         grow() {
@@ -207,8 +220,8 @@ const letters = function(p) {
             if (this.init == 0 && this.finalH % this.h < 0.05) {
                 this.init = 1;
                 p.floaters.forEach((floater) => floater.fadeIn());
-                p.tip.changeTip("try shaking things up...");
-                p.tip.changeLoc(p.width * .35, p.height * .53);
+                p.tip.changeTip("try shaking a letter...");
+                p.tip.changeLoc(p.width * .33, p.height * .53);
                 p.tip.fadeTo(230);
             }
             p.pop();
@@ -241,13 +254,21 @@ const letters = function(p) {
         display() {
             this.fade = p.lerp(this.fade, this.finalFade, 0.3);
             p.push();
-            /*
-            p.fill(255,255,255);
-            p.rect(this.x*.97, this.y*1.05, p.width*.71, p.height*.46);
-            */
+            if(p.barGrew && this.finalFade == 230) {
+                p.stroke(150,150,150, this.fade);
+            }
+            p.fill(255,255,255, this.fade);
+            p.rect(this.x*.97, this.y*1.05, p.width*.68, p.height*.45);
+            
             p.textFont("Arial");
+            p.noStroke();
             p.textSize(p.height * .07);
-            p.fill(150, 150, 150, this.fade);
+            if(p.barGrew && this.finalFade == 230) {
+                p.fill(255, 165, 165, this.fade)
+            } else {
+                p.fill(150, 150, 150, this.fade);
+            }
+            
             p.text(this.tip, this.x, this.y);
             p.pop();
         }
@@ -259,7 +280,9 @@ const letters = function(p) {
         constructor(key) {
             this.key = key;
             this.fade = 0;
+            this.finalFade = 255;
             this.startFade = false;
+            this.finishedFade = false;
             this.rot = 360 * Math.random();
             this.transX = p.transMap[key][1][0];
             this.transY = p.transMap[key][1][1];
@@ -274,14 +297,20 @@ const letters = function(p) {
             this.beingDragged = false;
             this.accel = 0;
             this.vel = 0;
-            this.shakeThresh = 9;
+            this.shakeThresh = 4;
             this.shakeCt = 0;
             this.retCoords = p.retMap[key];
+            this.blink;
         }
 
         // Post-click fadein
         fadeIn() {
             this.startFade = true;
+        }
+
+        startBlink() {
+            this.blink = true;
+            console.log(this.key +" is blinking");
         }
 
         dragged() {
@@ -292,6 +321,10 @@ const letters = function(p) {
                 this.beingDragged = true;
                 p.locked = true;
             }
+        }
+
+        stopBlink() {
+            this.blink = false;
         }
 
         stopDrag() {
@@ -323,10 +356,6 @@ const letters = function(p) {
         }
 
         display(mx, my) {
-            this.fade = this.startFade 
-                ? p.lerp(this.fade, 255, 0.1) 
-                : 0;
-
             // Detect shake and opacity
             let distM = Math.sqrt(Math.pow(this.x - mx, 2) + Math.pow(this.y - my, 2));
             let col = distM <= p.width / 20 ? true : false;
@@ -336,7 +365,7 @@ const letters = function(p) {
                 this.accel = Math.abs(this.vel - distM);
                 this.vel = distM;
 
-                if (this.accel > 20) {
+                if (this.accel > p.width*.02) {
                     this.shakeCt++;
                     console.log("shaking");
                 }
@@ -353,14 +382,33 @@ const letters = function(p) {
                 }
             }
 
+            if(this.startFade && !this.finishFade) {
+                this.fade = this.finalFade - this.fade < 5
+                    ? 255
+                    : p.lerp(this.fade, this.finalFade, 0.1);
+
+                    if(this.fade == 255) {
+                        this.finishFade = true;
+                    }
+
+            } else if(this.finishFade && this.blink) {
+                this.fade = p.lerp(this.fade, this.finalFade, 0.2);
+                let diff = Math.abs(this.fade - this.finalFade) < 2;
+                if(diff) {
+                    this.finalFade = this.finalFade == 255
+                        ? 140
+                        : 255;
+                }
+            }
+
             // Handle hover
-            if (col && this.startFade && (!p.noHover || this.isHover)) {
+            if(col && this.startFade && (!p.noHover || this.isHover)) {
                 this.fade = 160;
                 this.isHover = true;
                 p.noHover = true;
                 console.log("hovering over " + this.key);
-            } else if (!col && ((this.startFade && this.fade == 255) || this.isHover)) {
-                this.fade = 255;
+            } else if (!col && ((this.finishedFade && this.blink == false) || this.isHover)) {
+               this.fade = 255;
                 if (this.isHover) {
                     this.isHover = false;
                     p.noHover = false;
@@ -415,11 +463,6 @@ const letters = function(p) {
                     [p.width * .65, p.height * .65]
                 ] :
                 [p.width * .65, p.height / 2];
-        }
-
-        startFadeOut() {
-            this.startFadeOut = true;
-            this.startFadeIn = false;
         }
 
         reticle(x, y) {

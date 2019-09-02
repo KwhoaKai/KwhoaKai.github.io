@@ -186,6 +186,12 @@ const letters = function(p) {
             if (!p.barGrew) {
                 p.bar.grow();
                 p.tip.fadeTo(0);
+            } else if (p.infoUp) {
+                p.infoUp = false;
+            } else {
+                p.tip.fadeTo(0);
+                p.needBlink = false;
+                p.floaters[p.randIdx].stopBlink();
             }
             p.floaters.forEach((letter) => letter.dragged());
         }

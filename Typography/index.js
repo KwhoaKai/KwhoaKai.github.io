@@ -196,7 +196,7 @@ const letters = function(p) {
         constructor() {
             this.init = -1;
             this.h = p.height / 10;
-            this.finalH = parent.offsetHeight * 0.975;
+            this.finalH = parent.offsetHeight * 0.98;
         }
 
         grow() {

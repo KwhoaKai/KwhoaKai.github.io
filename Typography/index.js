@@ -164,7 +164,12 @@ const letters = function(p) {
 
     p.mousePressed = function(event) {
         if (event.path[1].id == "sketch") {
-            if(this.needBlink) {
+            if (!p.barGrew) {
+                p.bar.grow();
+                p.tip.fadeTo(0);
+            } else if (p.infoUp) {
+                p.infoUp = false;
+            } else {
                 p.tip.fadeTo(0);
                 p.needBlink = false;
                 p.floaters[p.randIdx].stopBlink();
@@ -178,12 +183,7 @@ const letters = function(p) {
 
     p.mouseDragged = function(event) {
         if (event.path[1].id == "sketch" && p.barGrew) {
-            if (!p.barGrew) {
-                p.bar.grow();
-                p.tip.fadeTo(0);
-            } else if (p.infoUp) {
-                p.infoUp = false;
-            } else {
+            if(this.needBlink) {
                 p.tip.fadeTo(0);
                 p.needBlink = false;
                 p.floaters[p.randIdx].stopBlink();

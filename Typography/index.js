@@ -182,11 +182,15 @@ const letters = function(p) {
     }
 
     p.touchMoved = function(event) {
-        p.mousePressed();
+        p.mouseDragged();
     }
 
     p.mouseDragged = function(event) {
         if (event.path[1].id == "sketch" && p.barGrew) {
+            if (!p.barGrew) {
+                p.bar.grow();
+                p.tip.fadeTo(0);
+            }
             p.floaters.forEach((letter) => letter.dragged());
         }
     }

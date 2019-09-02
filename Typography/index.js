@@ -181,6 +181,10 @@ const letters = function(p) {
         p.mousePressed();
     }
 
+    p.touchMoved = function(event) {
+        p.mousePressed();
+    }
+
     p.mouseDragged = function(event) {
         if (event.path[1].id == "sketch" && p.barGrew) {
             p.floaters.forEach((letter) => letter.dragged());

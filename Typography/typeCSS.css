@@ -4,6 +4,11 @@ html,body {
     padding-top: 2%;
 }
 
+p {
+  font-family: "Arial", sans-serif;
+  text-align: center;
+}
+
 #inputBox {
   margin: 0 auto;
   max-width: 40%;
@@ -19,25 +24,5 @@ html,body {
 
 
 #sketch {
-  touch-action: none;
   padding-left: 0;
 }
-
-
-
-/*
-#letter {
-  position: relative;
-  top: 50%;
-  width: 100%;
-  transform: perspective(1px) translateY(-50%);
-  outline: 1px solid blue;
-  height: 10%;
-  transition: height 220ms;
-} 
-
-#letter.inputClicked {
-    height: 100%;
-
-}
-*/

@@ -174,7 +174,7 @@ const letters = function(p) {
     }
 
     p.mousePressed = function(event) {
-        if (event.path[1].id == "sketch") {
+        if (event.target.id == "defaultCanvas0") {
             if(p.barGrew) {
                 p.bar.initiateFade();
                 p.tip.fadeTo(0);
@@ -188,11 +188,13 @@ const letters = function(p) {
     }
 
     p.touchStarted = function(event) {
+      if (event.target.id == "defaultCanvas0") {
         p.mousePressed();
+      }
     }
 
     p.mouseDragged = function(event) {
-        if (event.path[1].id == "sketch" && p.barGrew) {
+        if (event.target.id == "defaultCanvas0" && p.barGrew) {
             p.floaters.forEach((letter) => letter.dragged());
         }
     }

@@ -5,7 +5,6 @@ const letters = function(p) {
     let transMap;
     let bar;
     let letter;
-    let cursor;
     let basker;
     let bigLetter;
     let smalls;
@@ -153,7 +152,6 @@ const letters = function(p) {
         p.tip = new Tips(p.width * .33, p.height * .53, "try shaking a letter");
         p.tip.fadeTo(230);
         p.bar = new Bar();
-        p.cursor = new Cursor(5, p.height / 2, p.height / 11);
         p.smalls.forEach((key) => p.floaters.push(new Letter(key)));
         p.bar.grow();
     }
@@ -161,7 +159,6 @@ const letters = function(p) {
     p.draw = function() {
         p.noStroke();
         p.background(255, 255, 255);
-        //p.cursor.display();
         p.floaters.forEach((letter) => letter.display(p.mouseX, p.mouseY));
         p.floaters.forEach(function(letter, i) {
             if(i == p.randIdx && p.needBlink) letter.startBlink();
@@ -178,11 +175,6 @@ const letters = function(p) {
 
     p.mousePressed = function(event) {
         if (event.path[1].id == "sketch") {
-          
-
-
-
-
             if(p.barGrew) {
                 p.bar.initiateFade();
                 p.tip.fadeTo(0);
@@ -222,7 +214,6 @@ const letters = function(p) {
 
         grow() {
             if (this.init == -1) this.init = 0;
-            p.cursor.hideCurs();
             p.barGrew = true;
         }
 
@@ -382,19 +373,6 @@ const letters = function(p) {
                 : y;
         }
 
-        chooseMe() {
-            /*
-            p.push();
-            p.textSize(p.height*.05);
-            p.stroke(0,0,0);
-            //p.line(this.x*1.05, this.y-this.y*.3, this.x, this.y);
-            p.noStroke();
-            p.fill(0,0,0);
-            p.text("Choose " + this.key + "!", this.x, this.y-this.y*.15);
-            p.pop();
-            */
-        }
-
         display(mx, my) {
             // Detect shake and opacity
             let distM = Math.sqrt(Math.pow(this.x - mx, 2) + Math.pow(this.y - my, 2));
@@ -422,6 +400,7 @@ const letters = function(p) {
                 }
             }
 
+            // Handle fading in 
             if(this.startFade && !this.finishFade) {
                 this.fade = this.finalFade - this.fade < 5
                     ? 255
@@ -431,6 +410,7 @@ const letters = function(p) {
                         this.finishFade = true;
                     }
 
+            // Handle blinking 
             } else if(this.finishFade && this.blink) {
                 this.fade = p.lerp(this.fade, this.finalFade, 0.2);
                 let diff = Math.abs(this.fade - this.finalFade) < 2;
@@ -439,7 +419,6 @@ const letters = function(p) {
                         ? 140
                         : 255;
                 }
-                this.chooseMe();
             }
 
             // Handle hover
@@ -447,7 +426,6 @@ const letters = function(p) {
                 this.fade = 160;
                 this.isHover = true;
                 p.noHover = true;
-                console.log("hovering over " + this.key);
             } else if (!col && ((this.finishedFade && this.blink == false) || this.isHover)) {
                this.fade = 255;
                 if (this.isHover) {
@@ -553,14 +531,6 @@ const letters = function(p) {
 
         drawQuote() {
             let quote = p.quoteMap[this.key];
-
-            /*
-            p.rectMode(p.CORNERS);
-            p.noStroke();
-            p.fill(255,255,255);
-            p.rect(p.width*.1, p.height*.25, p.width*.4, p.height*.42);
-            */
-
             p.push();
             p.stroke(0, 0, 0, this.fade2);
             p.noFill();
@@ -616,44 +586,6 @@ const letters = function(p) {
             p.pop();
 
             if (this.centered) this.retCoords.forEach((coords) => this.reticle(coords[0], coords[1]));
-        }
-    }
-
-    class Cursor {
-        constructor(x, y, h) {
-            this.x = x;
-            this.y = y;
-            this.h = h;
-            this.hide = false;
-            this.fade = 255;
-            this.mult = -1;
-        }
-
-        grow() {
-            if (this.init == -1) this.init = 0;
-            p.cursor.hideCurs();
-        }
-
-        hideCurs() {
-            this.hide = true;
-        }
-
-        display() {
-            if (!this.hide) {
-                p.push();
-                p.noStroke();
-                p.rectMode(p.CENTER);
-                p.colorMode(p.RGB);
-                p.fill(247, 0, 0, this.fade);
-                p.rect(this.x, this.y, 3, p.height / 11);
-                if (this.fade > 255) {
-                    this.mult = -1;
-                } else if (this.fade < 0) {
-                    this.mult = 1;
-                }
-                this.fade = this.mult * 20 + this.fade;
-                p.pop();
-            }
         }
     }
 

@@ -383,7 +383,7 @@ const letters = function(p) {
                 this.accel = Math.abs(this.vel - distM);
                 this.vel = distM;
 
-                if (this.accel > p.width*.02) {
+                if (this.accel > p.width*.013) {
                     this.shakeCt++;
                     console.log("shaking");
                 }

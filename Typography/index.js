@@ -203,6 +203,14 @@ const letters = function(p) {
         p.floaters.forEach((letter) => letter.stopDrag());
     }
 
+    p.touchStarted = function(event) {
+        p.mousePressed(event);
+    }
+
+    p.touchMoved = function(event) {
+        p.mouseDragged(event);
+    }
+
     // Bar that grows to height of div
     class Bar {
         constructor() {

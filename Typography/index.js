@@ -187,12 +187,6 @@ const letters = function(p) {
         }
     }
 
-    p.touchStarted = function(event) {
-      if (event.target.id == "defaultCanvas0") {
-        p.mousePressed();
-      }
-    }
-
     p.mouseDragged = function(event) {
         if (event.target.id == "defaultCanvas0" && p.barGrew) {
             p.floaters.forEach((letter) => letter.dragged());

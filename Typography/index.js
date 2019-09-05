@@ -32,7 +32,7 @@ const letters = function(p) {
 
     p.setup = function() {
         p.randIdx = Math.floor(Math.random() * 6);
-        console.log(p.randIdx);
+        //console.log(p.randIdx);
         p.angleMode(p.DEGREES);
         p.createCanvas(parent.offsetWidth, parent.offsetWidth / 2);
         p.textFont(p.basker);
@@ -223,7 +223,7 @@ const letters = function(p) {
 
         initiateFade() {
             this.initiate = true;
-            console.log("bar fad");
+            //console.log("bar fad");
         }
 
         display() {
@@ -330,7 +330,7 @@ const letters = function(p) {
 
         startBlink() {
             this.blink = true;
-            console.log(this.key +" is blinking");
+            //console.log(this.key +" is blinking");
         }
 
         dragged() {
@@ -346,7 +346,7 @@ const letters = function(p) {
         stopBlink() {
             this.blink = false;
             this.fade = 255;
-            console.log(this.key + " should stop blinking");
+            //console.log(this.key + " should stop blinking");
         }
 
         stopDrag() {
@@ -357,7 +357,7 @@ const letters = function(p) {
                 this.accel = 0;
                 this.vel = 0;
                 this.shakeCt = 0;
-                console.log(this.x, this.y);
+                //console.log(this.x, this.y);
             }
             p.locked = false;
         }
@@ -389,7 +389,7 @@ const letters = function(p) {
 
                 if (this.accel > p.width*.013) {
                     this.shakeCt++;
-                    console.log("shaking");
+                    //console.log("shaking");
                 }
 
                 // Call InfoLetter

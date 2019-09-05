@@ -142,7 +142,7 @@ const letters = function(p) {
             k: '"k, whatever."',
             g: '"g wiz, nice to meet you!"',
             t: '"my favorite drink is t."',
-            v: '"know any puns starting with v?"',
+            v: '"Do you take V-sa or Mastercard?"',
             x: '"xiting things are happening!"',
             i: '"i on the prize."',
             y: '"y don' + "'" + 't you stay the night? ;)"',

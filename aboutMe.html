@@ -75,6 +75,7 @@
     #contact {
         
     }
+
 </style>
 
 <html>
@@ -88,7 +89,7 @@
     <meta http-equiv="Expires" content="-1" />
     <script>
         $(document).ready(function() {
-            $("#centerDiv").hide().fadeIn(450);
+            $("#centerDiv").hide().removeClass("hidden").fadeIn(300);
         });
     </script>
 
@@ -114,7 +115,7 @@
             -->
         </div>
     </div>
-    <div id="centerDiv">
+    <div id="centerDiv" class="hidden">
         <object id="ebi" data="ebiOnly.svg" type="image/svg+xml">
                 <image src="ebiOnly.svg"/>
         </object>

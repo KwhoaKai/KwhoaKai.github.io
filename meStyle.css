@@ -1,7 +1,6 @@
 html, body {
-    height: 100vh;
-	width: 100vh;
-	align: center;
+    height: 100%;
+	width: 100%;
 	padding-top: 5px;
     padding-bottom: 10px;
     overflow: hidden;
@@ -100,7 +99,6 @@ div.subHead div:hover {
 	z-index: 1;
 }
 
-
 #headDiv {
 	/*
 transform: translate(3%, 30%); 
@@ -112,26 +110,15 @@ transform: translate(3%, 30%);
  */
 }	
 
-#c {
-	height: auto;
-	width: auto;
-	/*transform: translate(0%, 5%); */
-}
-
-#canvasDiv {
-	height: auto;
-	height: auto;
-
-	padding-left: 0px;
-}
-
 #contentWrapper {
 	padding-top: 25px;
 	padding-left: 40px;
 }
 
 #footer {
-	background-color: hsl(0.5, 1, 0.83);
+	background-color: rgb(255,255,255);
 }
 
-
+.text-justify-change {
+    text-align: left;
+}

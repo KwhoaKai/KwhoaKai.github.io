@@ -32,9 +32,11 @@ a:hover {
 	height: auto;
 	width: auto;
 	padding-right: 5%;
-
 }
 
+.hidden {
+	display: none;
+}
 
 #name {
     font-family: 'Noto Serif', serif;	

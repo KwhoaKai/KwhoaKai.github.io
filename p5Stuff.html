@@ -87,6 +87,9 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="-1" />
     <script>
+        $(document).ready(function() {
+            $("#content").hide().removeClass("hidden").fadeIn(300);
+        });
     </script>
 
 </head>
@@ -106,7 +109,7 @@
             </div>
         </div>
 
-        <div class="content">
+        <div id="content" class="content hidden">
             <!-- first p5 canvas -->
             <div class="row" id="waveCanvasRow">
                 <h1>p5.js sketches</h1>

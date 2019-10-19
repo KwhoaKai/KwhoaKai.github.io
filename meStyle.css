@@ -7,6 +7,10 @@ html, body {
     position: relative;
 }
 
+.hidden {
+	display: none;
+}
+
 a {
 	color: inherit;
 }
@@ -20,7 +24,7 @@ a:hover {
 .contAll {
 	height: 100%;
 	width: 100%;
-	position: absolute	;
+	position: absolute;
 }
 
 #contentWrapper {
@@ -34,43 +38,44 @@ a:hover {
 	padding-right: 5%;
 }
 
-.hidden {
-	display: none;
-}
-
 #name {
     font-family: 'Noto Serif', serif;	
     color: black;
-    font-size: 3.5vh;
+    font-size: 4.0vh;
+    margin-bottom: 1.5%;
 }
 
 #headDiv {
 	padding-top: 20px;
 }
 
-.subHead {
-  position: relative;
-  /*outline: 2px solid black; */
-  height: 100%;
-  width: 100%;
-
-}
-
 .subHead, p {
 	vertical-align: center;
 	font-family: 'Cormorant Garamond', serif;
-	font-size: 2.5vh;
+	font-size: 2.8vh;
 	color: black;
 }
 
+    #sepYikai {
+        width: 100%;
+        border-bottom: 3px dashed black;
+    }
+
 div.subHead div {
-	height: 5%;
-	width: 100%;
 	background-color: white;
 	transition: height 500ms;
+	text-align: center;
 	/*outline: 2px solid black; */
 }
 
+@media screen and (min-width: 768px){
+    div.subHead div {
+		background-color: white;
+		transition: height 500ms;
+		text-align: left;
+		/*outline: 2px solid black; */
+	}
+}
 
 div.subHead div:hover {
 	height: 30%;
@@ -85,7 +90,6 @@ div.subHead div:hover {
 	opacity: 0.5;
 }
 
-
 #resume {
 	position: relative;
 	z-index: 3;
@@ -94,23 +98,24 @@ div.subHead div:hover {
 #portfolio {
 	position: relative;
 	z-index: 2;
+	
 }
 
 #aboutMe {
 	position: relative;
 	z-index: 1;
+	padding-top: 10%;
 }
 
-#headDiv {
-	/*
-transform: translate(3%, 30%); 
+#c {
+	height: 30%;
+}
 
--webkit-transform: translate(10%, 25%);
--moz-transform: translate(10%, 25%); 
--o-transform: translate(10%, 25%);
- -ms-transform: translate(10%, 25%);
- */
-}	
+#canvasDiv {
+	align: center;
+	height: auto;
+	width: auto;
+}
 
 #contentWrapper {
 	padding-top: 25px;
@@ -121,6 +126,6 @@ transform: translate(3%, 30%);
 	background-color: rgb(255,255,255);
 }
 
-.text-justify-change {
-    text-align: left;
-}
+
+
+

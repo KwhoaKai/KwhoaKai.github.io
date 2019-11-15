@@ -71,7 +71,7 @@ body {
         transform: translate3d(0, 0, 0);
         -webkit-transform: translate3d(0, 0, 0);
         padding-left: 0rem;
-        padding-top: 2rem;
+        padding-top: 0rem;
     }
 
     #descrpWave {
@@ -87,7 +87,7 @@ body {
     }
 
     #title, #polyTitle {
-        padding-top: 3rem;
+        padding-top: 0rem;
     }
 
     #moreWaves {
@@ -95,13 +95,15 @@ body {
         padding-left: 0rem;
 
     }
+
+    #headDiv {
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+        margin-left: 0rem;
+    }
 }
 
-#headDiv {
-    padding-top: 1rem;
-    padding-bottom: 3rem;
-    margin-left: 0rem;
-}
+
 
 #svgSvg {
     width: 4rem;

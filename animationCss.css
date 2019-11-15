@@ -1,0 +1,75 @@
+html {
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    padding-top: 0.5rem;
+    background-color: white;
+}
+
+#svgSvg {
+    width: 4rem;
+}
+
+#svgSvg:hover {
+    opacity: 0.5;
+}
+
+.anim {
+    width: auto;
+    height: auto;
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        height: 100%;
+        width: 100%;
+        padding-top: 2rem;
+    }
+
+    #headDiv {
+        padding-top: 1rem;
+        margin-left: 0rem;
+        width: 100%;
+    }
+}
+
+#headDiv {
+    padding-top: 1rem;
+    padding-bottom: 1.75rem;
+    margin-left: 0rem;
+}
+
+p {
+    font-size: 20px;
+}
+
+.contAll {
+    height: auto;
+    width: auto;
+}
+
+#content {
+    width: auto;
+    margin: 0 auto;
+}
+
+#footer {
+    background-color: white;
+    border-top: 1px dashed black;
+    font-size: 0.9rem;
+}
+
+.container {
+    width: auto;
+    height: auto;
+}
+
+img {
+    width: 100%;
+    object-fit: contain;
+}

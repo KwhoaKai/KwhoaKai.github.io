@@ -1,9 +1,13 @@
-html, body {
+html {
+	font-size: 16px;
+	height: 100%;
+    width: 100%;
+}
+
+body {
     height: 100%;
 	width: 100%;
-	padding-top: 5px;
-    padding-bottom: 10px;
-    position: relative;
+	padding-top: .5rem;
 }
 
 .hidden {
@@ -20,70 +24,124 @@ a:hover {
 	cursor: pointer;
 }
 
-.contAll {
-	height: 100%;
-	width: 100%;
-	position: absolute;
-}
-
-#contentWrapper {
-	height: 100%;
-	width: 100%;
-}
-
 #sideBar {
 	height: auto;
-	width: auto;
-	padding-right: 5%;
+	margin: 0 auto;
+	width: 100%;
+	padding-top: 2rem;
+	text-align: center;
 }
 
-#name {
+#nameIndex {
     font-family: 'Noto Serif', serif;	
     color: black;
-    font-size: 4.0vh;
+    font-size: 1.6rem;
     margin-bottom: 1.5%;
-}
-
-#headDiv {
-	padding-top: 20px;
 }
 
 .subHead, p {
 	vertical-align: center;
 	font-family: 'Cormorant Garamond', serif;
-	font-size: 2.8vh;
+	transition: opacity 300ms;
+	font-size: 1.2rem;
 	color: black;
 }
 
-    #sepYikai {
-        width: 100%;
-        border-bottom: 3px dashed black;
-    }
+.subHead {
+	margin-top: 0;
+}
 
-div.subHead div {
+#sepYikai {
+    width: 50%;
+    margin: auto;
+    border-bottom: 3px dashed black;
+}
+
+div.subHead {
+	border-left: 0px dashed black;
 	background-color: white;
-	transition: height 500ms;
+	transition: opacity 300ms;
+	transition: border-left 300ms;
 	text-align: center;
+	opacity: .8;
 	/*outline: 2px solid black; */
 }
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 768px) {
+	body {
+    	height: 100%;
+		width: 100%;
+		padding-top: 2rem;
+	}
+
     div.subHead div {
 		background-color: white;
-		transition: height 500ms;
+		transition: opacity 300ms;
+		border-left: 0px dashed black;
+		transition: border-left 300ms;
+		opacity: .8;
 		text-align: left;
-		/*outline: 2px solid black; */
 	}
+
+	#sideBar {
+		text-align: left;
+		padding-top: 1.5rem; 
+		margin-right: 0rem;
+		padding-right: 0rem;
+	}
+
+	#typeDiv {
+		width: 100%;
+		margin-left: 0rem;
+		margin-top: 0;
+		padding-right: 4rem;
+		padding: 0 auto;
+		text-align: left;
+	}
+
+	#headDiv {
+		padding-top: 1rem;
+		margin-left: 0;
+	}
+
+	#sepYikai {
+    width: 100%;
+    margin: auto;
+    border-bottom: 3px dashed black;
+	}
+
+	#aboutMe {
+		margin-top: .5rem;
+	}
+	
+}
+
+#headDiv {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    margin-left: 0rem;
+}
+
+#svgSvg {
+	width: 4rem;
+}
+
+#typeDiv {
+	width: 90%;
+	margin: 0 auto;
+	padding: 0 auto;
+}
+
+#nameRow {
+	width: auto;
+	margin: 0 auto;
 }
 
 div.subHead div:hover {
-	height: 30%;
-	border-bottom: 1px solid black;
+	opacity: 1;
+	border-left: .1rem dashed black;
 }
 
-#svgSvg{
-	height: 3vmax;
-}
 
 #svgSvg:hover {
 	opacity: 0.5;
@@ -96,35 +154,23 @@ div.subHead div:hover {
 
 #portfolio {
 	position: relative;
+	margin-top: 0;
 	z-index: 2;
-	
-}
-
-#aboutMe {
-	position: relative;
-	z-index: 1;
-	padding-top: 10%;
-}
-
-#c {
-	height: 30%;
-}
-
-#canvasDiv {
-	align: center;
-	height: auto;
-	width: auto;
+	padding-top: 0;
 }
 
 #contentWrapper {
-	padding-top: 25px;
-	padding-left: 40px;
+	width: 100%;
+	margin: 0 auto;
+	padding-top: 0rem;
 }
 
 #footer {
 	background-color: rgb(255,255,255);
+	font-size: .9rem;
 }
 
-
-
-
+.container {
+    height: 100%;
+    width: 100%;
+}

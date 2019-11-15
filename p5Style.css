@@ -1,0 +1,154 @@
+html {
+    font-size: 16px;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    padding-top: 0.5rem;
+    background-color: white;
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        height: 100%;
+        width: 100%;
+        padding-top: 2rem;
+        background-color: white;
+    }
+
+    #headDiv {
+        padding-top: 1rem;
+        margin-left: 0rem;
+    }
+
+    #choiceId {
+        height: 40%;
+    }
+
+    #faceCanvas {
+        padding-top: 1rem;
+        padding-left: 2rem;
+    }
+
+    #waveCanvas {
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        padding-left: 2rem;
+    }
+
+    #descrpWave {
+        padding-top: 2%;
+        padding-bottom: 2%;
+        padding-left: 2rem;
+    }
+
+    #descrpFace {
+        padding-top: 2%;
+        padding-bottom: 5%;
+        padding-left: 2rem;
+    }
+
+    #title, #polyTitle {
+        padding-top: 3rem;
+    }
+
+    #moreWaves {
+        padding-bottom: 5%;
+        padding-left: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #faceCanvas {
+        padding-top: 1rem;
+        padding-left: 0rem;
+    }
+
+    #waveCanvas {
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        padding-left: 0rem;
+        padding-top: 2rem;
+    }
+
+    #descrpWave {
+        padding-top: 1rem;
+        padding-bottom: 2%;
+        padding-left: 0rem;
+    }
+
+    #descrpFace {
+        padding-top: 2%;
+        padding-bottom: 5%;
+        padding-left: 0rem;
+    }
+
+    #title, #polyTitle {
+        padding-top: 3rem;
+    }
+
+    #moreWaves {
+        padding-bottom: 5%;
+        padding-left: 0rem;
+
+    }
+}
+
+#headDiv {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    margin-left: 0rem;
+}
+
+#svgSvg {
+    width: 4rem;
+}
+
+#svgSvg:hover {
+    opacity: 0.5;
+}
+
+p {
+    font-family: "Noto Serif", serif;
+    font-size: 1.15rem;
+}
+
+h1,h2,h3 {
+    font-family: "Noto Serif", serif;
+}
+
+#content {
+    padding-top: 3%;
+    padding-left: 3%;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 0rem;
+}
+
+.waveGIF {
+    height: 100%;
+    width: 100%;
+}
+
+#endRow {
+    padding-bottom: 9%;
+    padding-left: 1rem;
+}
+
+#footer {
+    background-color: white;
+    border-top: 1px dashed black;
+    font-size: 0.9rem;
+}
+
+#polyHeader {
+    padding-top: 0rem;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+}

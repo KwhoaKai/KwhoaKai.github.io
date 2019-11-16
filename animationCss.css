@@ -67,6 +67,7 @@ p {
 .container {
     width: auto;
     height: auto;
+    padding-bottom: 2rem;
 }
 
 img {

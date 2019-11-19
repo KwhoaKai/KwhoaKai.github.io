@@ -185,6 +185,7 @@ const letters = function(p) {
                 p.infoUp = false;
             }
         }
+        return false;
     }
 
     p.mouseDragged = function(event) {

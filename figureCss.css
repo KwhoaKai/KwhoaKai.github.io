@@ -19,7 +19,7 @@ body {
     opacity: 0.5;
 }
 
-.anim {
+.drawing {
     width: auto;
     height: auto;
 }
@@ -67,7 +67,7 @@ p {
 .container {
     width: auto;
     height: auto;
-    padding-bottom: 2rem;
+    padding-bottom: 5rem;
 }
 
 img {

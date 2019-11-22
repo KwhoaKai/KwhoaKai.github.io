@@ -48,6 +48,10 @@ a:hover {
     #animations {
         height: 12rem;
     }
+
+    #figures {
+        height: 12rem;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -62,6 +66,10 @@ a:hover {
     #animations {
         height: 13rem;
     }
+
+    #figures {
+        height: 13rem;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -73,7 +81,11 @@ a:hover {
         height: 10rem;
     }
 
-     #animations {
+    #animations {
+        height: 10rem;
+    }
+
+    #figures {
         height: 10rem;
     }
 }
@@ -106,6 +118,11 @@ a:hover {
     background-size: 80%;
 }
 
+#figures:hover {
+    opacity: 80%;
+    background-size: 80%;
+}
+
 #projects {
     background-color: grey;
 }
@@ -113,6 +130,18 @@ a:hover {
 #animations {
     background-color: white;
     background-image: url("tallComp.gif");
+    background-position: center center;
+    background-size: 100%;
+    cursor: pointer;
+    margin: 3% 3% 3% 3%;
+    opacity: 100%;
+    transition: opacity 100ms;
+    transition: background-size 100ms;
+}
+
+#figures {
+    background-color: white;
+    background-image: url("/figure-Resources/profile3Small.jpg");
     background-position: center center;
     background-size: 100%;
     cursor: pointer;

@@ -19,14 +19,12 @@
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="-1" />
-    <script>
-        $(document).ready(function() {
-            $("#content").hide().removeClass("hidden").fadeIn(300);
-        });
-    </script>
 </head>
 
 <body>
+    <script>
+        document.body.className = 'fade';
+    </script>
     <div class="container contAll">
         <div id="headDiv" class="row">
             <div class="col-xs-12 col-xl-12">
@@ -70,5 +68,9 @@
             <div class="footer-copyright text-center">Yikai Kuo © 2019</div>
         </footer>
     </div>
+    
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", (e) => { document.body.className = ''; });
+</script>
 </html>

@@ -9,6 +9,13 @@ body {
     width: 100%;
     padding-top: 0.5rem;
     background-color: white;
+    opacity: 1;
+    transition: 0.7s opacity;
+}
+
+body.fade {
+    opacity: 0;
+    transition: none;
 }
 
 #svgSvg {
@@ -76,6 +83,3 @@ img {
     padding-bottom: 10%;
 }
 
-.hidden {
-    display: none;
-}

@@ -94,6 +94,7 @@ export default function Compose(p) {
         this.sceneManager.showNextScene();
       }
     }
+
     mainSize = sizeSlider.value();
     p.strokeWeight(2);
     p.stroke(0);
@@ -118,6 +119,7 @@ export default function Compose(p) {
     pg.text(input.value(), 0, (mainSize * 0.69) / 5);
     pg.pop();
 
+    p.imageMode(p.CORNER);
     p.image(pg, (p.width - squareWidth) / 2, (p.height - squareWidth) / 2);
     biggerButt.display(p.mouseX, p.mouseY);
     smallerButt.display(p.mouseX, p.mouseY);

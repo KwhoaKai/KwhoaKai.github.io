@@ -6,17 +6,11 @@ export default function Intro(p) {
   let ring;
   let started;
 
-  this.preload = function() {
-    console.log("Preload");
-  };
-
   this.setup = function() {
     started = false;
     p.colorMode(p.RGB);
     this.chars = ["k", "g", "t", "v", "x", "i", "y", "s", "z", "b"];
     ring = new RevealRing();
-    //console.log(p.basker);
-    //p.textFont(p.basker);
     this.startButt = new StartButt(p.width / 2, p.height * 0.85, "ready?");
     p.textFont("Georgia");
     this.letPos = [];
@@ -42,6 +36,7 @@ export default function Intro(p) {
     this.startFade = false;
     this.wonderFinish = p.height * 0.75;
     this.wonderCur = p.height * 0.9;
+    p.noStroke();
   };
 
   this.draw = function() {
@@ -132,7 +127,6 @@ export default function Intro(p) {
       p.ellipse(p.width * 0.5, p.height * 0.85, this.rad);
       // Handles reveal
       this.weight = this.expand ? p.lerp(this.weight, 1, 0.09) : this.weight;
-
       p.pop();
     }
 

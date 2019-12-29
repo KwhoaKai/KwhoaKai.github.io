@@ -2,11 +2,9 @@
 export default function FormInfo(p) {
   let time;
   let drawForm;
-  this.preload = function() {};
 
   this.setup = function() {
     time = 0;
-    console.log(this.sceneManager);
     drawForm = false;
     p.background(255);
     p.textAlign(p.CENTER);

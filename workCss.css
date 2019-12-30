@@ -41,15 +41,7 @@ a:hover {
         height: auto;
     }
 
-    #p5 {
-        height: 12rem;
-    }
-
-    #animations {
-        height: 12rem;
-    }
-
-    #figures {
+    #p5, #animations, #figures, #grailed {
         height: 12rem;
     }
 }
@@ -59,15 +51,7 @@ a:hover {
         height: auto;
     }
 
-    #p5 {
-        height: 13rem;
-    }
-
-    #animations {
-        height: 13rem;
-    }
-
-    #figures {
+    #p5, #animations, #figures, #grailed {
         height: 13rem;
     }
 }
@@ -78,15 +62,7 @@ a:hover {
         padding-bottom: 10%;
     }
 
-    #p5 {
-        height: 10rem;
-    }
-
-    #animations {
-        height: 10rem;
-    }
-
-    #figures {
+    #p5, #animations, #figures, #grailed {
         height: 10rem;
     }
 }
@@ -107,6 +83,23 @@ a:hover {
     margin: 3% 3% 3% 3%;
     transition: opacity 100ms;
     transition: background-size 100ms;
+}
+
+#grailed {
+    background-color: powderblue;
+    background-position: center bottom;
+    background-image: url("/Animation-Gifs/grailedScroll.gif");
+    background-size: 100%;
+    cursor: pointer;
+    opacity: 100%;
+    margin: 3% 3% 3% 3%;
+    transition: opacity 100ms;
+    transition: background-size 100ms;
+}
+
+#grailed:hover {
+    opacity: 80%;
+    background-size: 80%;
 }
 
 #p5:hover {

@@ -16,6 +16,10 @@ body {
     display: none;
 }
 
+.gridanim {
+  width: 100%;
+}
+
 #codesnip {
     padding-bottom: 1rem;
 }
@@ -27,6 +31,18 @@ body {
 .underline {
     text-decoration: underline;
     color: black;
+}
+
+.padtop-3rem {
+  padding-top: 3rem;
+}
+
+.padbot-3rem {
+  padding-bottom: 3rem;
+}
+
+.padbot-2rem {
+  padding-bottom: 2rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -125,6 +141,7 @@ p {
 
 #content {
   padding-top: 3%;
+  
   padding-bottom: 3%;
   width: 100%;
   margin: 0 auto;

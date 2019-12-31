@@ -39,6 +39,7 @@ body {
       padding-top: 3%;
       padding-left: 2rem;
       text-align: center;
+      background-color: grey;
   }
 
   .imgDescrp {
@@ -91,6 +92,7 @@ body {
   #vidDiv {
     padding-top: 3%;
     text-align: center;
+    background-color: grey;
   }
 
   #closetVideo {

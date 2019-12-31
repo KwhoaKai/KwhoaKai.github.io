@@ -74,7 +74,7 @@ a:hover {
 }
 
 #p5 {
-    background-color: powderblue;
+    background-color: grey;
     background-position: center bottom;
     background-image: url("/p5Stuff-Resources/blueWaveGIF.gif");
     background-size: 100%;
@@ -86,7 +86,7 @@ a:hover {
 }
 
 #grailed {
-    background-color: powderblue;
+    background-color: grey;
     background-position: center bottom;
     background-image: url("/Animation-Gifs/grailedScroll.gif");
     background-size: 100%;

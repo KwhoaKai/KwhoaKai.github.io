@@ -22,7 +22,7 @@ body {
 
 #codesnip {
     padding-bottom: 1rem;
-}
+}s
 
 .subhead {
     color: "grey";
@@ -51,7 +51,7 @@ body {
       max-width: 56%;
   }
 
-  #vidDiv {
+  .vidDiv {
       padding-top: 3%;
       text-align: center;
   }
@@ -98,7 +98,7 @@ body {
       text-align: center;
   }
 
-  #vidDiv {
+  .vidDiv {
     padding-top: 3%;
     text-align: center;
   }

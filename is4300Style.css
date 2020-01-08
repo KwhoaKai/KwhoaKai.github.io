@@ -1,0 +1,158 @@
+html {
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  padding-top: 0.5rem;
+  background-color: white;
+  font-family: "Noto Serif", serif;
+}
+
+.hidden {
+  display: none;
+}
+
+.gridanim {
+  width: 100%;
+}
+
+#codesnip {
+  padding-bottom: 1rem;
+}
+s .subhead {
+  color: "grey";
+}
+
+.underline {
+  text-decoration: underline;
+  color: black;
+}
+
+.padtop-3rem {
+  padding-top: 3rem;
+}
+
+.padbot-3rem {
+  padding-bottom: 3rem;
+}
+
+.padbot-2rem {
+  padding-bottom: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  #closetVideo {
+    max-width: 56%;
+  }
+
+  .vidDiv {
+    padding-top: 3%;
+    text-align: center;
+  }
+
+  .imgDescrp {
+    font-size: 0.9rem;
+    color: #414141;
+    text-align: center;
+  }
+
+  body {
+    height: 100%;
+    width: 100%;
+    padding-top: 2rem;
+    background-color: white;
+  }
+
+  #headDiv {
+    padding-top: 1rem;
+    margin-left: 0rem;
+  }
+
+  #choiceId {
+    height: 40%;
+  }
+
+  #descrp {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  #title {
+    text-align: center;
+    padding-top: 3rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .imgDescrp {
+    font-size: 0.9rem;
+    color: #414141;
+    text-align: center;
+  }
+
+  .vidDiv {
+    padding-top: 3%;
+    text-align: center;
+  }
+
+  #closetVideo {
+    max-width: 80%;
+  }
+
+  #descrp {
+    padding-top: 1rem;
+    padding-bottom: 2%;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  #title {
+    text-align: center;
+    padding-top: 0rem;
+  }
+
+  #headDiv {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    margin-left: 0rem;
+  }
+}
+
+#svgSvg {
+  width: 4rem;
+}
+
+#svgSvg:hover {
+  opacity: 0.5;
+}
+
+p {
+  font-family: "Noto Serif", serif;
+  font-size: 1.15rem;
+}
+
+#content {
+  padding-top: 3%;
+
+  padding-bottom: 3%;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 0rem;
+}
+
+#footer {
+  background-color: white;
+  border-top: 1px dashed black;
+  font-size: 0.9rem;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+}

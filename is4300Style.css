@@ -36,11 +36,19 @@ s .subhead {
   padding-top: 3rem;
 }
 
+.padtop-1rem {
+  padding-top: 1rem;
+}
+
 .padbot-3rem {
   padding-bottom: 3rem;
 }
 
 .padbot-2rem {
+  padding-bottom: 2rem;
+}
+
+.padbot-1rem {
   padding-bottom: 2rem;
 }
 

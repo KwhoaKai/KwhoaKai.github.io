@@ -22,11 +22,9 @@ export default function Compose(p) {
     finalFade,
     popup,
     borderSize,
-    pg,
-    tutorial,
+    pg;
 
   this.setup = function() {
-    tutorial = true;
     popup = new Popup();
     fade = 0;
     finalFade = 255;
@@ -96,7 +94,6 @@ export default function Compose(p) {
         this.sceneManager.showNextScene();
       }
     }
-
     mainSize = sizeSlider.value();
     p.strokeWeight(2);
     p.stroke(0);
@@ -121,7 +118,6 @@ export default function Compose(p) {
     pg.text(input.value(), 0, (mainSize * 0.69) / 5);
     pg.pop();
 
-    p.imageMode(p.CORNER);
     p.image(pg, (p.width - squareWidth) / 2, (p.height - squareWidth) / 2);
     biggerButt.display(p.mouseX, p.mouseY);
     smallerButt.display(p.mouseX, p.mouseY);
@@ -149,7 +145,7 @@ export default function Compose(p) {
   };
 
   this.mouseDragged = function() {
-    if (this.inGraphics() && !tutorial) {
+    if (this.inGraphics()) {
       xpos += p.mouseX - startMX;
       ypos += p.mouseY - startMY;
       startMX = p.mouseX;
@@ -158,18 +154,14 @@ export default function Compose(p) {
   };
 
   this.mousePressed = function() {
-    if(!tutorial) {
-      startMX = p.mouseX;
-      startMY = p.mouseY;
-      submitButt.clicked();
-    }
+    startMX = p.mouseX;
+    startMY = p.mouseY;
+    submitButt.clicked();
   };
 
   // Changes character in textbox, maintains string length of 1
   this.updateChar = e => {
-    if(!tutorial) {
-      input.value(e.data);
-    }
+    input.value(e.data);
   };
 
   this.recenterLetter = () => {
@@ -178,35 +170,33 @@ export default function Compose(p) {
   };
 
   this.handleSubmit = () => {
-    if(!tutorial) {
-      let w = Math.floor(pg.width);
-      let h = Math.floor(pg.height);
-      let img = p.createImage(w, h);
-      pg.push();
-      pg.stroke(0);
-      pg.noFill();
-      pg.strokeWeight(3);
-      pg.rectMode(p.CORNER);
-      pg.rect(0, 0, pg.width, pg.height);
-      pg.pop();
-      img.copy(pg, 0, 0, w, h, 0, 0, w, h);
-      submittedImgs.push(img);
-      // input.value(alph[Math.floor(Math.random() * 26)]);
-  
-      // Transition to next scene after 4 submissions
-      if (imgCt == 3) {
-        sizeSlider.hide();
-        input.hide();
-        centerButt.hide();
-        fadeout = true;
-        this.buildGrid();
-        this.sceneManager.showNextScene();
-      } else {
-        imgCt++;
-      }
-      borderSize = squareWidth * 0.56;
-      popup = new Popup();
+    let w = Math.floor(pg.width);
+    let h = Math.floor(pg.height);
+    let img = p.createImage(w, h);
+    pg.push();
+    pg.stroke(0);
+    pg.noFill();
+    pg.strokeWeight(3);
+    pg.rectMode(p.CORNER);
+    pg.rect(0, 0, pg.width, pg.height);
+    pg.pop();
+    img.copy(pg, 0, 0, w, h, 0, 0, w, h);
+    submittedImgs.push(img);
+    // input.value(alph[Math.floor(Math.random() * 26)]);
+
+    // Transition to next scene after 4 submissions
+    if (imgCt == 3) {
+      sizeSlider.hide();
+      input.hide();
+      centerButt.hide();
+      fadeout = true;
+      this.buildGrid();
+      this.sceneManager.showNextScene();
+    } else {
+      imgCt++;
     }
+    borderSize = squareWidth * 0.56;
+    popup = new Popup();
   };
 
   // Combine saved user images into composite grid

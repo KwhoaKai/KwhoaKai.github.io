@@ -325,8 +325,8 @@ d3.csv(csvs.week2, function(d) {
 
                               svg.append("rect")
                                 .attr("id", "popup")
-                                .attr("x", xScale(d.day) + xScale.bandwidth() * .8)
-                                .attr("y", yScale(d.rank) - + xScale.bandwidth() * .48)
+                                .attr("x", xScale(d.day) + 50)
+                                .attr("y", yScale(d.rank) - 46)
                                 .attr("width", 200)
                                 .attr("height", 40)
                                 .attr("fill", "white")

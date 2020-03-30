@@ -29,10 +29,9 @@
       font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   }
 
-/*  svg {
-    padding: 0;
-    margin: 0;
-  }*/
+  body {
+    position: fixed;
+  }
 
 </style>
 <body>
@@ -337,7 +336,7 @@ d3.csv(csvs.week2, function(d) {
                                 .attr("id", "popup")
                                 .style("fill", d.fill)
                                 .text(function() {
-                                  console.log(d);
+                                  // console.log(d);
                                   return `${+d.rank}: ${d.name}`;
                                 })
                                 .attr("x", xScale(d.day) + xScale.bandwidth())

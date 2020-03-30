@@ -355,7 +355,7 @@ d3.csv(csvs.week2, function(d) {
                               .attr("cx", function(d) { return xScale(d.day) + xScale.bandwidth() * .5})
                               .attr("opacity", 1);
 
-                          d3.select("#header").text(`Week ${cur} Ranks For NYT Mini Crossword`);
+                          d3.select("#header").text(`Overall Rankings for Week ${cur} of the NYT Mini Competition`);
                           // console.log(colorIndex, " end of update");
                         }
                         d3.select("#loading").remove();

@@ -184,7 +184,6 @@ d3.csv(csvs.week2, function(d) {
                     d3.csv(csvs.week1, function(d) {
                       return fmtUser(d);
                     }).then(function(week1) {
-                        d3.select("#loading").remove();
                         d3.select("#colorPalette").on("change", function() {
                           colorScale = d3.scaleSequential(d3[this.value]).domain([0, 1]); 
                           update()
@@ -360,6 +359,7 @@ d3.csv(csvs.week2, function(d) {
                           d3.select("#header").text(`Week ${cur} Ranks For NYT Mini Crossword`);
                           // console.log(colorIndex, " end of update");
                         }
+                        d3.select("#loading").remove();
                         update();
                       });
                     });

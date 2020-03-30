@@ -339,9 +339,9 @@ d3.csv(csvs.week2, function(d) {
                                   // console.log(d);
                                   return `${+d.rank}: ${d.name}`;
                                 })
-                                .attr("x", xScale(d.day) + xScale.bandwidth())
+                                .attr("x", xScale(d.day) + 55)
                                 .attr("text-anchor", "left")
-                                .attr("y", yScale(d.rank) - 5);
+                                .attr("y", yScale(d.rank)-20);
                             })
                             .on("mouseout", function() {
                               d3.select(this)

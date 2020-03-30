@@ -65,6 +65,8 @@ var margin = {
   bottom: 255
 };
 
+window.googleDocCallback = function () { return true; };
+
 var svg = d3.select("body")
   .append("svg")
   .attr("width", width)
@@ -158,15 +160,16 @@ let getRanks = function(d) {
   return d;
 }
 let csvs = {
-  week1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTagjHP4dfBhpgPdKvuIcAGzPPwyG92Ij1SvKI0oTVp7e6cO30XuRh_t4o15IthF2a1Dr8vo2PAQZ6i/pub?gid=0&single=true&output=csv",
+  week1: "https://docs.google.com/spreadsheets/d/1dgE8wDlzglzlzAfRqoMbrSiMq4TA24MQM8BK5bUE9-Q/pub?gid=0&single=true&output=csv",
   week2: "https://docs.google.com/spreadsheets/d/1RZxj6DU39JIBwYb-CBzfWzv7OKcIc9mANBLhsbhYH6M/pub?gid=0&single=true&output=csv",
-  week3: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQiOL3JXXvCJJ7YR3erEi3n8xieSeGovmXq58rq05lbqhJOVeIeaHcU3esb57W0ahxX2AZMS9nvB2UU/pub?gid=0&single=true&output=csv",
-  week4: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT93Wl5olrQu_hJDEknXvk1WgeV1L2ZLfvvGbrWi775n9k3beXYVmMvqE2y_mClqPrlzdOsS2RVopwv/pub?gid=0&single=true&output=csv",
-  week5: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRckFnKfKV4j0z7rFLY58BCLtW5Bim4TiszR-3p1Sessk1NY_c9gstrnAwGzLC3FI2G2xn9JQztueHD/pub?gid=0&single=true&output=csv"
+  week3: "https://docs.google.com/spreadsheets/d/1utmlY5NacA0UqPoGcULnhvWfVm4fPSahdzpUPoB8Ymw/pub?gid=0&single=true&output=csv",
+  week4: "https://docs.google.com/spreadsheets/d/1JyJCq64F253Cjw6K43UQwpaMFEF7ldFm6Z0vjUVYf74/pub?gid=0&single=true&output=csv",
+  week5: "https://docs.google.com/spreadsheets/d/1I57Q6sf0L9GCt7Nz4Rwc2MCg9g-LvyuVfOw2HQ_0K7A/pub?gid=0&single=true&output=csv"
 };
 
 // Data wrangling
 d3.csv(csvs.week2, function(d) {
+    // console.log(d);
     return fmtUser(d);
   }).then(function(week2) {
       d3.csv(csvs.week3, function(d) {
@@ -355,7 +358,7 @@ d3.csv(csvs.week2, function(d) {
                               .attr("opacity", 1);
 
                           d3.select("#header").text(`Week ${cur} Ranks For NYT Mini Crossword`);
-                          console.log(colorIndex, " end of update");
+                          // console.log(colorIndex, " end of update");
                         }
                         update();
                       });

@@ -8,10 +8,6 @@
     bottom: 255
   };
 
-  window.googleDocCallback = function() {
-    return true;
-  };
-
   var svg = d3.select("body")
     .append("svg")
     .attr("width", width)
@@ -115,7 +111,6 @@
 
   // Data wrangling
   d3.csv(csvs.week2, function(d) {
-    // console.log(d);
     return fmtUser(d);
   }).then(function(week2) {
     d3.csv(csvs.week3, function(d) {
@@ -211,7 +206,7 @@
               colorIndex = 0;
               let newD = weekData[cur - 1];
               if (newD == null) {
-                // console.log("fuck");
+                console.log("Bad data");
               }
               let colInt = 1 / newD.lenght;
 
@@ -294,7 +289,6 @@
                     .attr("id", "popup")
                     .style("fill", d.fill)
                     .text(function() {
-                      // console.log(d);
                       return `${+d.rank}: ${d.name}`;
                     })
                     .attr("x", xScale(d.day) + 55)
@@ -316,7 +310,6 @@
                 .attr("opacity", 1);
 
               d3.select("#header").text(`Rankings for Week ${cur} of the NYT Mini Competition`);
-              // console.log(colorIndex, " end of update");
             }
             d3.select("#loading").remove();
             update();

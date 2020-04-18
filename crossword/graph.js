@@ -270,7 +270,7 @@
                 .attr("cy", function(d) {
                   return yScale(d.rank)
                 })
-                .attr("r", 5)
+                .attr("r", 4)
                 .style("fill", function(d) {
                   return d.fill;
                 })

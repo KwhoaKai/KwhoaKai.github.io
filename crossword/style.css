@@ -1,0 +1,59 @@
+  #header {
+      padding-top: 2%;
+      padding-left: 10%;
+      width: 100%;
+      text-align: left;
+      font-family: "Cambria",Helvetica,Arial,sans-serif;
+      font-size: 35pt;
+      font-weight: bold;
+  }
+  .axisLabel {
+      font-family: "Cambria",Helvetica,Arial,sans-serif;
+      font-size: 35pt;
+      font-weight: bold;
+  }
+  .axis {
+      font-size: 12pt;
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .name {
+      font-size: 12pt;
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+
+  body {
+    position: fixed;
+    width: 100%;
+  }
+
+  #week {
+   /* padding-left: 90%;*/
+   text-align: right;
+   /*padding-top: 100px;*/
+   /*margin-top: 30px;*/
+   /*padding-right: 10%;*/
+  }
+
+  #selectSpan {
+    float: right;
+    width: 31%;
+    margin-bottom: 0
+  }
+
+  #graph {
+    padding-top: 0px;
+    margin: 0;
+  }
+
+  #author {
+    margin: 0;
+    padding-right: 25%;
+    font-family: "Cambria",Helvetica,Arial,sans-serif;
+  }
+
+  #authorDiv {
+    padding-left: 10%;
+    width: 100%;
+    font-size: 20pt;
+    text-align: left;
+  }

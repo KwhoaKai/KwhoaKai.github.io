@@ -263,9 +263,7 @@ function drawGraph(weekData) {
           .attr("class", "name")
           .attr("id", "popup")
           .style("fill", d.fill)
-          .text(function () {
-            return `${+d.rank}: ${d.name}`;
-          })
+          .text(() => `${+d.rank}: ${d.name}`)
           .attr("x", xScale(d.day) + 55)
           .attr("text-anchor", "left")
           .attr("y", yScale(d.rank) - 20);

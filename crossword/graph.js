@@ -27,7 +27,7 @@ let colorScale = d3.scaleSequential(d3.interpolatePlasma)
 let colorIndex = 1;
 
 // Formatting user data for usability
-let fmtUser = function (d) {
+let fmtUser = (d) => {
   let f, sa, su, mo, tu, we, th;
   f = +d.fripts;
   sa = +d.satpts + f;
@@ -80,7 +80,7 @@ let fmtUser = function (d) {
 }
 
 // Calculates player rankings given a week of data
-let getRanks = function (d) {
+let getRanks = (d) => {
   for (let i = 0; i < 7; i++) {
     let sortedRank = [];
     d.forEach((user) => {
@@ -90,10 +90,8 @@ let getRanks = function (d) {
       });
     });
 
-    sortedRank.sort(function (a, b) {
-      return a.pts - b.pts;
-    });
-
+    // sort by rank
+    sortedRank.sort((a, b) => a.pts - b.pts);
     sortedRank.forEach((user, i) => {
       sortedRank[i] = user.name;
     });
@@ -132,7 +130,7 @@ function drawGraph(weekData) {
   });
 
   let numPlayer = weekData[cur].length;
-  d3.select("#week").on("change", function () {
+  d3.select("#week").on("change", () => {
     cur = this.value;
     numPlayer = weekData[cur - 1].length;
     transitionAxis();
@@ -161,21 +159,13 @@ function drawGraph(weekData) {
     .call(d3.axisLeft().scale(yScale));
 
   let drawLine = d3.line()
-    .x(function (d) {
-      return xScale(d.day) + xScale.bandwidth() / 2
-    })
-
-    .y(function (d) {
-      return yScale(d.rank)
-    });
+    .x((d) => xScale(d.day) + xScale.bandwidth() / 2)
+    .y((d) => yScale(d.rank));
 
   let spawnLine = d3.line()
-    .x(function (d) {
-      return xScale("Friday") + xScale.bandwidth() / 2
-    })
-    .y(function (d) {
-      return yScale(d.rank)
-    });
+    .x((d) => xScale("Friday") + xScale.bandwidth() / 2)
+    .y((d) => yScale(d.rank));
+
   let yAxisLabel = svg.append("text")
     .attr("class", "axisLabel")
     .attr("transform", "rotate(-90)")
@@ -201,11 +191,6 @@ function drawGraph(weekData) {
     d3.select("svg").selectAll("circle").remove();
     colorIndex = 0;
     let newD = weekData[cur - 1];
-    if (newD == null) {
-      console.log("Bad data");
-    }
-    let colInt = 1 / newD.lenght;
-
     let allCircles = [];
 
     newD.forEach((player, i) => {
@@ -255,16 +240,10 @@ function drawGraph(weekData) {
       .data(allCircles)
       .enter()
       .append("circle")
-      .attr("cx", function (d) {
-        return xScale("Friday") + xScale.bandwidth() * .5
-      })
-      .attr("cy", function (d) {
-        return yScale(d.rank)
-      })
+      .attr("cx", (d) => xScale("Friday") + xScale.bandwidth() * .5)
+      .attr("cy", (d) => yScale(d.rank))
       .attr("r", 4)
-      .style("fill", function (d) {
-        return d.fill;
-      })
+      .style("fill", (d) => d.fill)
       .attr("opacity", 0)
       .on("mouseover", function (d) {
         let hovered = d3.select(this);

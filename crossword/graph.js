@@ -276,12 +276,8 @@ function drawGraph(weekData) {
         svg.selectAll("#popup").remove();
       })
       .transition()
-      .duration(function (d, i) {
-        return 800 + (d.rank * 50);
-      })
-      .attr("cx", function (d) {
-        return xScale(d.day) + xScale.bandwidth() * .5
-      })
+      .duration((d, i) => 800 + (d.rank * 50))
+      .attr("cx", (d) => xScale(d.day) + xScale.bandwidth() * .5)
       .attr("opacity", 1);
 
     d3.select("#header").text(`Rankings for Week ${cur} of the NYT Mini Competition`);

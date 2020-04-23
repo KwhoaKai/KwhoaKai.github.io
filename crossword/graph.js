@@ -215,9 +215,7 @@ function drawGraph(weekData) {
         .style("fill", colorScale(colorIndex))
         .text(`${i+1}: ${player.name}`)
         .attr("x", xScale("Friday") + xScale.bandwidth() * .5)
-        .attr("y", function () {
-          return yScale(newD[i].rank) - 5
-        })
+        .attr("y", () => yScale(newD[i].rank) - 5)
         .attr("opacity", 0)
         .transition()
         .duration(800 + (i * 50))
@@ -263,7 +261,7 @@ function drawGraph(weekData) {
           .attr("class", "name")
           .attr("id", "popup")
           .style("fill", d.fill)
-          .text(() => `${+d.rank}: ${d.name}`)
+          .text(`${+d.rank}: ${d.name}`)
           .attr("x", xScale(d.day) + 55)
           .attr("text-anchor", "left")
           .attr("y", yScale(d.rank) - 20);

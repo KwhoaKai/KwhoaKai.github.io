@@ -130,7 +130,7 @@ function drawGraph(weekData) {
   });
 
   let numPlayer = weekData[cur].length;
-  d3.select("#week").on("change", () => {
+  d3.select("#week").on("change", function() {
     cur = this.value;
     numPlayer = weekData[cur - 1].length;
     transitionAxis();

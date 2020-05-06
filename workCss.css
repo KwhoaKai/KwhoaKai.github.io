@@ -48,7 +48,8 @@ a:hover {
   #p5,
   #animations,
   #figures,
-  #grailed {
+  #grailed,
+  #p5Type {
     height: 12rem;
   }
 }
@@ -59,6 +60,7 @@ a:hover {
   }
 
   #p5,
+  #p5Type,
   #animations,
   #figures,
   #grailed {
@@ -73,6 +75,7 @@ a:hover {
   }
 
   #p5,
+  #p5Type,
   #animations,
   #figures,
   #grailed {
@@ -110,6 +113,30 @@ a:hover {
   transition: background-size 100ms;
 }
 
+#p5Type {
+  background-color: grey;
+  background-position: center bottom;
+  background-image: url("/Animation-Gifs/baskANIM.gif");
+  background-size: 105%;
+  cursor: pointer;
+  opacity: 100%;
+  margin: 3% 3% 3% 3%;
+  transition: opacity 100ms;
+  transition: background-size 100ms;
+}
+
+#grailed {
+  background-color: grey;
+  background-position: center bottom;
+  background-image: url("/Animation-Gifs/grailedScroll.gif");
+  background-size: 100%;
+  cursor: pointer;
+  opacity: 100%;
+  margin: 3% 3% 3% 3%;
+  transition: opacity 100ms;
+  transition: background-size 100ms;
+}
+
 #grailed:hover {
   opacity: 80%;
   background-size: 80%;
@@ -126,6 +153,11 @@ a:hover {
 }
 
 #figures:hover {
+  opacity: 80%;
+  background-size: 80%;
+}
+
+#p5Type:hover {
   opacity: 80%;
   background-size: 80%;
 }
@@ -172,6 +204,10 @@ a:hover {
 
 #animText {
   color: white;
+}
+
+#typeText {
+  color: black;
 }
 
 .container {

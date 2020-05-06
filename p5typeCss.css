@@ -12,6 +12,12 @@ body {
   font-family: "Noto Serif", serif;
 }
 
+img {
+    width: 100%;
+    object-fit: contain;
+    padding-bottom: 10%;
+}
+
 .hidden {
     display: none;
 }
@@ -20,9 +26,24 @@ body {
   width: 100%;
 }
 
+#vidDiv {
+    padding-top: 0%;
+    text-align: center;
+    height: auto;
+    background-color: white;
+    overflow: hidden;
+}
+
+#wonderfulVideo {
+    max-width: 75%;
+    background-color: white;
+    background-color: transparent !important;
+    /*height: 100px;*/
+}
+
 #codesnip {
     padding-bottom: 1rem;
-}s
+}
 
 .subhead {
     color: "grey";
@@ -37,6 +58,10 @@ body {
   padding-top: 3rem;
 }
 
+.padtop-2rem {
+  padding-top: 2rem;
+}
+
 .padbot-3rem {
   padding-bottom: 3rem;
 }
@@ -45,15 +70,20 @@ body {
   padding-bottom: 2rem;
 }
 
+.padbot-1rem {
+  padding-bottom: 1rem;
+}
+
 @media screen and (min-width: 768px) {
 
   #closetVideo {
-      max-width: 56%;
+      max-width: 80%;
   }
 
   .vidDiv {
       padding-top: 3%;
       text-align: center;
+      overflow: hidden;
   }
 
   .imgDescrp {
@@ -101,6 +131,7 @@ body {
   .vidDiv {
     padding-top: 3%;
     text-align: center;
+    overflow: hidden;
   }
 
   #closetVideo {

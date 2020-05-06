@@ -3,6 +3,7 @@
     <head>
         <title>Animations - Yikai Kuo</title>
         <meta name="description" content="Animations by Yikai Kuo, an undergarduate student at Northeastern University studying Biology and Computer Science."/>
+        <!-- <meta name="theme-color" content="#db5945"> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=DM+Serif+Display|DM+Serif+Text|Noto+Serif&display=swap" rel="stylesheet">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -17,6 +18,7 @@
         <meta http-equiv="cache-control" content="no-cache" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="-1" />
+        <script src="lazysizes.min.js" async=""></script>
         <script>
             $(document).ready(function() {
                 $("#content").hide().removeClass("hidden").fadeIn(300);
@@ -40,13 +42,13 @@
                 <!-- animation gif dump, first animation -->
                 <div class="row anim">
                     <div class="col-lg-4 col-md-4 col-xs-12">
-                        <img src="/Animation-Gifs/noCompilationGif.gif" alt="'No!' character animation"/>
+                        <img data-src="/Animation-Gifs/noCompilationGif.gif" class="lazyload" alt="'No!' character animation"/>
                     </div>
                     <div class="col-lg-4 col-md-4 col-xs-12">
-                        <img src="/Animation-Gifs/outlinePoke.gif" alt="Outline version of Pokemon Go animation"/>
+                        <img data-src="/Animation-Gifs/outlinePoke.gif" class="lazyload" alt="Outline version of Pokemon Go animation"/>
                     </div>
                     <div class="col-lg-4 col-md-4 col-xs-12">
-                        <img src="/Animation-Gifs/comparePoke.gif" alt="Three-way comparison of object catch"/>
+                        <img data-src="/Animation-Gifs/comparePoke.gif" class="lazyload" alt="Three-way comparison of object catch"/>
                     </div>
                     <!-- <div id="vidDiv">
                         <video playsinline preload="auto" autoplay muted loop id="closetVideo">
@@ -59,18 +61,18 @@
                         </video>
                     </div>
                     <div class="col-lg-4 col-md-4 col-xs-12">
-                        <img src="https://66.media.tumblr.com/6be98caf3314dbb0eece43d6c8ab471d/tumblr_ndf0figX551tk9o89o1_640.gifv" alt="Smooth fight transformation"/>
+                        <img data-src="https://66.media.tumblr.com/6be98caf3314dbb0eece43d6c8ab471d/tumblr_ndf0figX551tk9o89o1_640.gifv" class="lazyload" alt="Smooth fight transformation"/>
                     </div>
                 </div>
                 <div class="row anim">
                     <div class="col-lg-4 col-md-4 col-xs-12">
-                        <img src="/Animation-Gifs/jump.gif" alt="Jumping animation"/>
+                        <img data-src="/Animation-Gifs/jump.gif" class="lazyload" alt="Jumping animation"/>
                     </div>
                     <div class="col-lg-4 col-md-4 col-xs-12">
-                        <img src="/Animation-Gifs/ebiJump.gif" alt="ebi fry jumps"/>
+                        <img data-src="/Animation-Gifs/ebiJump.gif" class="lazyload" alt="ebi fry jumps"/>
                     </div>
                     <div class="col-lg-4 col-md-4 col-xs-12">
-                        <img src="/Animation-Gifs/squash.gif" alt="squash animation"/>
+                        <img data-src="/Animation-Gifs/squash.gif" class="lazyload" alt="squash animation"/>
                     </div>
                 </div>
                 <div class="row anim">
@@ -78,7 +80,7 @@
                         <img src="/Animation-Gifs/noCompilationGif.gif" />
                         </div> -->
                     <div class="col-lg-4 col-md-4 col-xs-12">
-                        <img src="/Animation-Gifs/boxy.gif" alt="Box character with smoke"/>
+                        <img data-src="/Animation-Gifs/boxy.gif" class="lazyload" alt="Box character with smoke"/>
                     </div>
                 </div>
             </div>

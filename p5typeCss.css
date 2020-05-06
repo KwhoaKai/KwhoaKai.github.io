@@ -12,6 +12,10 @@ body {
   font-family: "Noto Serif", serif;
 }
 
+#kaneQuote {
+  font-style: italic;
+}
+
 img {
     width: 100%;
     object-fit: contain;

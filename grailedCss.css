@@ -12,6 +12,10 @@ body {
   font-family: "Noto Serif", serif;
 }
 
+#subtitle {
+  font-weight: 400;
+}
+
 .hidden {
   display: none;
 }

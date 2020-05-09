@@ -19,11 +19,6 @@ body {
     opacity: 0.5;
 }
 
-.anim {
-    width: auto;
-    height: auto;
-}
-
 @media screen and (min-width: 768px) {
     body {
         height: 100%;
@@ -36,21 +31,23 @@ body {
         margin-left: 0rem;
         width: 100%;
     }
+
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    #closetVideo {
+        max-width: 56%;
+    }
 }
 
 #headDiv {
     padding-top: 1rem;
     padding-bottom: 1.75rem;
     margin-left: 0rem;
-}
-
-p {
-    font-size: 20px;
-}
-
-.contAll {
-    height: auto;
-    width: auto;
 }
 
 #content {
@@ -70,12 +67,25 @@ p {
     padding-bottom: 2rem;
 }
 
-img {
-    width: 100%;
-    object-fit: contain;
-    padding-bottom: 10%;
+.padtopbot {
+    padding-bottom: 2.5%;
+    padding-top: 2.5%;
 }
 
 .hidden {
     display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+
+    #closetVideo {
+        max-width: 80%;
+
+    }
 }

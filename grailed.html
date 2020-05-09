@@ -13,7 +13,7 @@
     <!-- scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link href="https://fonts.googleapis.com/css?family=DM+Serif+Display|DM+Serif+Text|Noto+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </link>
     <link type="text/css" href="grailedCss.css" rel="stylesheet">
@@ -42,7 +42,7 @@
         <div id="content" class="hidden">
             <!-- Page headers -->
             <div id="title">
-                <h1>Grailed Scraper</h1>
+                <h1 id="subtitle">Grailed Scraper</h1>
                 <h5 class="subhead">"I wanted sweaters"</h5>
             </div>
 
@@ -58,7 +58,7 @@
                 <div class="col-xs-hidden col-md-2 col-xl-2"></div>
                 <div id="descrp" class="col-xl-8 col-md-8 col-xs-12">
                     <p>
-                        <strong>Grailed.com</strong> is a website where users buy and sell designer or 
+                        <strong>Grailed.com</strong> is a website where users trade designer and 
                         vintage apparel. Due to the sheer volume of listings, the website can be 
                         viewed as the largest archive of high fashion clothing in existence, 
                         curated by the internet. 
@@ -69,28 +69,22 @@
                         as well as a peek into the absurdity that is high fashion.
                     </p>
                     <p>
-                        Unfortunately for us, Grailed does not offer a public API. 
+                        Unfortunately, Grailed does not offer a public API. 
                     </p>
                     <p>
                         To tap into this unique collection of data, a few 
                         <a class="underline" href="https://www.grailed.com/acceptable">unsanctioned scrapers</a> 
-                        have 
-                        been created that can scrape listing meta-data like price, list date, 
-                        and brand names. While this information is useful and lends itself to some cool
-                        data visualization projects, I needed to generate a dataset of 
-                        images to train a GAN, or 
-                        <a class="underline" href="https://en.wikipedia.org/wiki/Generative_adversarial_network"> 
-                            generative adversarial network 
-                        </a>
-                        , to design me some vintage sweaters.
+                        have been created that are able to retrieve meta-data, including price, list date, 
+                        and brand name. However, there are currently no scrapers that download images. 
                     </p>
                     <p>
-                        Time to make an unsanctioned scraper of my own. There are a number of technologies 
+                        In order to aggregate a large collection of outerwear clothing, I created 
+                        <a class="underline" href="https://github.com/KwhoaKai/Grailed-Scraper">Grailed-Scraper</a>.
+                        There are a number of technologies 
                         that exist for web scraping such as Beautiful Soup, Scrapy, and Selenium. I ultimately settled 
                         on Selenium because Grailed delivers content through JavaScript and lazyloads their images, 
-                        and Selenium allows for interaction with the DOM. The URLs for every listing photo includes 
-                        parameters for width, height, and fit, so we can use this to download photos at whatever 
-                        dimension we want.
+                        and Selenium allows for interaction with the DOM. The URL for every listing image includes
+                        parameters for width, height, and fit, so <a class="underline" href="https://github.com/KwhoaKai/Grailed-Scraper">Grailed-Scraper</a> uses this to download images at user specified dimensions.
                     </p>
                     <p>
                         For ease of use, I parameterized the search term, number of images, and image 

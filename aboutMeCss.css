@@ -46,7 +46,7 @@ a:hover {
 
 p {
   vertical-align: center;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Noto Serif", serif;
   color: black;
 }
 
@@ -64,10 +64,14 @@ p {
   line-height: 1.8rem;
 }
 
+.bodytext {
+  font-size: 1.1rem;
+}
+
 #descrp,
 #interests,
 #contact {
-  font-size: 1.1rem;
+  /*font-size: 1.1rem;*/
 }
 
 #descrp {

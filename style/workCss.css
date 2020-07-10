@@ -168,7 +168,7 @@ a:hover {
 
 #animations {
   background-color: white;
-  background-image: url("tallComp.gif");
+  background-image: url("../Animation-Gifs/tallComp.gif");
   background-position: center center;
   background-size: 100%;
   cursor: pointer;

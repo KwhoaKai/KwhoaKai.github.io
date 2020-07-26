@@ -24,10 +24,6 @@ a:hover {
   cursor: pointer;
 }
 
-.prev {
-  background-color: E3E3E3;
-}
-
 @media screen and (min-width: 768px) {
   body {
     height: 100%;
@@ -45,11 +41,8 @@ a:hover {
     height: auto;
   }
 
-  #p5,
-  #animations,
-  #figures,
-  #grailed,
-  #p5Type {
+  .prev {
+    background-color: E3E3E3;
     height: 12rem;
   }
 }
@@ -59,11 +52,7 @@ a:hover {
     height: auto;
   }
 
-  #p5,
-  #p5Type,
-  #animations,
-  #figures,
-  #grailed {
+  .prev {
     height: 13rem;
   }
 }
@@ -74,11 +63,7 @@ a:hover {
     padding-bottom: 10%;
   }
 
-  #p5,
-  #p5Type,
-  #animations,
-  #figures,
-  #grailed {
+  .prev {
     height: 10rem;
   }
 }
@@ -89,10 +74,22 @@ a:hover {
   margin-left: 0rem;
 }
 
+#covid {
+  background-color: grey;
+  background-position: center bottom;
+  background-image: url('/Animation-Gifs/blobSmallGif.gif');
+  background-size: 100%;
+  cursor: pointer;
+  opacity: 100%;
+  margin: 3% 3% 3% 3%;
+  transition: opacity 100ms;
+  transition: background-size 100ms;
+}
+
 #p5 {
   background-color: grey;
   background-position: center bottom;
-  background-image: url("/p5Stuff-Resources/blueWaveGIF.gif");
+  background-image: url('/p5Stuff-Resources/blueWaveGIF.gif');
   background-size: 100%;
   cursor: pointer;
   opacity: 100%;
@@ -104,7 +101,7 @@ a:hover {
 #grailed {
   background-color: grey;
   background-position: center bottom;
-  background-image: url("/Animation-Gifs/grailedScroll.gif");
+  background-image: url('/Animation-Gifs/grailedScroll.gif');
   background-size: 100%;
   cursor: pointer;
   opacity: 100%;
@@ -116,7 +113,7 @@ a:hover {
 #p5Type {
   background-color: grey;
   background-position: center bottom;
-  background-image: url("/Animation-Gifs/baskANIM.gif");
+  background-image: url('/Animation-Gifs/baskANIM.gif');
   background-size: 105%;
   cursor: pointer;
   opacity: 100%;
@@ -128,7 +125,7 @@ a:hover {
 #grailed {
   background-color: grey;
   background-position: center bottom;
-  background-image: url("/Animation-Gifs/grailedScroll.gif");
+  background-image: url('/Animation-Gifs/grailedScroll.gif');
   background-size: 100%;
   cursor: pointer;
   opacity: 100%;
@@ -162,13 +159,14 @@ a:hover {
   background-size: 80%;
 }
 
-#projects {
-  background-color: grey;
+#covid:hover {
+  opacity: 80%;
+  background-size: 80%;
 }
 
 #animations {
-  background-color: white;
-  background-image: url("../Animation-Gifs/tallComp.gif");
+  background-color: grey;
+  background-image: url('../Animation-Gifs/tallComp.gif');
   background-position: center center;
   background-size: 100%;
   cursor: pointer;
@@ -179,8 +177,8 @@ a:hover {
 }
 
 #figures {
-  background-color: white;
-  background-image: url("/figure-Resources/profile3Small.jpg");
+  background-color: grey;
+  background-image: url('/figure-Resources/profile3Small.jpg');
   background-position: center top;
   background-size: 100%;
   cursor: pointer;
@@ -192,7 +190,7 @@ a:hover {
 
 .titleText {
   color: black;
-  font-family: "Noto Serif", serif;
+  font-family: 'Noto Serif', serif;
   font-size: 3.5vh;
 }
 
@@ -202,11 +200,11 @@ a:hover {
   font-size: 0.9rem;
 }
 
-#animText {
+.whiteText {
   color: white;
 }
 
-#typeText {
+.blackText {
   color: black;
 }
 

@@ -1,4 +1,4 @@
-// Your web app's Firebase configuration
+// Firebase configuration
 let firebaseConfig = {
   apiKey: 'AIzaSyDy0Igdoa7RuLQPX8K_dBFrDGjJuJpaFK4',
   authDomain: 'website-files-8acf3.firebaseapp.com',
@@ -26,7 +26,7 @@ imgsRef
       console.log(folderRef);
     });
 
-    // Append each image to html
+    // Append each image
     res.items.forEach(function (itemRef) {
       itemRef
         .getDownloadURL()

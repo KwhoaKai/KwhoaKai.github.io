@@ -114,6 +114,14 @@ div.subHead {
   #aboutMe {
     margin-top: 0.5rem;
   }
+
+  #mood {
+    position: relative;
+    margin-top: 0;
+    z-index: 2;
+    padding-top: 0;
+    transform: translate(0%, 120%) rotate(25deg);
+  }
 }
 
 #headDiv {
@@ -159,7 +167,6 @@ div.subHead div:hover {
   margin-top: 0;
   z-index: 2;
   padding-top: 0;
-  transform: translate(0%, 120%) rotate(25deg);
 }
 
 #contentWrapper {

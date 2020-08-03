@@ -1,0 +1,9 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/website-files-8acf3.appspot.com/o {
+    match /{allPaths=**} {
+      allow read;
+      allow write: if request.auth != null;
+    }
+  }
+}

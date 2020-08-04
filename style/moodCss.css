@@ -36,10 +36,8 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 65%;
   }
 }
-
 #headDiv {
   padding-top: 1rem;
   padding-bottom: 1.75rem;
@@ -47,7 +45,7 @@ body {
 }
 
 #content {
-  width: auto;
+  width: 100%;
   margin: 0 auto;
   /* opacity: 0;
   -webkit-animation-duration: 4s;
@@ -62,6 +60,7 @@ body {
   animation-duration: 4s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+  max-width: 40%;
 }
 
 .fullOpac {
@@ -75,7 +74,7 @@ body {
 }
 
 .container {
-  width: auto;
+  width: 80%;
   height: auto;
   padding-bottom: 2rem;
 }

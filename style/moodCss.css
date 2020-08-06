@@ -89,6 +89,7 @@ body {
     padding-bottom: 2rem;
   }
 }
+
 #headDiv {
   padding-top: 1rem;
   padding-bottom: 1.75rem;
@@ -96,8 +97,13 @@ body {
 }
 
 #content {
-  width: 100%;
+  width: auto;
   margin: 0 auto;
+  /* opacity: 0;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; */
 }
 
 .moodImg {
@@ -106,7 +112,6 @@ body {
   animation-duration: 4s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  max-width: 40%;
 }
 
 .fullOpac {
@@ -119,13 +124,7 @@ body {
   font-size: 0.9rem;
 }
 
-<<<<<<< HEAD ======= .container {
-  width: 80%;
-  height: auto;
-  padding-bottom: 2rem;
-}
-
->>>>>>>5ee9f0cbbf9080089345d5e8035644f825bf58c8 .padtopbot {
+.padtopbot {
   padding-bottom: 2.5%;
   padding-top: 2.5%;
 }

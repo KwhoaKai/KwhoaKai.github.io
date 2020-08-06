@@ -19,13 +19,36 @@ body {
   opacity: 0.5;
 }
 
-@media screen and (min-width: 768px) {
-  body {
-    height: 100%;
-    width: 100%;
-    padding-top: 2rem;
+body {
+  height: 100%;
+  width: 100%;
+  padding-top: 2rem;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 95%;
+    height: auto;
+    padding-bottom: 2rem;
   }
 
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+
+  .moodImg {
+    opacity: 0;
+    -webkit-animation-duration: 4s;
+    animation-duration: 4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+}
+
+@media screen and (min-width: 768px) {
   #headDiv {
     padding-top: 1rem;
     margin-left: 0rem;
@@ -37,6 +60,33 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 65%;
+  }
+
+  .container {
+    width: 80%;
+    height: auto;
+    padding-bottom: 2rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  #headDiv {
+    padding-top: 1rem;
+    margin-left: 0rem;
+    width: 100%;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .container {
+    width: 80%;
+    height: auto;
+    padding-bottom: 2rem;
   }
 }
 
@@ -74,12 +124,6 @@ body {
   font-size: 0.9rem;
 }
 
-.container {
-  width: auto;
-  height: auto;
-  padding-bottom: 2rem;
-}
-
 .padtopbot {
   padding-bottom: 2.5%;
   padding-top: 2.5%;
@@ -110,13 +154,4 @@ body {
 .fadeIn {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
-}
-
-@media screen and (max-width: 768px) {
-  .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-  }
 }

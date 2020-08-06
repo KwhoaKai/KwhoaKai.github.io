@@ -28,6 +28,14 @@ img {
   /* padding-bottom: 0; */
 }
 
+.divider {
+  margin: auto;
+  width: 100%;
+  border-top: 1px solid black;
+  margin-bottom: 8%;
+  margin-top: 3%;
+}
+
 #projLink {
   color: black;
   text-decoration: underline;

@@ -36,7 +36,6 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 90%;
   }
 
   .moodImg {
@@ -45,6 +44,7 @@ body {
     animation-duration: 4s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
+    width: 90%;
   }
 }
 
@@ -80,13 +80,40 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
   }
 
   .container {
     width: 80%;
     height: auto;
     padding-bottom: 2rem;
+  }
+
+  .moodImg {
+    max-width: 35%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  #headDiv {
+    padding-top: 1rem;
+    margin-left: 0rem;
+    width: 100%;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container {
+    width: 80%;
+    height: auto;
+    padding-bottom: 2rem;
+  }
+
+  .moodImg {
+    max-width: 40%;
   }
 }
 
@@ -99,11 +126,6 @@ body {
 #content {
   width: auto;
   margin: 0 auto;
-  /* opacity: 0;
-  -webkit-animation-duration: 4s;
-  animation-duration: 4s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both; */
 }
 
 .moodImg {

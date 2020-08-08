@@ -13,6 +13,7 @@ let firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+firebase.performance();
 let storage = firebase.storage();
 let ref = storage.ref();
 let imgsRef = ref.child('/images');

@@ -23,7 +23,22 @@ img {
 }
 
 .gridanim {
-  width: 120%;
+  width: 100%;
+  transform: translateX(-8%);
+  /* padding-bottom: 0; */
+}
+
+.sil {
+  font-family: 'weepeople';
+  font-size: 6rem;
+   -webkit-text-stroke: 1.5px black;
+  color: white;
+}
+
+
+
+.imgSqLg {
+  width: 80%;
   transform: translateX(-8%);
   /* padding-bottom: 0; */
 }
@@ -87,6 +102,11 @@ img {
 
 .padbot-1rem {
   padding-bottom: 1rem;
+}
+
+.centerText {
+  text-align: center;
+  margin: 0;
 }
 
 @media screen and (min-width: 768px) {

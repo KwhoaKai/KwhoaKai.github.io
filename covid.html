@@ -21,6 +21,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </link>
     <link type="text/css" href="./style/covidCss.css" rel="stylesheet">
+    <link type="text/css" href="./typefaces/weepeople.css" rel="stylesheet">
     </link>
     <script>
         $(document).ready(function () {
@@ -57,8 +58,8 @@
                 </video>
             </div>
             <div class="row">
-                <div class="col-xs-hidden col-md-2 col-xl-2"></div>
-                <div id="descrp" class="col-xl-8 col-md-8 col-xs-12">
+                <div class="col-xs-hidden col-md-1 col-xl-1"></div>
+                <div id="descrp" class="col-xl-9 col-md-9 col-xs-12">
                     <p>
                         <a id="projLink" href="https://covid.omics.kitchen">Link to project</a>
                     </p>
@@ -73,7 +74,7 @@
                         SARS-CoV-2 antibody
                         tests. Blood samples of individuals confirmed to have Covid-19 combined with pre-pandemic
                         Covid-19 negative blood samples are being used to evaluate the true specificity and sensitivity
-                        of lateral flow assays
+                        of lateral flow assays (LFAs)
                         that have been released on the market.
                     </p>
                     <p>
@@ -83,10 +84,67 @@
                         Therefore,
                         we designed an interactive visualization to explore how a dynamic population prevalence affects
                         the likelihood
-                        of someone having antibodies given a positive result, using bayesian probability.
+                        of someone having antibodies given a positive result, using bayesian probability. Users can
+                        load the performance metrics determined by our lab for over 20 different LFAs, load the
+                        most up to date state and county level Covid-19 prevalences across the United States, and
+                        experiment with
+                        scenarios of their own using sliders.
                     </p>
+
+                    <br>
+                    <div class='centerText'>
+                        <p class='sil'>K</p>
+                    </div>
+
+                    <div id="gridrow" class="row padtop-3rem">
+                        <div class="col-xl-8">
+                            <img src="/Animation-Gifs/truePos.png" alt="Baskerville grid animation" />
+                        </div>
+                        <div class="col-xl-4"></div>
+                    </div>
+
+                    <div id="gridrow" class="row padtop-3rem">
+                        <div class="col-xl-4">
+                            <p class="sil" style="padding: 15% 75% 0% 0%;">r</p>
+                        </div>
+                        <div class="col-xl-8">
+                            <img src="/Animation-Gifs/trueNeg2.png" alt="Baskerville grid animation" />
+                        </div>
+
+                    </div>
+
+                    <div id="gridrow" class="row padtop-3rem">
+                        <div class="col-xl-8">
+                            <img src="/Animation-Gifs/falsePos.png" alt="Farnham grid animation" />
+                        </div>
+                        <div class="col-xl-4">
+                            <p class="sil" style="padding: 110% 0% 0% 75%;">W</p>
+                        </div>
+                    </div>
+
+                    <div id="gridrow" class="row padtop-3rem">
+                        <div class="col-xl-4"></div>
+                        <div class="col-xl-8">
+                            <img src="/Animation-Gifs/falseNeg2.png" alt="Farnham grid animation" />
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div style='position: absolute; transform: translate(0%,0%);'>
+                        <p class="sil">X</p>
+                    </div>
+
+                    <div style='position: absolute; transform: translate(1300%,205%);'>
+                        <p class="sil">B</p>
+                    </div>
+
+                    <img src="/Animation-Gifs/covidHelp.png" alt="Farnham grid animation" />
+
+
+
                 </div>
-                <div class="col-xs-hidden col-md-2 col-xl-2"></div>
+                <div class="col-xs-hidden col-md-1 col-xl-1"></div>
             </div>
         </div>
         <footer id="footer" class="fixed-bottom">

@@ -84,6 +84,7 @@ function main(paths) {
 
   let touched = false;
   const lerp = (x, y, a) => x * (1 - a) + y * a;
+  let dir = () => Math.random() <= 0.5 ? -1 : 1;
 
   // Instantiate new object textured by given image
   function makeInstance(geom, img, x, y) {
@@ -97,12 +98,15 @@ function main(paths) {
     });
 
     const obj = new THREE.Mesh(geom, imgmat);
-    let dir = Math.random() <= 0.5 ? -1 : 1;
     scene.add(obj);
-    obj.position.x = x;
+    let xoff = canvas.clientWidth > 400
+      ? dir() * Math.random() * .6
+      : 0;
+
+    obj.position.x = x + xoff;
     obj.position.y = y;
-    obj.rotYOffset = dir * Math.random() * Math.PI / 6;
-    obj.scrollYMult = dir * Math.random() * 2;
+    obj.rotYOffset = dir() * Math.random() * Math.PI / 6;
+    obj.scrollYMult = dir() * Math.random() * 2;
     shapes.push(obj);
     return obj;
   }
@@ -231,6 +235,7 @@ function main(paths) {
   }
   requestAnimationFrame(render);
 
+  console.log(canvas.clientWidth);
   canvas.classList.add("fadeIn");
   console.log(canvas.classList);
 }

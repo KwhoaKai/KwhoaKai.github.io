@@ -59,7 +59,7 @@ function main(paths) {
   const near = 0.1;
   const far = 11;
   const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-  camera.position.set(0, 1.5, 4)
+  camera.position.set(0, 4, 4)
   camera.aspect = canvas.clientWidth / canvas.clientHeight;
   camera.updateProjectionMatrix();
 
@@ -69,8 +69,8 @@ function main(paths) {
   // Hold all shapes in scene
   const shapes = [];
 
-  const boxWidth = 2;
-  const boxHeight = 2;
+  const boxWidth = 3;
+  const boxHeight = 3;
   const boxDepth = 0.01;
   const boxgeom = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
 
@@ -97,11 +97,12 @@ function main(paths) {
     });
 
     const obj = new THREE.Mesh(geom, imgmat);
+    let dir = Math.random() <= 0.5 ? -1 : 1;
     scene.add(obj);
     obj.position.x = x;
     obj.position.y = y;
-    obj.rotYOffset = Math.random() * Math.PI / 4;
-    obj.scrollYMult = Math.random() * 2;
+    obj.rotYOffset = dir * Math.random() * Math.PI / 6;
+    obj.scrollYMult = dir * Math.random() * 2;
     shapes.push(obj);
     return obj;
   }
@@ -117,8 +118,8 @@ function main(paths) {
       //console.log(-(boxHeight * paths.length));
       if (camera.position.y < -(boxHeight * paths.length)) {
         newY = -(boxHeight * paths.length)
-      } else if (camera.position.y > 3) {
-        newY = 2;
+      } else if (camera.position.y > 6) {
+        newY = 4;
       }
       camera.position.y = newY;
       //console.log(newY);
@@ -215,7 +216,7 @@ function main(paths) {
 
     shapes.forEach((shape, i) => {
       const speed = 0.05;
-      const rot = (time * speed) + shape.rotYOffset;
+      const rot = shape.rotYOffset;
 
       //shape.rotation.x = rot;
       shape.rotation.y = rot;
@@ -229,4 +230,7 @@ function main(paths) {
     requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
+
+  canvas.classList.add("fadeIn");
+  console.log(canvas.classList);
 }

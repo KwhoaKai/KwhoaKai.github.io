@@ -51,6 +51,11 @@ body {
   #headDiv {
     position: absolute;
   }
+
+  #overlayText {
+    position: absolute;
+    transform: translate(0,0);
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -149,7 +154,7 @@ body {
 }
 
 #footer {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   border-top: 1px dashed black;
   font-size: 0.9rem;
 }
@@ -184,4 +189,16 @@ body {
 .fadeIn {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
+}
+
+.abspos {
+  position: absolute;
+}
+
+.noint {
+  pointer-events: none
+}
+
+#moodtitle {
+  transform: translate(0, 25px);
 }

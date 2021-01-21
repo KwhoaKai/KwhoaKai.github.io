@@ -20,6 +20,31 @@ let storage = firebase.storage();
 let ref = storage.ref();
 let imgsRef = ref.child('/images');
 
+let title = window.innerWidth < 500 ? "mood" : "A STREAM OF AESTHETIC CONSCIOUSNESS";
+document.getElementById("moodtitle").innerHTML = title;
+let content = document.getElementById("content");
+
+if (window.innerWidth > 500) {
+  let reptext = "In this space you can walk without going back on your footsteps";
+  let longtext = `The top left corner of the band of tracing paper is stapled onto the wall
+                  The top right corner is stapled
+                  Finally the middle
+                  The staple is horizontal 
+                  The other 48 too`;
+  let yoff = 25;
+  let ystart = 100;
+  let canvas = document.querySelector('#c');
+  for (let i = 0; i < 5; i++) {
+    let p = document.createElement("p");
+    p.innerHTML = reptext;
+    p.classList.add("abspos");
+    p.style.transform = (`translate(${30}px, ${yoff * i + ystart}px)`);
+    canvas.insertAdjacentElement("beforebegin", p);
+  }
+}
+
+
+
 // Find all the prefixes and items.
 imgsRef
   .listAll()
@@ -33,7 +58,7 @@ imgsRef
     Promise.all(urls).then((paths) => main(paths));
   })
   .catch(function (error) {
-    console.log(error, 'Error listing files in directory');
+    console.log(error, 'Error listing image urls in directory');
   });
 
 function main(paths) {
@@ -234,8 +259,5 @@ function main(paths) {
     requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
-
-  //console.log(canvas.clientWidth);
   canvas.classList.add("fadeIn");
-  //console.log(canvas.classList);
 }

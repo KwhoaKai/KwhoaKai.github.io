@@ -88,10 +88,12 @@ function main(paths) {
   // Instantiate new object textured by given image
   function makeInstance(geom, img, x, y) {
     // geometry textured by image
-    const loader = new THREE.TextureLoader();
+    //const loader = new THREE.TextureLoader();
+    const texture = new THREE.TextureLoader().load(img);
+    texture.anisotropy = renderer.getMaxAnisotropy();
     const imgmat = new THREE.MeshBasicMaterial({
       color: 0xFFFFFF,
-      map: loader.load(img),
+      map: texture,
     });
 
     const obj = new THREE.Mesh(geom, imgmat);

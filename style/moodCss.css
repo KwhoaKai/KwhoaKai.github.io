@@ -2,6 +2,7 @@ html {
   height: 100%;
   width: 100%;
   font-size: 16px;
+  overflow: hidden;
 }
 
 body {
@@ -46,6 +47,10 @@ body {
     animation-fill-mode: both;
     width: 90%;
   }
+
+  #headDiv {
+    position: absolute;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -53,6 +58,7 @@ body {
     padding-top: 1rem;
     margin-left: 0rem;
     width: 100%;
+    position: absolute;
   }
 
   .center {
@@ -74,6 +80,7 @@ body {
     padding-top: 1rem;
     margin-left: 0rem;
     width: 100%;
+    position: absolute;
   }
 
   .center {
@@ -98,6 +105,7 @@ body {
     padding-top: 1rem;
     margin-left: 0rem;
     width: 100%;
+    position: absolute;
   }
 
   .center {

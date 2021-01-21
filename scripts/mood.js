@@ -235,7 +235,7 @@ function main(paths) {
   }
   requestAnimationFrame(render);
 
-  console.log(canvas.clientWidth);
+  //console.log(canvas.clientWidth);
   canvas.classList.add("fadeIn");
-  console.log(canvas.classList);
+  //console.log(canvas.classList);
 }

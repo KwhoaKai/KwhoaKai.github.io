@@ -25,7 +25,7 @@ document.getElementById("moodtitle").innerHTML = title;
 let content = document.getElementById("content");
 
 if (window.innerWidth > 500) {
-  let reptext = "In this space you can walk without going back on your footsteps";
+  let reptext = "In this sp+ce you can walk wi++out going b+++ on y+ur footsteps";
   let longtext = `The top left corner of the band of tracing paper is stapled onto the wall
                   The top right corner is stapled
                   Finally the middle
@@ -42,8 +42,6 @@ if (window.innerWidth > 500) {
     canvas.insertAdjacentElement("beforebegin", p);
   }
 }
-
-
 
 // Find all the prefixes and items.
 imgsRef
@@ -113,7 +111,6 @@ function main(paths) {
 
   // Instantiate new object textured by given image
   function makeInstance(geom, img, x, y) {
-    // geometry textured by image
     //const loader = new THREE.TextureLoader();
     const texture = new THREE.TextureLoader().load(img);
     texture.anisotropy = renderer.getMaxAnisotropy();

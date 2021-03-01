@@ -25,7 +25,7 @@ document.getElementById("moodtitle").innerHTML = title;
 let content = document.getElementById("content");
 
 if (window.innerWidth > 500) {
-  let reptext = "In this sp+ce you can walk wi++out going b+++ on y+ur footsteps";
+  let reptext = "In this space you can walk without going back on your footsteps";
   let longtext = `The top left corner of the band of tracing paper is stapled onto the wall
                   The top right corner is stapled
                   Finally the middle

@@ -35,10 +35,11 @@ if (window.innerWidth > 500) {
   let ystart = 100;
   let canvas = document.querySelector('#c');
   for (let i = 0; i < 5; i++) {
-    let p = document.createElement("p");
+    let p = document.createElement("cite");
     p.innerHTML = reptext;
     p.classList.add("abspos");
     p.style.transform = (`translate(${30}px, ${yoff * i + ystart}px)`);
+    p.contentEditable = 'true';
     canvas.insertAdjacentElement("beforebegin", p);
   }
 }
@@ -148,7 +149,10 @@ function main(paths) {
         newY = 4;
       }
       camera.position.y = newY;
-      //console.log(newY);
+    }
+
+    function panCamera(yMov) {
+      camera.position.y = camera.position.y + (yMov * 0.01);
     }
 
     // Handle click and drag vertical panning
@@ -157,10 +161,6 @@ function main(paths) {
       accel = 0;
       prevTime = event.timeStamp;
       let startY = event.pageY;
-
-      function panCamera(yMov) {
-        camera.position.y = camera.position.y + (yMov * 0.01);
-      }
 
       function onMouseMove(event) {
         const curY = event.pageY;
@@ -190,11 +190,7 @@ function main(paths) {
       accel = 0;
       let startY = event.touches[0].pageY;
 
-      function panCamera(yMov) {
-        camera.position.y = camera.position.y + (yMov * 0.01);
-      }
-
-      function onMouseMove(event) {
+      function onTouchMove(event) {
         const touch = event.touches[0] || event.changedTouches[0];
         const curY = touch.pageY;
         accel = ((curY - startY) - diff) / (event.timeStamp - prevTime);
@@ -204,15 +200,23 @@ function main(paths) {
         panCamera(diff);
       }
 
-      document.addEventListener('touchmove', onMouseMove);
+      document.addEventListener('touchmove', onTouchMove);
 
       canvas.ontouchend = function () {
-        document.removeEventListener('touchmove', onMouseMove);
+        document.removeEventListener('touchmove', onTouchMove);
         canvas.ontouchend = null;
         resetCamera();
         touched = false;
       };
     };
+
+    let handleWheel = function (event) {
+      // console.log(event);
+      camera.position.y = camera.position.y + (event.deltaY * -0.01);
+      resetCamera();
+    }
+
+    document.addEventListener('wheel', handleWheel);
   }
   setupScroll();
 

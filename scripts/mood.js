@@ -1,15 +1,15 @@
-import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r122/build/three.module.js';
+import * as THREE from "https://threejsfundamentals.org/threejs/resources/threejs/r122/build/three.module.js";
 
 // Firebase configuration
 let firebaseConfig = {
-  apiKey: 'AIzaSyDy0Igdoa7RuLQPX8K_dBFrDGjJuJpaFK4',
-  authDomain: 'website-files-8acf3.firebaseapp.com',
-  databaseURL: 'https://website-files-8acf3.firebaseio.com',
-  projectId: 'website-files-8acf3',
-  storageBucket: 'gs://website-files-8acf3.appspot.com',
-  messagingSenderId: '619436936972',
-  appId: '1:619436936972:web:6a77d0a5ea9971c8de4329',
-  measurementId: 'G-9TCCP8F89F',
+  apiKey: "AIzaSyDy0Igdoa7RuLQPX8K_dBFrDGjJuJpaFK4",
+  authDomain: "website-files-8acf3.firebaseapp.com",
+  databaseURL: "https://website-files-8acf3.firebaseio.com",
+  projectId: "website-files-8acf3",
+  storageBucket: "gs://website-files-8acf3.appspot.com",
+  messagingSenderId: "619436936972",
+  appId: "1:619436936972:web:6a77d0a5ea9971c8de4329",
+  measurementId: "G-9TCCP8F89F",
 };
 
 // Initialize Firebase
@@ -18,7 +18,7 @@ firebase.analytics();
 firebase.performance();
 let storage = firebase.storage();
 let ref = storage.ref();
-let imgsRef = ref.child('/images');
+let imgsRef = ref.child("/images");
 
 let title = window.innerWidth < 500 ? "mood" : "A STREAM OF AESTHETIC CONSCIOUSNESS";
 document.getElementById("moodtitle").innerHTML = title;
@@ -33,13 +33,13 @@ if (window.innerWidth > 500) {
                   The other 48 too`;
   let yoff = 25;
   let ystart = 100;
-  let canvas = document.querySelector('#c');
+  let canvas = document.querySelector("#c");
   for (let i = 0; i < 5; i++) {
     let p = document.createElement("cite");
     p.innerHTML = reptext;
     p.classList.add("abspos");
-    p.style.transform = (`translate(${30}px, ${yoff * i + ystart}px)`);
-    p.contentEditable = 'true';
+    p.style.transform = `translate(${30}px, ${yoff * i + ystart}px)`;
+    p.contentEditable = "true";
     canvas.insertAdjacentElement("beforebegin", p);
   }
 }
@@ -57,13 +57,13 @@ imgsRef
     Promise.all(urls).then((paths) => main(paths));
   })
   .catch(function (error) {
-    console.log(error, 'Error listing image urls in directory');
+    console.log(error, "Error listing image urls in directory");
   });
 
 function main(paths) {
-  const canvas = document.querySelector('#c');
+  const canvas = document.querySelector("#c");
   const renderer = new THREE.WebGLRenderer({ canvas });
-  renderer.setSize(window.innerWidth * .8, window.innerHeight, false);
+  renderer.setSize(window.innerWidth * 0.8, window.innerHeight, false);
 
   function resizeRendererToDisplaySize(renderer) {
     const canvas = renderer.domElement;
@@ -77,18 +77,18 @@ function main(paths) {
   }
 
   // Perspective camera details.
-  // fov, aspect ratio, near/far clipping plane define frustrum 
+  // fov, aspect ratio, near/far clipping plane define frustrum
   const fov = 75;
   const aspect = 2;
   const near = 0.1;
   const far = 11;
   const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-  camera.position.set(0, 4, 4)
+  camera.position.set(0, 4, 4);
   camera.aspect = canvas.clientWidth / canvas.clientHeight;
   camera.updateProjectionMatrix();
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xFFFFFF);
+  scene.background = new THREE.Color(0xffffff);
 
   // Hold all shapes in scene
   const shapes = [];
@@ -102,13 +102,11 @@ function main(paths) {
   const planeH = 1;
   const segmentW = 1;
   const segmentH = 1;
-  const planegeom = new THREE.PlaneBufferGeometry(
-    planeW, planeH,
-    segmentW, segmentH);
+  const planegeom = new THREE.PlaneBufferGeometry(planeW, planeH, segmentW, segmentH);
 
   let touched = false;
   const lerp = (x, y, a) => x * (1 - a) + y * a;
-  let dir = () => Math.random() <= 0.5 ? -1 : 1;
+  let dir = () => (Math.random() <= 0.5 ? -1 : 1);
 
   // Instantiate new object textured by given image
   function makeInstance(geom, img, x, y) {
@@ -116,19 +114,17 @@ function main(paths) {
     const texture = new THREE.TextureLoader().load(img);
     texture.anisotropy = renderer.getMaxAnisotropy();
     const imgmat = new THREE.MeshBasicMaterial({
-      color: 0xFFFFFF,
+      color: 0xffffff,
       map: texture,
     });
 
     const obj = new THREE.Mesh(geom, imgmat);
     scene.add(obj);
-    let xoff = canvas.clientWidth > 400
-      ? dir() * Math.random() * .6
-      : 0;
+    let xoff = canvas.clientWidth > 400 ? dir() * Math.random() * 0.6 : 0;
 
     obj.position.x = x + xoff;
     obj.position.y = y;
-    obj.rotYOffset = dir() * Math.random() * Math.PI / 6;
+    obj.rotYOffset = (dir() * Math.random() * Math.PI) / 6;
     obj.scrollYMult = dir() * Math.random() * 2;
     shapes.push(obj);
     return obj;
@@ -144,7 +140,7 @@ function main(paths) {
       let newY = camera.position.y;
       //console.log(-(boxHeight * paths.length));
       if (camera.position.y < -(boxHeight * paths.length)) {
-        newY = -(boxHeight * paths.length)
+        newY = -(boxHeight * paths.length);
       } else if (camera.position.y > 6) {
         newY = 4;
       }
@@ -152,7 +148,7 @@ function main(paths) {
     }
 
     function panCamera(yMov) {
-      camera.position.y = camera.position.y + (yMov * 0.01);
+      camera.position.y = camera.position.y + yMov * 0.01;
     }
 
     // Handle click and drag vertical panning
@@ -163,19 +159,21 @@ function main(paths) {
       let startY = event.pageY;
 
       function onMouseMove(event) {
+        console.log("Window: ", window.innerWidth, window.innerHeight);
+        console.log("Mouse: ", event.pageX, event.pageY);
         const curY = event.pageY;
-        accel = ((curY - startY) - diff) / (event.timeStamp - prevTime);
-        //console.log(diff);
+        accel = (curY - startY - diff) / (event.timeStamp - prevTime);
         prevTime = event.timeStamp;
         diff = curY - startY;
         startY = curY;
         panCamera(diff);
       }
 
-      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener("mousemove", onMouseMove);
 
-      canvas.onmouseup = function () {
-        document.removeEventListener('mousemove', onMouseMove);
+      window.onmouseup = function () {
+        console.log("mouseup");
+        document.removeEventListener("mousemove", onMouseMove);
         canvas.onmouseup = null;
         diff = 0;
         //console.log(accel);
@@ -193,17 +191,17 @@ function main(paths) {
       function onTouchMove(event) {
         const touch = event.touches[0] || event.changedTouches[0];
         const curY = touch.pageY;
-        accel = ((curY - startY) - diff) / (event.timeStamp - prevTime);
+        accel = (curY - startY - diff) / (event.timeStamp - prevTime);
         prevTime = event.timeStamp;
         diff = curY - startY;
         startY = curY;
         panCamera(diff);
       }
 
-      document.addEventListener('touchmove', onTouchMove);
+      document.addEventListener("touchmove", onTouchMove);
 
-      canvas.ontouchend = function () {
-        document.removeEventListener('touchmove', onTouchMove);
+      window.ontouchend = function () {
+        document.removeEventListener("touchmove", onTouchMove);
         canvas.ontouchend = null;
         resetCamera();
         touched = false;
@@ -212,11 +210,11 @@ function main(paths) {
 
     let handleWheel = function (event) {
       // console.log(event);
-      camera.position.y = camera.position.y + (event.deltaY * -0.01);
+      camera.position.y = camera.position.y + event.deltaY * -0.01;
       resetCamera();
-    }
+    };
 
-    document.addEventListener('wheel', handleWheel);
+    document.addEventListener("wheel", handleWheel);
   }
   setupScroll();
 
@@ -227,7 +225,9 @@ function main(paths) {
 
   // Render images in vertical column
   for (let i = 0; i < paths.length; i++) {
-    if (i > paths.length) { break; }
+    if (i > paths.length) {
+      break;
+    }
     const path = paths[i];
     const xloc = 0;
     const yloc = i * ypad - yoffset;
@@ -236,7 +236,7 @@ function main(paths) {
 
   // Update and rerender
   function render(time) {
-    time *= 0.001;  // convert time to seconds
+    time *= 0.001; // convert time to seconds
 
     if (resizeRendererToDisplaySize(renderer)) {
       const canvas = renderer.domElement;

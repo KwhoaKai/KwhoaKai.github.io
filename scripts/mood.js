@@ -159,8 +159,6 @@ function main(paths) {
       let startY = event.pageY;
 
       function onMouseMove(event) {
-        console.log("Window: ", window.innerWidth, window.innerHeight);
-        console.log("Mouse: ", event.pageX, event.pageY);
         const curY = event.pageY;
         accel = (curY - startY - diff) / (event.timeStamp - prevTime);
         prevTime = event.timeStamp;
@@ -172,11 +170,9 @@ function main(paths) {
       document.addEventListener("mousemove", onMouseMove);
 
       window.onmouseup = function () {
-        console.log("mouseup");
         document.removeEventListener("mousemove", onMouseMove);
         canvas.onmouseup = null;
         diff = 0;
-        //console.log(accel);
         touched = false;
         resetCamera();
       };

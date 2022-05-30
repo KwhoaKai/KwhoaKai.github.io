@@ -152,7 +152,7 @@ function main(paths) {
     }
 
     // Handle click and drag vertical panning
-    canvas.onmousedown = function (event) {
+    document.onmousedown = function (event) {
       touched = true;
       accel = 0;
       prevTime = event.timeStamp;
@@ -179,7 +179,7 @@ function main(paths) {
     };
 
     // Handle click and drag vertical panning
-    canvas.ontouchstart = function (event) {
+    document.ontouchstart = function (event) {
       touched = true;
       accel = 0;
       let startY = event.touches[0].pageY;

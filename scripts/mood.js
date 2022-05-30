@@ -138,10 +138,11 @@ function main(paths) {
   function setupScroll() {
     function resetCamera() {
       let newY = camera.position.y;
+      const yoffset = 1.5 * boxHeight;
       //console.log(-(boxHeight * paths.length));
-      if (camera.position.y < -(boxHeight * paths.length)) {
-        newY = -(boxHeight * paths.length);
-      } else if (camera.position.y > 6) {
+      if (camera.position.y < -(boxHeight * (paths.length + 1.2))) {
+        newY = -(boxHeight * (paths.length + 1.2));
+      } else if (camera.position.y > yoffset) {
         newY = 4;
       }
       camera.position.y = newY;
@@ -221,9 +222,9 @@ function main(paths) {
 
   // Render images in vertical column
   for (let i = 0; i < paths.length; i++) {
-    if (i > paths.length) {
-      break;
-    }
+    // if (i > paths.length) {
+    //   break;
+    // }
     const path = paths[i];
     const xloc = 0;
     const yloc = i * ypad - yoffset;
@@ -248,7 +249,7 @@ function main(paths) {
       shape.rotation.y = rot;
     });
 
-    if (camera.position.y > -(boxHeight * paths.length)) {
+    if (camera.position.y > -(boxHeight * (paths.length + 1.2))) {
       camera.position.y -= 0.0008;
     }
 

@@ -154,29 +154,31 @@ function main(paths) {
 
     // Handle click and drag vertical panning
     document.onmousedown = function (event) {
-      touched = true;
-      accel = 0;
-      prevTime = event.timeStamp;
-      let startY = event.pageY;
-
-      function onMouseMove(event) {
-        const curY = event.pageY;
-        accel = (curY - startY - diff) / (event.timeStamp - prevTime);
+      if (event.button == 0) {
+        touched = true;
+        accel = 0;
         prevTime = event.timeStamp;
-        diff = curY - startY;
-        startY = curY;
-        panCamera(diff);
+        let startY = event.pageY;
+
+        function onMouseMove(event) {
+          const curY = event.pageY;
+          accel = (curY - startY - diff) / (event.timeStamp - prevTime);
+          prevTime = event.timeStamp;
+          diff = curY - startY;
+          startY = curY;
+          panCamera(diff);
+        }
+
+        document.addEventListener("mousemove", onMouseMove);
+
+        window.onmouseup = function () {
+          document.removeEventListener("mousemove", onMouseMove);
+          canvas.onmouseup = null;
+          diff = 0;
+          touched = false;
+          resetCamera();
+        };
       }
-
-      document.addEventListener("mousemove", onMouseMove);
-
-      window.onmouseup = function () {
-        document.removeEventListener("mousemove", onMouseMove);
-        canvas.onmouseup = null;
-        diff = 0;
-        touched = false;
-        resetCamera();
-      };
     };
 
     // Handle click and drag vertical panning

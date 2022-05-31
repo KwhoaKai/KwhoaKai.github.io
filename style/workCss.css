@@ -74,10 +74,23 @@ a:hover {
   margin-left: 0rem;
 }
 
+#sweater {
+  background-color: grey;
+  background-position: center bottom;
+  background-position-y: 50%;
+  background-image: url("/Animation-Gifs/sweater_gif.gif");
+  background-size: 190%;
+  cursor: pointer;
+  opacity: 100%;
+  margin: 3% 3% 3% 3%;
+  transition: opacity 100ms;
+  transition: background-size 100ms;
+}
+
 #covid {
   background-color: grey;
   background-position: center bottom;
-  background-image: url('/Animation-Gifs/blobSmallGif.gif');
+  background-image: url("/Animation-Gifs/blobSmallGif.gif");
   background-size: 100%;
   cursor: pointer;
   opacity: 100%;
@@ -89,7 +102,7 @@ a:hover {
 #p5 {
   background-color: grey;
   background-position: center bottom;
-  background-image: url('/p5Stuff-Resources/blueWaveGIF.gif');
+  background-image: url("/p5Stuff-Resources/blueWaveGIF.gif");
   background-size: 100%;
   cursor: pointer;
   opacity: 100%;
@@ -101,7 +114,7 @@ a:hover {
 #grailed {
   background-color: grey;
   background-position: center bottom;
-  background-image: url('/Animation-Gifs/grailedScroll.gif');
+  background-image: url("/Animation-Gifs/grailedScroll.gif");
   background-size: 100%;
   cursor: pointer;
   opacity: 100%;
@@ -113,7 +126,7 @@ a:hover {
 #p5Type {
   background-color: grey;
   background-position: center bottom;
-  background-image: url('/Animation-Gifs/baskANIM.gif');
+  background-image: url("/Animation-Gifs/baskANIM.gif");
   background-size: 105%;
   cursor: pointer;
   opacity: 100%;
@@ -125,7 +138,7 @@ a:hover {
 #grailed {
   background-color: grey;
   background-position: center bottom;
-  background-image: url('/Animation-Gifs/grailedScroll.gif');
+  background-image: url("/Animation-Gifs/grailedScroll.gif");
   background-size: 100%;
   cursor: pointer;
   opacity: 100%;
@@ -164,9 +177,14 @@ a:hover {
   background-size: 80%;
 }
 
+#sweater:hover {
+  opacity: 80%;
+  background-size: 130%;
+}
+
 #animations {
   background-color: grey;
-  background-image: url('../Animation-Gifs/tallComp.gif');
+  background-image: url("../Animation-Gifs/tallComp.gif");
   background-position: center center;
   background-size: 100%;
   cursor: pointer;
@@ -178,7 +196,7 @@ a:hover {
 
 #figures {
   background-color: grey;
-  background-image: url('/figure-Resources/profile3Small.jpg');
+  background-image: url("/figure-Resources/profile3Small.jpg");
   background-position: center top;
   background-size: 100%;
   cursor: pointer;
@@ -190,7 +208,7 @@ a:hover {
 
 .titleText {
   color: black;
-  font-family: 'Noto Serif', serif;
+  font-family: "Noto Serif", serif;
   font-size: 3.5vh;
 }
 

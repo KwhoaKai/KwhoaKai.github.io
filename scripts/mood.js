@@ -20,7 +20,21 @@ let storage = firebase.storage();
 let ref = storage.ref();
 let imgsRef = ref.child("/images");
 
-let title = window.innerWidth < 500 ? "mood" : "A STREAM OF AESTHETIC CONSCIOUSNESS";
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+const phrases = [
+  "not really sure why i'm here.",
+  "how was your day?",
+  "tired? i can tell.",
+  "please buy me clothes...",
+  `why are you...             ok`,
+  '"mood board"  <- bleh',
+  "i hope you like them.",
+];
+let phrase = phrases[getRandomInt(phrases.length - 1)];
+
+let title = window.innerWidth < 500 ? "mood" : phrase;
 document.getElementById("moodtitle").innerHTML = title;
 let content = document.getElementById("content");
 

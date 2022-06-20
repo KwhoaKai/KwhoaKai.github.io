@@ -26,9 +26,11 @@ function getRandomInt(max) {
 const phrases = [
   "not really sure why i'm here.",
   "how was your day?",
+  "welcome to my moldboard.",
   "tired? i can tell.",
   "please buy me clothes...",
   `why are you...             ok`,
+  "where are you? i can't see you...",
   '"mood board"  <- bleh',
   "i hope you like them.",
 ];
@@ -122,7 +124,7 @@ function main(paths) {
   const lerp = (x, y, a) => x * (1 - a) + y * a;
   let dir = () => (Math.random() <= 0.5 ? -1 : 1);
 
-  // Instantiate new object textured by given image
+  // Instantiate new geometry textured by given image
   function makeInstance(geom, img, x, y) {
     //const loader = new THREE.TextureLoader();
     const texture = new THREE.TextureLoader().load(img);
@@ -138,7 +140,7 @@ function main(paths) {
 
     obj.position.x = x + xoff;
     obj.position.y = y;
-    obj.rotYOffset = (dir() * Math.random() * Math.PI) / 6;
+    obj.rotYOffsetTarget = (dir() * Math.random() * Math.PI) / 6;
     obj.scrollYMult = dir() * Math.random() * 2;
     shapes.push(obj);
     return obj;
@@ -174,6 +176,29 @@ function main(paths) {
         prevTime = event.timeStamp;
         let startY = event.pageY;
 
+        // Handle click on object in 3d scene
+        function handleRaycasting() {
+          // Raycasters
+          const raycaster = new THREE.Raycaster();
+          const pointer = new THREE.Vector2();
+
+          pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+          pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+          // update the picking ray with the camera and pointer position
+          raycaster.setFromCamera(pointer, camera);
+
+          // calculate objects intersecting the picking ray
+          const intersects = raycaster.intersectObjects(scene.children);
+          // console.log(intersects.length);
+          for (let i = 0; i < intersects.length; i++) {
+            // intersects[i].object.material.color.set(0xff0000);
+            let obj = intersects[i].object;
+            obj.rotYOffsetTarget = (dir() * Math.random() * Math.PI) / 6;
+          }
+        }
+        handleRaycasting();
+
         function onMouseMove(event) {
           const curY = event.pageY;
           accel = (curY - startY - diff) / (event.timeStamp - prevTime);
@@ -183,10 +208,13 @@ function main(paths) {
           panCamera(diff);
         }
 
-        document.addEventListener("mousemove", onMouseMove);
+        window.addEventListener("mousemove", onMouseMove);
+        // window.addEventListener("pointermove", onPointerMove);
 
+        // Remove move listeners on mouseup
         window.onmouseup = function () {
-          document.removeEventListener("mousemove", onMouseMove);
+          window.removeEventListener("mousemove", onMouseMove);
+          // window.removeEventListener("pointermove", onPointerMove);
           canvas.onmouseup = null;
           diff = 0;
           touched = false;
@@ -229,23 +257,27 @@ function main(paths) {
 
     document.addEventListener("wheel", handleWheel);
   }
-  setupScroll();
 
-  const xpad = boxWidth * 1.1;
-  const xoffset = 1 * boxWidth;
-  const ypad = boxHeight * 1.1;
-  const yoffset = 1.5 * boxHeight;
+  function renderInColumn() {
+    const xpad = boxWidth * 1.1;
+    const xoffset = 1 * boxWidth;
+    const ypad = boxHeight * 1.1;
+    const yoffset = 1.5 * boxHeight;
 
-  // Render images in vertical column
-  for (let i = 0; i < paths.length; i++) {
-    // if (i > paths.length) {
-    //   break;
-    // }
-    const path = paths[i];
-    const xloc = 0;
-    const yloc = i * ypad - yoffset;
-    makeInstance(boxgeom, path, xloc, -yloc);
+    // Render images in vertical column
+    for (let i = 0; i < paths.length; i++) {
+      // if (i > paths.length) {
+      //   break;
+      // }
+      const path = paths[i];
+      const xloc = 0;
+      const yloc = i * ypad - yoffset;
+      makeInstance(boxgeom, path, xloc, -yloc);
+    }
   }
+
+  setupScroll();
+  renderInColumn();
 
   // Update and rerender
   function render(time) {
@@ -257,12 +289,20 @@ function main(paths) {
       camera.updateProjectionMatrix();
     }
 
+    // Set and animate Y Rotation for images
     shapes.forEach((shape, i) => {
       const speed = 0.05;
-      const rot = shape.rotYOffset;
+      const curYRot = shape.rotation.y;
+      const yRotTarget = shape.rotYOffsetTarget;
 
-      //shape.rotation.x = rot;
-      shape.rotation.y = rot;
+      // Lock to target if difference is small enough
+      if (Math.abs(yRotTarget - curYRot) < 0.0000001) {
+        shape.rotation.y = yRotTarget;
+      } else {
+        const newYRot = lerp(curYRot, yRotTarget, speed);
+        shape.rotation.y = newYRot;
+        // console.log(yRotTarget - curYRot);
+      }
     });
 
     if (camera.position.y > -(boxHeight * (paths.length + 1.2))) {

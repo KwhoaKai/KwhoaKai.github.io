@@ -11,23 +11,23 @@ var red = function (p) {
 
   let fontSize;
   p.preload = function () {
-    fontGenerator = p.loadFont('IBMPlexMono-Bold.otf');
+    fontGenerator = p.loadFont("IBMPlexMono-Bold.otf");
   };
 
   p.setup = function () {
     // console.log($('#typeDiv').width());
-    p.createCanvas($('#typeDiv').width(), $('#typeDiv').width(), p.WEBGL);
+    p.createCanvas($("#typeDiv").width(), $("#typeDiv").width(), p.WEBGL);
     fontSize = 0;
     radiusWaveOffset = 0;
     stackCount = 5;
     leading = 10;
     radiusWave = 50;
     radiusWaveCount = 2;
-    inpText = 'YikaiKuo';
+    inpText = "YikaiKuo";
   };
 
   p.draw = function () {
-    p.background('#FF76B8');
+    p.background("#FF76B8");
     p.orbitControl();
     p.textSize(10);
     p.textAlign(p.LEFT);
@@ -70,19 +70,19 @@ var red = function (p) {
           p.sin(
             p.frameCount * radiusWaveSpeed +
               j * radiusWaveLength +
-              i * radiusWaveOffset
+              i * radiusWaveOffset,
           ) * radiusWaveSize;
         let radiusWavePost =
           p.sin(
             p.frameCount * radiusWaveSpeed +
               (j + 1) * radiusWaveLength +
-              i * radiusWaveOffset
+              i * radiusWaveOffset,
           ) * radiusWaveSize;
         let radiusWavePre =
           p.sin(
             p.frameCount * radiusWaveSpeed +
               (j - 1) * radiusWaveLength +
-              i * radiusWaveOffset
+              i * radiusWaveOffset,
           ) * radiusWaveSize;
 
         let postX = p.cos(pieAngle * (j + 1)) * (radius + radiusWavePost);
@@ -97,18 +97,18 @@ var red = function (p) {
           p.sin(
             p.frameCount * radiusWaveSpeed +
               j * radiusWaveLength +
-              (i + 1) * radiusWaveOffset
+              (i + 1) * radiusWaveOffset,
           ) * radiusWaveSize;
         let radiusWaveBelow =
           p.sin(
             p.frameCount * radiusWaveSpeed +
               j * radiusWaveLength +
-              (i - 1) * radiusWaveOffset
+              (i - 1) * radiusWaveOffset,
           ) * radiusWaveSize;
 
         let angleAdjustX = p.atan2(
           radiusWaveBelow - radiusWaveAbove,
-          2 * (fontHeight + leading)
+          2 * (fontHeight + leading),
         );
 
         p.push();
@@ -122,11 +122,11 @@ var red = function (p) {
         p.text(inpText.charAt(j), 0, 0);
 
         p.translate(0, 0, -1);
-        p.fill('#FFF714');
+        p.fill("#FFF714");
         p.text(inpText.charAt(j), 0, 0);
         p.pop();
       }
     }
   };
 };
-var myp5 = new p5(red, 'typeDiv');
+var myp5 = new p5(red, "typeDiv");

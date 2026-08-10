@@ -25,13 +25,9 @@ function getRandomInt(max) {
 }
 const phrases = [
   "max rubys.",
-  "i'm the chinese soulja boy",
-  "welcome to my moldboard.",
-  "please buy me clothes...",
-  "they started in the number nine discord",
-  `i can't see you anymore`,
+  "the chinese soulja boy",
+  "moldboard.",
   "see you around.",
-  '"mood board"',
   "swag swag swag",
 ];
 let phrase = phrases[getRandomInt(phrases.length - 1)];

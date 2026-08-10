@@ -24,15 +24,15 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 const phrases = [
-  "not really sure why i'm here.",
-  "how was your day?",
+  "max rubys.",
+  "i'm the chinese soulja boy",
   "welcome to my moldboard.",
-  "tired? i can tell.",
   "please buy me clothes...",
-  `why are you...             ok`,
-  "where are you? i can't see you...",
-  '"mood board"  <- bleh',
-  "i hope you like them.",
+  "they started in the number nine discord",
+  `i can't see you anymore`,
+  "see you around.",
+  '"mood board"',
+  "swag swag swag",
 ];
 let phrase = phrases[getRandomInt(phrases.length - 1)];
 
@@ -41,7 +41,8 @@ document.getElementById("moodtitle").innerHTML = title;
 let content = document.getElementById("content");
 
 if (window.innerWidth > 500) {
-  let reptext = "In this space you can walk without going back on your footsteps";
+  let reptext =
+    "In this space you can walk without going back on your footsteps";
   let longtext = `The top left corner of the band of tracing paper is stapled onto the wall
                   The top right corner is stapled
                   Finally the middle
@@ -118,7 +119,12 @@ function main(paths) {
   const planeH = 1;
   const segmentW = 1;
   const segmentH = 1;
-  const planegeom = new THREE.PlaneBufferGeometry(planeW, planeH, segmentW, segmentH);
+  const planegeom = new THREE.PlaneBufferGeometry(
+    planeW,
+    planeH,
+    segmentW,
+    segmentH,
+  );
 
   let touched = false;
   const lerp = (x, y, a) => x * (1 - a) + y * a;

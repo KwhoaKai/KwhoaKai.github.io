@@ -24,9 +24,8 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 const phrases = [
-  "max rubys.",
-  "the chinese soulja boy",
-  "moldboard.",
+  "chinese soulja boy",
+  "mold.",
   "see you around.",
   "swag swag swag",
 ];

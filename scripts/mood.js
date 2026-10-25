@@ -31,7 +31,7 @@ const phrases = [
 ];
 let phrase = phrases[getRandomInt(phrases.length - 1)];
 
-let title = window.innerWidth < 500 ? "mood" : phrase;
+let title = window.innerWidth < 500 ? "mold." : phrase;
 document.getElementById("moodtitle").innerHTML = title;
 let content = document.getElementById("content");
 
